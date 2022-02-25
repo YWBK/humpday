@@ -1,0 +1,1 @@
+json.extract! user, :id, :email, :full_name, :owned_account_id
