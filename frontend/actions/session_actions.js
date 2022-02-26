@@ -32,7 +32,7 @@ export const signup = (user, accountName) => dispatch => {
     );
 }
 export const login = (user, accountName) => dispatch => {
-    debugger
+    // debugger
     return (
         SessionApiUtil.login(user, accountName)
             .then(

@@ -11,7 +11,8 @@ export default class LoginForm2 extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         this.props.history.push({
-            pathname: `/${this.state.accountName}/auth/login_humpday/email_password`,  
+            pathname: `/${this.state.accountName}/auth/login_humpday/email_password`,
+            accountName: this.state.accountName  
         })
     }
     update(field) {
@@ -21,6 +22,7 @@ export default class LoginForm2 extends React.Component {
         const { errors } = this.props;
         const loginForm = 
             <div>
+                <h2><Link to='/'>humpday.com</Link></h2>
                 <h3><span>Log</span> In</h3>
                 <p>Enter your account's web address</p>
                 <form onSubmit={this.handleSubmit}>

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { logout } from '../../actions/session_actions';
+import { login } from '../../actions/session_actions';
 import Splash from './splash';
 
 const mapSTP = ({entities, session}) => {
@@ -10,7 +10,7 @@ const mapSTP = ({entities, session}) => {
 }
 
 const mapDTP = dispatch => ({
-    logout: () => dispatch(logout())
+    login: (user, accountName) => dispatch(login(user, accountName))
 })
 
 export default connect(mapSTP, mapDTP)(Splash)

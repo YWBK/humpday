@@ -8,9 +8,15 @@ const reqCurrAcct= account => {
     })
 }
 
-export const fetchAccount = accountName => dispatch => {
+export const fetchAccount = accountId => dispatch => {
     return(
-        AccountApiUtil.fetchAccount(accountName)
+        AccountApiUtil.fetchAccount(accountId)
+            .then(account => dispatch(reqCurrAcct(account)))
+    )
+}
+export const fetchAccountByName = accountName => dispatch => {
+    return(
+        AccountApiUtil.fetchAccountByName(accountName)
             .then(account => dispatch(reqCurrAcct(account)))
     )
 }

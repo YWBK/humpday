@@ -10,7 +10,6 @@ export default class LoginForm1 extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        // this.props.findUserByEmail({email: this.state.email})
         this.props.history.push({pathname: '/auth/login_humpday/enter_slug', email: this.state.email })
     }
     update(field) {
@@ -20,6 +19,7 @@ export default class LoginForm1 extends React.Component {
         const { errors } = this.props;
         const loginForm = 
             <div>
+                <h2><Link to='/'>humpday.com</Link></h2>
                 <h3>Log in to your account</h3>
                 <p>Enter your work email address</p>
                 <form onSubmit={this.handleSubmit}>

@@ -1,8 +1,17 @@
 class Api::AccountsController < ApplicationController
     def show
+        @account = Account.find_by(id: params[:id])
+        # debugger
+        if @account
+            render :show
+        else
+            render json: ['Account not found'], status: 404
+        end
+    end
+    
+    def show_by_name
         # debugger
         @account = Account.find_by(account_name: params[:account_name])
-        # debugger
         if @account
             render :show
         else
@@ -12,6 +21,6 @@ class Api::AccountsController < ApplicationController
 
     private
     def account_params
-        params.permit(:account_name)
+        params.permit(:id, :account_name)
     end
 end

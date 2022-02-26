@@ -3,13 +3,16 @@ export default class HomePage extends React.Component {
 
     componentDidMount() {
         if (this.props.match.params.accountName !== '') {
-            // debugger
-            this.props.fetchAccount(this.props.match.params.accountName)
+            this.props.fetchAccountByName(this.props.match.params.accountName)
         }
     }
     render() {
         return(
-            <div>Home Page</div>
+            <div>Home Page
+                <br/>
+                <button onClick={() => this.props.logout()}>Log Out</button>
+            </div>
+
         )
     }
 }

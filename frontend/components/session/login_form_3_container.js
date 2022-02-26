@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { login } from '../../actions/session_actions';
-import { fetchAccount } from '../../actions/account_actions'
+import { fetchAccountByName } from '../../actions/account_actions'
 import LoginForm3 from './login_form_3';
 
 const mapSTP = (state, ownProps) => {
@@ -11,7 +11,7 @@ const mapSTP = (state, ownProps) => {
 
 const mapDTP = (dispatch, ownProps) => {
     return ({
-        fetchAccount: accountName => dispatch(fetchAccount(accountName)),
+        fetchAccountByName: accountName => dispatch(fetchAccountByName(accountName)),
         login: (user, accountName) => dispatch(login(user, accountName))
     })
 }

@@ -1,19 +1,21 @@
 import React from 'react';
-import  { Link, Redirect } from 'react-router-dom';
+import  { Link, } from 'react-router-dom';
 
-const Splash = ({currentUser, accountName, logout}) => {
-    const display = currentUser ? (
-        <Redirect to={`/${accountName}`}></Redirect>
-        // <div>
-        //     <h3>Welcome {currentUser.username}!</h3>
-        //     <button onClick={() => logout()}>Log out</button>
-        // </div>
-    ) : ( <div>
-        <Link to='/auth/login_humpday'>Log in</Link>
-        <Link to='/users/signup'>Get Started</Link>
-    </div>
-    );
+const Splash = ({ login }) => {
+    const demoUser = {email: 'user@demo.com', password: 'Demo123'};
+    const demoAcct = {account_name: 'demo'};
 
-    return display;
+    return (
+        <div className='nav-bar'>
+            <div className='left-nav'>
+                <h2><Link to='/'>humpday.com</Link></h2> 
+            </div>
+            <div className='right-nav'>
+                <Link to='/auth/login_humpday'>Log in</Link>
+                <Link to='/users/signup'>Get Started</Link>
+                <span id='demoLoginLink' onClick={()=> login(demoUser, demoAcct)}>Demo User</span>
+            </div>
+        </div>
+    )
 }
 export default Splash;

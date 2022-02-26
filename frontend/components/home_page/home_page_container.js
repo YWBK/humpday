@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import HomePage from './home_page';
-import { fetchAccount } from '../../actions/account_actions'
+import { fetchAccountByName } from '../../actions/account_actions'
+import { logout } from '../../actions/session_actions'
 
 const mapSTP = (state) => {
     return ({})
@@ -8,7 +9,8 @@ const mapSTP = (state) => {
 
 const mapDTP = dispatch => {
     return ({
-        fetchAccount: accountName => dispatch(fetchAccount(accountName))
+        fetchAccountByName: accountName => dispatch(fetchAccountByName(accountName)),
+        logout: () => dispatch(logout())
     })
 }
 

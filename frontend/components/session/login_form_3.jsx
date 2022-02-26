@@ -1,7 +1,7 @@
 import React from 'react';
 import  { Link, Redirect } from 'react-router-dom';
 
-export default class LoginForm1 extends React.Component {
+export default class LoginForm3 extends React.Component {
     constructor(props) {
         super(props);
         this.state = { 
@@ -10,20 +10,20 @@ export default class LoginForm1 extends React.Component {
             accountName: props.match.params.accountName
         };
         this.handleSubmit = this.handleSubmit.bind(this);
+        // debugger
     }
 
     componentDidMount() {
         if (this.props.match.params.accountName !== '') {
-            // debugger
-            this.props.fetchAccount(this.props.match.params.accountName)
+            this.props.fetchAccountByName(this.props.match.params.accountName)
         }
+        this.props.location.accountName = this.state.accountName;
     }
 
     handleSubmit(e) {
         e.preventDefault();
         const user = Object.assign({}, {email: this.state.email, password: this.state.password});
         const accountName = Object.assign({}, {account_name: this.state.accountName});
-        debugger
         this.props.login(user, accountName);  
     }
 
@@ -35,6 +35,7 @@ export default class LoginForm1 extends React.Component {
         const { errors } = this.props;
         const login1Form = 
             <div>
+                <h2><Link to='/'>humpday.com</Link></h2>
                 <h3><span>Log</span> In</h3>
                 <p>{this.state.accountName}</p>
                 <form onSubmit={this.handleSubmit}>
