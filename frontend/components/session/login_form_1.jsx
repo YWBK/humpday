@@ -10,6 +10,7 @@ export default class LoginForm1 extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
+        // this.props.findUserByEmail({email: this.state.email})
         this.props.history.push({pathname: '/auth/login_humpday/enter_slug', email: this.state.email })
     }
     update(field) {
@@ -24,10 +25,11 @@ export default class LoginForm1 extends React.Component {
                 <form onSubmit={this.handleSubmit}>
                     <label>Email
                         <input 
-                            type='text' 
+                            type='email' 
                             value={this.state.email} 
                             onChange={this.update('email')}
                             placeholder='Example@company.com' 
+                            required
                         />
                     </label>
                     <br/>               

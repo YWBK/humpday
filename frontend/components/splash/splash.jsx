@@ -10,9 +10,7 @@ const Splash = ({currentUser, accountName, logout}) => {
         // </div>
     ) : ( <div>
         <Link to='/auth/login_humpday'>Log in</Link>
-        <br/>
         <Link to='/users/signup'>Get Started</Link>
-        
     </div>
     );
 

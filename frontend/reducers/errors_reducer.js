@@ -6,7 +6,7 @@ const errorsReducer = (state = [], action) => {
     // debugger
     switch (action.type) {
         case RECEIVE_SESSION_ERRORS:
-            nextState = action.errors;
+            nextState = action.errors.responseJSON;
             return nextState;
         case RECEIVE_CURRENT_USER: 
             nextState = [];

@@ -11,8 +11,7 @@ export default class LoginForm2 extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         this.props.history.push({
-            pathname: '/test2/auth/login_humpday/email_password', 
-            accountName: this.state.accountName 
+            pathname: `/${this.state.accountName}/auth/login_humpday/email_password`,  
         })
     }
     update(field) {
@@ -31,6 +30,7 @@ export default class LoginForm2 extends React.Component {
                             value={this.state.accountName} 
                             onChange={this.update('accountName')}
                             placeholder='e.g. my-team' 
+                            required
                         />
                         <span>.humpday.com</span>
                     </label>

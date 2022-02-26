@@ -1,10 +1,12 @@
-import { RECEIVE_CURRENT_USER } from '../actions/session_actions';
+import { REQ_CURR_ACCT } from '../actions/account_actions';
 
 const accountsReducer = (state = {}, action) => {
     Object.freeze({}, state);
+    let nextState = Object.assign({}, state);
     switch (action.type) {
-        case RECEIVE_CURRENT_USER:
-            return Object.assign({}, state, { [action.currentUser.id]: action.currentUser })
+        case REQ_CURR_ACCT:
+            nextState[action.account.id] = action.account;
+            return nextState;
         default:
             return state;
     }

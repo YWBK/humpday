@@ -7,15 +7,23 @@ export default class LoginForm1 extends React.Component {
         this.state = { 
             email: '', 
             password: '', 
-            accountName: props.location.accountName 
+            accountName: props.match.params.accountName
         };
         this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    componentDidMount() {
+        if (this.props.match.params.accountName !== '') {
+            // debugger
+            this.props.fetchAccount(this.props.match.params.accountName)
+        }
     }
 
     handleSubmit(e) {
         e.preventDefault();
         const user = Object.assign({}, {email: this.state.email, password: this.state.password});
         const accountName = Object.assign({}, {account_name: this.state.accountName});
+        debugger
         this.props.login(user, accountName);  
     }
 

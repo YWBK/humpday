@@ -29,13 +29,16 @@ class Api::UsersController < ApplicationController
         end
     end
 
-    def find_user_by_email
-        @user = User.find_by(email: user_params[:email])
-        if @user
-        else
-            render json: @user.errors.full_messages, status: 422
-        end
-    end
+    # def find_user_by_email
+    #     # debugger
+    #     @user = User.find_by(email: user_params[:email])
+    #     # debugger
+    #     if @user
+    #         # render json: {}, status: 200
+    #     else
+    #         render json: @user.errors.full_messages, status: 422
+    #     end
+    # end
 
     private
     def user_params

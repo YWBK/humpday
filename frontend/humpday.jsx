@@ -6,6 +6,7 @@ import { signup, login, logout } from './actions/session_actions';
 import Root from './components/root';
 
 document.addEventListener('DOMContentLoaded', () => {
+    // debugger
     const store = configureStore();
     window.signup = signup;
     window.login = login;

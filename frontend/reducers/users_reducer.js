@@ -1,4 +1,4 @@
-import { RECEIVE_CURRENT_USER, RECEIVE_USER_BY_EMAIL } from '../actions/session_actions';
+import { RECEIVE_CURRENT_USER } from '../actions/session_actions';
 
 const usersReducer = (state = {}, action) => {
     Object.freeze({}, state);
@@ -12,8 +12,6 @@ const usersReducer = (state = {}, action) => {
             //     state, 
             //     { [action.currentUser.id]: action.currentUser }
             // );
-        case RECEIVE_USER_BY_EMAIL:
-            return nextState;
         default:
             return state;
     }

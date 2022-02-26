@@ -7,5 +7,10 @@ const mapSTP = (state, ownProps) => {
     })
 }
 
+const mapDTP = dispatch => {
+    return ({
+        findUserByEmail: email => dispatch(findUserByEmail(email))
+    })
+}
 
-export default connect(mapSTP, null)(LoginForm1);
+export default connect(mapSTP, mapDTP)(LoginForm1);
