@@ -19,7 +19,9 @@ export default class LoginForm1 extends React.Component {
         const { errors } = this.props;
         const loginForm = 
             <div>
-                <h2><Link to='/'>humpday.com</Link></h2>
+                <div className='nav-bar'>
+                    <h2><Link to='/'>humpday.com</Link></h2>
+                </div>
                 <h3>Log in to your account</h3>
                 <p>Enter your work email address</p>
                 <form onSubmit={this.handleSubmit}>
