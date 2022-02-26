@@ -1,17 +1,17 @@
 import { connect } from 'react-redux';
 import { login } from '../../actions/session_actions';
-import LoginForm from './signup_form';
+import LoginForm3 from './login_form_3';
 
 const mapSTP = (state, ownProps) => {
     return ({
-        errors: state.errors,
+        errors: Object.values(state.errors),
     })
 }
 
 const mapDTP = (dispatch, ownProps) => {
     return ({
-        processForm: user => dispatch(login(user))
+        login: (user, accountName) => dispatch(login(user, accountName))
     })
 }
 
-export default connect(mapSTP, mapDTP)(LoginForm);
+export default connect(mapSTP, mapDTP)(LoginForm3);

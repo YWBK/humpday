@@ -29,6 +29,14 @@ class Api::UsersController < ApplicationController
         end
     end
 
+    def find_user_by_email
+        @user = User.find_by(email: user_params[:email])
+        if @user
+        else
+            render json: @user.errors.full_messages, status: 422
+        end
+    end
+
     private
     def user_params
         params.require(:user).permit(:email, :full_name, :password)

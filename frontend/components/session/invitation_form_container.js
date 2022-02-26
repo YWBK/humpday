@@ -4,7 +4,7 @@ import InvitationForm from './invitation_form';
 
 const mapSTP = (state, ownProps) => {
     return ({
-        errors: state.errors,
+        errors: Object.values(state.errors),
     })
 }
 

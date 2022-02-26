@@ -1,46 +1,36 @@
 import React from 'react';
 import  { Link, Redirect } from 'react-router-dom';
 
-export default class SessionForm extends React.Component {
+export default class LoginForm1 extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { email: '', fullName: '', password: '' }
+        this.state = { email: ''}
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleSubmit(e) {
         e.preventDefault();
-        const user = Object.assign({}, this.state);
-        this.props.processForm(user);
+        this.props.history.push({pathname: '/auth/login_humpday/enter_slug', email: this.state.email })
     }
     update(field) {
         return e => this.setState({ [field]: e.currentTarget.value });
     }
     render() {
-        const { errors, currentUser } = this.props;
-        const sessionForm = 
-        // currentUser ? (
-        //     <Redirect to='/'></Redirect>
-        // ) : ( 
+        const { errors } = this.props;
+        const loginForm = 
             <div>
-                <h3>Log In</h3>
+                <h3>Log in to your account</h3>
+                <p>Enter your work email address</p>
                 <form onSubmit={this.handleSubmit}>
                     <label>Email
                         <input 
                             type='text' 
                             value={this.state.email} 
-                            onChange={this.update('email')} 
+                            onChange={this.update('email')}
+                            placeholder='Example@company.com' 
                         />
                     </label>
                     <br/>               
-                    <label>Password
-                        <input 
-                            type='password' 
-                            value={this.state.password} 
-                            onChange={this.update('password')}  
-                        />
-                    </label>
-                    <br/>
                     <button type='submit'>Submit</button>
                 </form>
                 
@@ -52,6 +42,6 @@ export default class SessionForm extends React.Component {
             </div>
         // );
 
-        return sessionForm;
+        return loginForm;
     }
 }

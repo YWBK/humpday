@@ -1,29 +1,34 @@
 import React from 'react';
 import  { Link, Redirect } from 'react-router-dom';
 
-export default class SessionForm extends React.Component {
+export default class LoginForm1 extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { email: '', fullName: '', password: '' }
+        this.state = { 
+            email: '', 
+            password: '', 
+            accountName: props.location.accountName 
+        };
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleSubmit(e) {
         e.preventDefault();
-        const user = Object.assign({}, this.state);
-        this.props.processForm(user);
+        const user = Object.assign({}, {email: this.state.email, password: this.state.password});
+        const accountName = Object.assign({}, {account_name: this.state.accountName});
+        this.props.login(user, accountName);  
     }
+
     update(field) {
         return e => this.setState({ [field]: e.currentTarget.value });
     }
+
     render() {
-        const { errors, currentUser } = this.props;
-        const sessionForm = 
-        // currentUser ? (
-        //     <Redirect to='/'></Redirect>
-        // ) : ( 
+        const { errors } = this.props;
+        const login1Form = 
             <div>
-                <h3>Log In</h3>
+                <h3><span>Log</span> In</h3>
+                <p>{this.state.accountName}</p>
                 <form onSubmit={this.handleSubmit}>
                     <label>Email
                         <input 
@@ -32,16 +37,16 @@ export default class SessionForm extends React.Component {
                             onChange={this.update('email')} 
                         />
                     </label>
-                    <br/>               
+                    <br/>
                     <label>Password
                         <input 
                             type='password' 
                             value={this.state.password} 
-                            onChange={this.update('password')}  
+                            onChange={this.update('password')} 
                         />
                     </label>
                     <br/>
-                    <button type='submit'>Submit</button>
+                    <button type='submit'>Log In</button>
                 </form>
                 
                 <ul>
@@ -52,6 +57,6 @@ export default class SessionForm extends React.Component {
             </div>
         // );
 
-        return sessionForm;
+        return login1Form;
     }
 }
