@@ -20,23 +20,25 @@ export default class LoginForm1 extends React.Component {
         const loginForm = 
             <div>
                 <div className='nav-bar'>
-                    <h2><Link to='/'>humpday.com</Link></h2>
+                    <h2><Link className='nav-link' style={{ textDecoration: 'none' }} to='/'><span>humpday</span></Link></h2>
                 </div>
-                <h3>Log in to your account</h3>
-                <p>Enter your work email address</p>
-                <form onSubmit={this.handleSubmit}>
-                    <label>Email
-                        <input 
-                            type='email' 
-                            value={this.state.email} 
-                            onChange={this.update('email')}
-                            placeholder='Example@company.com' 
-                            required
-                        />
-                    </label>
-                    <br/>               
-                    <button type='submit'>Submit</button>
-                </form>
+                <div className='login-form-container'>
+                    <h3>Log in to your account</h3>
+                    <p>Enter your work email address</p>
+                    <form onSubmit={this.handleSubmit}>
+                        <label>
+                            <input 
+                                type='email' 
+                                value={this.state.email} 
+                                onChange={this.update('email')}
+                                placeholder='Example@company.com' 
+                                required
+                            />
+                        </label>
+                        <br/>               
+                        <button type='submit'>Next</button>
+                    </form>
+                </div>
                 
                 <ul>
                     {errors.map((error, i) => (

@@ -1,3 +1,96 @@
 // Place all the styles related to the api/sessions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import 'variables'; 
+
+.login-form-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 100%;
+    padding-top: 180px;
+    padding-bottom: 50%;
+    background-color: $white;
+    font-family: Arial, Helvetica, sans-serif;
+    h1 {
+        font-size: 72px;
+        max-width: 720px;
+        margin-bottom: 20px;
+    }
+    h3 {
+        font-size: 22px;
+        margin-bottom: 100px;
+    }
+}
+
+.login-form-container button {
+    font-size: 14px;
+    color: $white;
+    width: 120px;
+    height: 40px;
+    border: none;
+    border-radius: 40px;
+    background-color: $login-blue;
+    cursor: pointer;
+}
+
+.log {
+    font-weight: 900;
+}
+
+.login-host-name {
+    background-color: $login-grey;
+}
+
+.modal-bg {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 100%;
+    padding-top: 180px;
+    padding-bottom: 50%;
+    background-color: $light-grey;
+
+}
+
+.modal {
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    width: 800px;
+    height: 500px;
+    z-index: 1;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: $white;
+    border: none;
+    border-radius: 15px;
+}
+
+.modal-content {
+    display: flex;
+    height: 80%;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.modal-content input {
+    width: 100%;
+}
+
+.modal-content button {
+    font-size: 14px;
+    color: $white;
+    width: 100%;
+    height: 30px;
+    border: none;
+    border-radius: 5px;
+    background-color: $signup-blue;
+    cursor: pointer;
+}
+
+.modal-content h3 {
+    font-size: 22px;
+}

@@ -35,28 +35,32 @@ export default class LoginForm3 extends React.Component {
         const { errors } = this.props;
         const login1Form = 
             <div>
-                <h2><Link to='/'>humpday.com</Link></h2>
-                <h3><span>Log</span> In</h3>
-                <p>{this.state.accountName}</p>
-                <form onSubmit={this.handleSubmit}>
-                    <label>Email
-                        <input 
-                            type='text' 
-                            value={this.state.email} 
-                            onChange={this.update('email')} 
-                        />
-                    </label>
-                    <br/>
-                    <label>Password
-                        <input 
-                            type='password' 
-                            value={this.state.password} 
-                            onChange={this.update('password')} 
-                        />
-                    </label>
-                    <br/>
-                    <button type='submit'>Log In</button>
-                </form>
+                <div className='nav-bar'>
+                    <h2><Link className='nav-link' style={{ textDecoration: 'none' }} to='/'><span>humpday</span></Link></h2>
+                </div>
+                <div className='login-form-container'>
+                    <h3><span className='log'>Log</span> In</h3>
+                    <p>{this.state.accountName}</p>
+                    <form onSubmit={this.handleSubmit}>
+                        <label>Email
+                            <input 
+                                type='text' 
+                                value={this.state.email} 
+                                onChange={this.update('email')} 
+                            />
+                        </label>
+                        <br/>
+                        <label>Password
+                            <input 
+                                type='password' 
+                                value={this.state.password} 
+                                onChange={this.update('password')} 
+                            />
+                        </label>
+                        <br/>
+                        <button type='submit'>Log In</button>
+                    </form>
+                </div>
                 
                 <ul>
                     {errors.map((error, i) => (
