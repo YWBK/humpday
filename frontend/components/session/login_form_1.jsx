@@ -16,7 +16,7 @@ export default class LoginForm1 extends React.Component {
         return e => this.setState({ [field]: e.currentTarget.value });
     }
     render() {
-        const { errors } = this.props;
+        const { errors, login } = this.props;
         const loginForm = 
             <div>
                 <div className='nav-bar'>
@@ -24,11 +24,11 @@ export default class LoginForm1 extends React.Component {
                 </div>
                 <div className='login-form-container'>
                     <h3>Log in to your account</h3>
-                    <p>Enter your work email address</p>
                     <form onSubmit={this.handleSubmit}>
+                        <p>Enter your work email address</p>
                         <label>
                             <input 
-                                type='email' 
+                                type='text' 
                                 value={this.state.email} 
                                 onChange={this.update('email')}
                                 placeholder='Example@company.com' 
@@ -36,8 +36,32 @@ export default class LoginForm1 extends React.Component {
                             />
                         </label>
                         <br/>               
-                        <button type='submit'>Next</button>
+                        <button className='login-next' type='submit'>Next</button>
                     </form>
+                    <br/>
+                    <div className='login-with-demo'>
+                        <p>Or Sign in with</p>
+                        <br/>
+                        <button 
+                            className='login-demo-btn' 
+                            onClick={()=> login(
+                                {email: 'user@demo.com', password: 'Demo123'}, 
+                                {account_name: 'demo'}
+                            )} 
+                        >
+                            Demo User
+                        </button>
+                        <br/>
+                    </div>
+                    <div className='login-to-signup'>
+                        <p>Don't have an account yet?</p>
+                        <Link 
+                            className='login-to-signup-link' 
+                            style={{ textDecoration: 'none' }} 
+                            to='/users/signup'>
+                                Sign up
+                        </Link>
+                    </div>
                 </div>
                 
                 <ul>

@@ -2,7 +2,10 @@ class User < ApplicationRecord
     validates :email, :account_id, :full_name, :password_digest, :session_token, presence: true
     validates :session_token, uniqueness: true
     validates :password, length: { minimum: 6, allow_nil: true }
-    validates :email, uniqueness: { scope: :account_id }
+    validates :email, 
+        uniqueness: { scope: :account_id, case_sensitive: false }, 
+        format: { with: /\A[^\s@]+@[^\s@]+\.[^\s@]+\z/ },
+        length: { minimum: 4, maximum: 254 }
     attr_reader :password
 
     after_initialize :ensure_session_token
