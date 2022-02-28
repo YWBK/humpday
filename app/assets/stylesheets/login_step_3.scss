@@ -1,0 +1,110 @@
+@import 'variables'; 
+
+.login-form-3-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    padding-top: 90px;
+    background-color: $white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.login-form-3-container h3 {
+    font-size: 28px;
+    font-weight: lighter;
+    letter-spacing: 2px;
+    padding-bottom: 22px;
+}
+
+.login-form-3-container p:first-of-type {
+    font-size: 16px;
+    height: 24px;
+    // width: 240px;
+    text-align: center;
+}
+.login-form-3-container input {
+    height: 30px;
+    width: 240px;
+    padding: 0 10px 0 10px;
+    border: 1px solid $login-dark-grey;
+    border-radius: 5px;
+    color: $login-darker-grey;
+}
+.login-form-3-container input::placeholder {
+    color: $login-dark-grey;
+}
+.login-form-3-container input:focus {
+    outline: 1px solid $signup-blue;
+}
+
+.login-next {
+    margin: auto;
+    margin-top: 15px;
+    font-size: 14px;
+    color: $white;
+    width: 260px;
+    height: 35px;
+    border: none;
+    border-radius: 40px;
+    background-color: $login-blue;
+    cursor: pointer;
+}
+.login-next:hover {
+    background-color: $login-dark-blue;
+}
+
+
+.login-3-with-demo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.login-3-with-demo p {
+    color: $login-darker-grey;
+    text-align: center;
+}
+
+.login-3-demo-btn {
+    font-size: 12px;
+    width: 90px;
+    height: 35px;
+    border: 1.5px solid $login-dark-grey;
+    border-radius: 40px;
+    background-color: $white;
+    cursor: pointer;
+}
+
+
+.login-to-signup-link {
+    color: $login-blue;
+    font-size: 14px;
+}
+
+.log {
+    font-weight: 900;
+}
+
+.login-host-name {
+    background-color: $login-grey;
+}
+
+.login-to-another-account {
+    width: 100%;
+    height: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.login-to-another-account p {
+    width: inherit;
+    margin-right: 3px;
+    color: $login-darker-grey;
+    font-size: 14px;
+}

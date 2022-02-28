@@ -4,9 +4,12 @@ import configureStore from './store/store';
 // import { signup, login, logout } from './util/session_api_util';
 import { signup, login, logout } from './actions/session_actions';
 import Root from './components/root';
+// import logo from '../app/assets/images/logo.png';
+
 
 document.addEventListener('DOMContentLoaded', () => {
-    // debugger
+  // debugger
+    // img.src = logo;
     let store = configureStore();
     if (window.currentUser) {
         const preloadedState = {

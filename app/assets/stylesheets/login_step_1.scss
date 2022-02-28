@@ -1,0 +1,117 @@
+@import 'variables'; 
+
+.login-form-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 100%;
+    padding-top: 90px;
+    padding-bottom: 50%;
+    background-color: $white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.login-form-container h3 {
+    font-size: 28px;
+    font-weight: lighter;
+    letter-spacing: 2px;
+    color: $login-darker-grey;
+    padding-bottom: 22px;
+}
+
+.login-form-container p {
+    font-size: 16px;
+    height: 24px;
+    width: 240px;
+}
+.login-form-container input {
+    height: 30px;
+    width: 240px;
+    padding: 0 10px 0 10px;
+    border: 1px solid $login-dark-grey;
+    border-radius: 5px;
+    color: $login-darker-grey;
+}
+.login-form-container input::placeholder {
+    color: $login-dark-grey;
+}
+.login-form-container input:focus {
+    outline: 1px solid $signup-blue;
+}
+
+.login-next {
+    margin: auto;
+    margin-top: 15px;
+    font-size: 14px;
+    color: $white;
+    width: 260px;
+    height: 35px;
+    border: none;
+    border-radius: 40px;
+    background-color: $login-blue;
+    cursor: pointer;
+}
+.login-next:hover {
+    background-color: $login-dark-blue;
+}
+
+
+.login-with-demo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.login-with-demo p {
+    color: $login-darker-grey;
+    text-align: center;
+}
+
+.login-demo-btn {
+    font-size: 12px;
+    width: 90px;
+    height: 35px;
+    border: 1.5px solid $login-dark-grey;
+    border-radius: 40px;
+    background-color: $white;
+    cursor: pointer;
+}
+
+.login-to-signup {
+    display: flex;
+    justify-content: center;
+}
+
+.login-to-signup p {
+    width: inherit;
+    margin-right: 3px;
+    color: $login-darker-grey;
+    font-size: 14px;
+    
+}
+.login-to-signup-link {
+    color: $login-blue;
+    font-size: 14px;
+}
+
+
+.log {
+    font-weight: 900;
+}
+
+.login-host-name {
+    background-color: $login-grey;
+}
+
+.login-email-error {
+    text-align: center;
+    background-color: $login-red;
+    color:$white;
+    margin-bottom: 80px;
+    padding: 12px 260px 2px 260px;
+    font-size: 12px;
+    letter-spacing: 0.4px;
+}
+.login-email-error-none {
+    margin-bottom: 80px;
+}
