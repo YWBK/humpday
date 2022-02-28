@@ -11,15 +11,18 @@ class User < ApplicationRecord
 
     belongs_to :account,
     foreign_key: :account_id,
-    class_name: 'User'
+    class_name: 'Account'
 
-    has_many :workspace_members
+    has_many :owned_workspaces,
+    foreign_key: :workspace_owner_id,
+    class_name: 'Workspace'
+
+    has_many :workspace_members,
     foreign_key: :user_id,
-    class_name: 'User'
+    class_name: 'WorkspaceMember'
 
     has_many :workspaces,
-    through: :course_students
-
+    through: :workspace_members
     def self.find_by_credentials(account_id, email, password)
         user = User.find_by(account_id: account_id, email: email)
         user && user.is_password?(password) ? user : nil
@@ -40,6 +43,7 @@ class User < ApplicationRecord
 
     def reset_session_token!
         self.session_token = self.class.generate_session_token
+        # debugger
         self.save!
         self.session_token
     end

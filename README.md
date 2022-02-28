@@ -23,11 +23,3 @@ Things you may want to cover:
 
 * ...
 
-1. accomplishments over couple of days
-    - user auth and styling until logged in homepage
-    - roadblocks:
-        - because i have a signup process that involves multiple routes, it was a challenge to persist the info i needed
-        - i had to figure out how to create both an account and a user and setup their association in one request
-    - goals for today
-        - create the backend for my workspaces and boards
-        - create the frontend routes and components for workspaces and boards, but no styling yet
