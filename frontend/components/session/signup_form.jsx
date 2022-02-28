@@ -30,9 +30,9 @@ export default class SessionForm extends React.Component {
     render() {
         const { login } = this.props;
         const signupForm = 
-            <div className='modal-bg'>
-                <div className='modal'>
-                    <div className='modal-content'>
+            <div className='signup-modal-bg'>
+                <div className='signup-modal'>
+                    <div className='signup-1-modal-content'>
                         <h3>Welcome to humpday.com</h3>
                         <p>Let's get started with a few simple steps</p>
                         <form className='signup-form-1' onSubmit={this.handleSubmit}>

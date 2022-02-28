@@ -1,0 +1,75 @@
+@import 'variables'; 
+
+.login-form-2-wrapper {
+    display: flex;
+    flex-direction: column;
+    // flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding-top: 190px;
+    padding-bottom: 50%;
+    background-color: $white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.login-form-2-wrapper h3 {
+    font-size: 28px;
+    font-weight: lighter;
+    letter-spacing: 2px;
+    padding-bottom: 22px;
+}
+
+.login-form-2-wrapper p:first-of-type {
+    font-size: 16px;
+    height: 24px;
+    width: 300px;
+    color: $login-darker-grey;
+    text-align: center;
+}
+.login-form-2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.login-account-address {
+    height: 60px;
+    padding: 10px 0 10px 0px;
+    margin: auto;
+}
+.login-form-2-wrapper input {
+    height: 30px;
+    width: 240px;
+    padding: 0 0 0 10px;
+    border: 1px solid $login-dark-grey;
+    color: $login-darker-grey;
+}
+.login-form-2-wrapper input::placeholder {
+    color: $login-dark-grey;
+}
+.login-form-2-wrapper input:focus {
+    outline: none;
+}
+.login-host-name {
+    // position: absolute;
+    height: 20px;
+    padding: 5.5px 10px 4.5px 10px;
+    background-color: $login-grey;
+    border: 1px solid $login-dark-grey;
+    border-left: none;
+}
+.login-next {
+    margin: auto;
+    margin-top: 15px;
+    font-size: 14px;
+    color: $white;
+    width: 260px;
+    height: 35px;
+    border: none;
+    border-radius: 40px;
+    background-color: $login-blue;
+    cursor: pointer;
+}
+.login-next:hover {
+    background-color: $login-dark-blue;
+}

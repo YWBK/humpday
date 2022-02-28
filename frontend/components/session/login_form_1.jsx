@@ -4,16 +4,26 @@ import  { Link, Redirect } from 'react-router-dom';
 export default class LoginForm1 extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { email: ''}
+        this.state = { email: '', error: '' }
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.isValidEmail = this.isValidEmail.bind(this);
     }
 
     handleSubmit(e) {
         e.preventDefault();
-        this.props.history.push({pathname: '/auth/login_humpday/enter_slug', email: this.state.email })
+        if (this.isValidEmail(this.state.email)) {
+            this.props.history.push({pathname: '/auth/login_humpday/enter_slug', email: this.state.email })
+        } else {
+            this.setState({ error: 'Unknown error, please try again' });
+        }
     }
     update(field) {
-        return e => this.setState({ [field]: e.currentTarget.value });
+        return e => this.setState({ [field]: e.currentTarget.value, error: '' });
+    }
+    isValidEmail(email) {
+        return(
+            /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+        );
     }
     render() {
         const { errors, login } = this.props;
@@ -23,6 +33,10 @@ export default class LoginForm1 extends React.Component {
                     <h2><Link className='nav-link' style={{ textDecoration: 'none' }} to='/'><span>humpday</span></Link></h2>
                 </div>
                 <div className='login-form-container'>
+                    {!!this.state.error ? 
+                        <p className='login-email-error'>{this.state.error}</p> :
+                        <p className='login-email-error-none'><br/></p>
+                    }
                     <h3>Log in to your account</h3>
                     <form onSubmit={this.handleSubmit}>
                         <p>Enter your work email address</p>

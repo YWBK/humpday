@@ -32,13 +32,13 @@ export default class LoginForm3 extends React.Component {
     }
 
     render() {
-        const { errors } = this.props;
-        const login1Form = 
+        const { errors, login } = this.props;
+        const login3Form = 
             <div>
                 <div className='nav-bar'>
                     <h2><Link className='nav-link' style={{ textDecoration: 'none' }} to='/'><span>humpday</span></Link></h2>
                 </div>
-                <div className='login-form-container'>
+                <div className='login-form-3-container'>
                     <h3><span className='log'>Log</span> In</h3>
                     <p>{this.state.accountName}</p>
                     <form onSubmit={this.handleSubmit}>
@@ -58,18 +58,46 @@ export default class LoginForm3 extends React.Component {
                             />
                         </label>
                         <br/>
-                        <button type='submit'>Log In</button>
+                        <button className='login-next' type='submit'>Log In</button>
                     </form>
+                    <br/>
+                    <div className='login-3-with-demo'>
+                        <p>Or Sign in with</p>
+                        <br/>
+                        <button 
+                            className='login-3-demo-btn' 
+                            onClick={()=> login(
+                                {email: 'user@demo.com', password: 'Demo123'}, 
+                                {account_name: 'demo'}
+                            )} 
+                        >
+                            Demo User
+                        </button>
+                        <br/>
+                    </div>
+                    <div className='login-to-another-account'>
+                        <p>
+                            In order to sign up 
+                            to <span style={{ fontWeight: '700', color: 'black' }}>{this.state.accountName}</span>'s account, 
+                            you have to be invited by its admin
+                        </p>
+                        <Link 
+                            className='login-to-signup-link' 
+                            style={{ textDecoration: 'none' }} 
+                            to='/auth/login_humpday'>
+                                Login to another account
+                        </Link>
+                    </div>
+                    <ul>
+                        {errors.map((error, i) => (
+                            <li key={i}>{error}</li>
+                        ))}
+                    </ul>
                 </div>
                 
-                <ul>
-                    {errors.map((error, i) => (
-                        <li key={i}>{error}</li>
-                    ))}
-                </ul>
             </div>
         // );
 
-        return login1Form;
+        return login3Form;
     }
 }

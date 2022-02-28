@@ -6,7 +6,7 @@
     flex-wrap: wrap;
     align-items: center;
     width: 100%;
-    padding-top: 120px;
+    padding-top: 90px;
     padding-bottom: 50%;
     background-color: $white;
     font-family: Arial, Helvetica, sans-serif;
@@ -37,7 +37,7 @@
     color: $login-dark-grey;
 }
 .login-form-container input:focus {
-    outline: 1px solid $login-light-blue;
+    outline: 1px solid $signup-blue;
 }
 
 .login-next {
@@ -101,4 +101,17 @@
 
 .login-host-name {
     background-color: $login-grey;
+}
+
+.login-email-error {
+    text-align: center;
+    background-color: $login-red;
+    color:$white;
+    margin-bottom: 80px;
+    padding: 12px 260px 2px 260px;
+    font-size: 12px;
+    letter-spacing: 0.4px;
+}
+.login-email-error-none {
+    margin-bottom: 80px;
 }

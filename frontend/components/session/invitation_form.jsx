@@ -24,46 +24,47 @@ export default class InvitationForm extends React.Component {
     render() {
         const { errors } = this.props;
         const invitationForm = 
-            <div>
-                <h3>Set up your account</h3>
-                <p>Fill in your profile details</p>
-                <form onSubmit={this.handleSubmit}>           
-                    <label>Full Name
-                        <br/>   
-                        <input 
-                            type='text'
-                            value={this.state.fullName}
-                            onChange={this.update('fullName')}
-                        />
-                    </label>
-                    <br/>
-                    <label>Password
-                        <br/>
-                        <input 
-                            type='password' 
-                            value={this.state.password} 
-                            onChange={this.update('password')}  
-                        />
-                    </label>
-                    <br/>
-                    <label>Account Name
-                        <br/>
-                        <input 
-                            type='text' 
-                            value={this.state.accountName} 
-                            onChange={this.update('accountName')}  
-                        />
-                    </label>
-                    <br/>
-                    <button type='submit'>Continue</button>
-                </form>
-                
-                <ul>
-                    {errors.map((error, i) => (
-                        <li key={i}>{error}</li>
-                    ))}
-                </ul>
+            <div className='signup-modal-bg'>
+                <div className='signup-modal'>
+                    <div className='signup-2-modal-content'>
+                        <h3>Set up your account</h3>
+                        <p>Fill in your profile details</p>
+                        <form className='signup-form-2' onSubmit={this.handleSubmit}>           
+                            <label id='signup-name'>Full Name
+                                <input 
+                                    type='text'
+                                    value={this.state.fullName}
+                                    onChange={this.update('fullName')}
+                                />
+                            </label>
+                            <label id='signup-password'>Password
+                                <input 
+                                    type='password' 
+                                    value={this.state.password} 
+                                    onChange={this.update('password')}  
+                                />
+                            </label>
+                            <label id='signup-account'>Account Name
+                                <input 
+                                    type='text' 
+                                    value={this.state.accountName} 
+                                    onChange={this.update('accountName')}  
+                                />
+                            </label>
+                            <button type='submit'>Continue</button>
+                        </form>
+                        <div className='signup-flair'>
+                            <p>Fill in your details so you can log in later</p>
+                        </div>
+                        <ul>
+                            {errors.map((error, i) => (
+                                <li key={i}>{error}</li>
+                            ))}
+                        </ul>
+                    </div>
+                </div>
             </div>
+
 
         return invitationForm;
     }
