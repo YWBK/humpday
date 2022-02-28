@@ -11,6 +11,6 @@ User.create(
     email: 'user@test.com',
     full_name: 'test user', 
     password: 'Test123', 
-    account_id: test_account.id
+    account_id: test_account.id,
     owned_account_id: test_account.id
 )
