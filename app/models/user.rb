@@ -7,8 +7,18 @@ class User < ApplicationRecord
         format: { with: /\A[^\s@]+@[^\s@]+\.[^\s@]+\z/ },
         length: { minimum: 4, maximum: 254 }
     attr_reader :password
-
     after_initialize :ensure_session_token
+
+    belongs_to :account,
+    foreign_key: :account_id,
+    class_name: 'User'
+
+    has_many :workspace_members
+    foreign_key: :user_id,
+    class_name: 'User'
+
+    has_many :workspaces,
+    through: :course_students
 
     def self.find_by_credentials(account_id, email, password)
         user = User.find_by(account_id: account_id, email: email)
