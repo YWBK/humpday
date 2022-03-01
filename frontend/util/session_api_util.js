@@ -27,4 +27,9 @@ export const logout = () => (
     })
 )
         
-        
+export const getCurrentUser = currentUserId => (
+    $.ajax({
+        method: 'GET',
+        url: `/api/users/${currentUserId}`
+    })
+)   

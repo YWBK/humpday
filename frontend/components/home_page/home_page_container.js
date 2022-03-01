@@ -4,7 +4,9 @@ import { fetchAccountByName } from '../../actions/account_actions'
 import { logout } from '../../actions/session_actions'
 
 const mapSTP = (state) => {
-    return ({})
+    return ({
+        workspaces: state.entities.users[state.session.currentUserId].workspaces
+    })
 }
 
 const mapDTP = dispatch => {

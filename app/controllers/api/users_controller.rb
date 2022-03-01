@@ -7,38 +7,29 @@ class Api::UsersController < ApplicationController
         unless @account 
             # if a new Account is made, then the new user also owns the Account
             @account = Account.new(account_params)
+            @workspace = Workspace.new(workspace_name: 'Main Workspace')
             if @account.save
-                # debugger
                 @user.owned_account_id = @account.id
-                # debugger
+                @workspace.account_id = @account.id
             else
                 render json: @account.errors.full_messages, status: 422
             end
         end
         # once Account is found or created, the User can reference the account_id
-        # debugger
         @user.account_id = @account.id
-        # debugger
         if @user.save
-            # debugger
+            if @workspace
+                @workspace.workspace_owner_id = @user.id
+                @workspace.save
+                WorkspaceMember.create(workspace_id: @workspace.id, user_id: @user.id)
+            end
             login!(@user)
             render :show
         else
-            @account.destroy
+            @account.destroy if @workspace
             render json: @user.errors.full_messages, status: 422
         end
     end
-
-    # def find_user_by_email
-    #     # debugger
-    #     @user = User.find_by(email: user_params[:email])
-    #     # debugger
-    #     if @user
-    #         # render json: {}, status: 200
-    #     else
-    #         render json: @user.errors.full_messages, status: 422
-    #     end
-    # end
 
     private
     def user_params

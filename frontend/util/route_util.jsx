@@ -1,12 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Route, Redirect, withRouter } from "react-router-dom";
+import { getCurrentUser } from '../actions/session_actions';
 import { fetchAccount } from '../actions/account_actions';
 
 class Auth extends React.Component {
     // keep as class during dev for testing purposes
     render() {
-        const { component: Component, path, loggedIn, exact, fetchAccount, accountId, accountName } = this.props
+        const { component: Component, path, loggedIn, exact,
+             fetchAccount, accountId, accountName } = this.props
         return (
             <Route
                 path={path}
@@ -52,7 +54,7 @@ const mapSTP = (state, ownProps) => {
     const accountName = state.entities.accounts[accountId] ?
         state.entities.accounts[accountId].accountName :
         '';
-
+    
     return {
         loggedIn: Boolean(state.session.currentUserId),
         accountId: accountId,
@@ -62,7 +64,8 @@ const mapSTP = (state, ownProps) => {
 
 const mapDTP = dispatch => {
     return {
-        fetchAccount: accountId => dispatch(fetchAccount(accountId))
+        fetchAccount: accountId => dispatch(fetchAccount(accountId)),
+        getCurrentUser: userId => dispatch(getCurrentUser(userId))
     };  
 };
 

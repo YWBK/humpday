@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  workspace_name: MyString
+  workspace_owner_id: 1
+  account_id: 1
+  board_ids: 
+
+two:
+  workspace_name: MyString
+  workspace_owner_id: 1
+  account_id: 1
+  board_ids: 

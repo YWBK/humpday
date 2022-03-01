@@ -7,9 +7,22 @@ class User < ApplicationRecord
         format: { with: /\A[^\s@]+@[^\s@]+\.[^\s@]+\z/ },
         length: { minimum: 4, maximum: 254 }
     attr_reader :password
-
     after_initialize :ensure_session_token
 
+    belongs_to :account,
+    foreign_key: :account_id,
+    class_name: 'Account'
+
+    has_many :owned_workspaces,
+    foreign_key: :workspace_owner_id,
+    class_name: 'Workspace'
+
+    has_many :workspace_members,
+    foreign_key: :user_id,
+    class_name: 'WorkspaceMember'
+
+    has_many :workspaces,
+    through: :workspace_members
     def self.find_by_credentials(account_id, email, password)
         user = User.find_by(account_id: account_id, email: email)
         user && user.is_password?(password) ? user : nil
@@ -30,6 +43,7 @@ class User < ApplicationRecord
 
     def reset_session_token!
         self.session_token = self.class.generate_session_token
+        # debugger
         self.save!
         self.session_token
     end

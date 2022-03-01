@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_25_153934) do
+ActiveRecord::Schema.define(version: 2022_02_28_151404) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,29 @@ ActiveRecord::Schema.define(version: 2022_02_25_153934) do
     t.index ["full_name"], name: "index_users_on_full_name"
     t.index ["owned_account_id"], name: "index_users_on_owned_account_id"
     t.index ["session_token"], name: "index_users_on_session_token", unique: true
+  end
+
+  create_table "workspace_members", force: :cascade do |t|
+    t.integer "workspace_id", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id", "workspace_id"], name: "index_workspace_members_on_user_id_and_workspace_id", unique: true
+    t.index ["user_id"], name: "index_workspace_members_on_user_id"
+    t.index ["workspace_id"], name: "index_workspace_members_on_workspace_id"
+  end
+
+  create_table "workspaces", force: :cascade do |t|
+    t.string "workspace_name", null: false
+    t.integer "workspace_owner_id", null: false
+    t.integer "account_id", null: false
+    t.text "board_ids", default: [], null: false, array: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_workspaces_on_account_id"
+    t.index ["board_ids"], name: "index_workspaces_on_board_ids"
+    t.index ["workspace_name"], name: "index_workspaces_on_workspace_name"
+    t.index ["workspace_owner_id"], name: "index_workspaces_on_workspace_owner_id"
   end
 
 end

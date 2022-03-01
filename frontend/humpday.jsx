@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import configureStore from './store/store';
-// import { signup, login, logout } from './util/session_api_util';
+import { getCurrentUser } from './util/session_api_util';
 import { signup, login, logout } from './actions/session_actions';
 import Root from './components/root';
 // import logo from '../app/assets/images/logo.png';
@@ -27,6 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.signup = signup;
     window.login = login;
     window.logout = logout;
+    window.getCurrentUser = getCurrentUser;
     window.getState = store.getState;
     window.dispatch = store.dispatch;
 
