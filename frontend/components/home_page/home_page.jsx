@@ -2,6 +2,7 @@ import React from 'react';
 export default class HomePage extends React.Component {
 
     componentDidMount() {
+        debugger
         if (this.props.match.params.accountName !== '') {
             this.props.fetchAccountByName(this.props.match.params.accountName)
         }

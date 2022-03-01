@@ -9,14 +9,19 @@ class Api::WorkspacesController < ApplicationController
         end
     end
 
-    def show
-        @workspace = Workspace.find_by(id: workspace_params[:id])
-        if @workspace
-            render :show
-        else
-            render json: ['Workspace not found'], status: 404
-        end
-    end
+    # def show
+    #     @workspace = current_user.workspaces.find_by(id: params[id])
+    #     if @workspace
+    #         render :show
+    #     else
+    #         render json: ['Workspace not found'], status: 404
+    #     end
+    # end
+
+    # def index
+    #     @workspaces = current_user.workspaces
+    #     render :index
+    # end
 
     def delete
         @target_workspace = current_user.owned_workspaces.find_by(id: params[:id])
