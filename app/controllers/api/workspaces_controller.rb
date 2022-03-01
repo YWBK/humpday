@@ -18,10 +18,10 @@ class Api::WorkspacesController < ApplicationController
     #     end
     # end
 
-    # def index
-    #     @workspaces = current_user.workspaces
-    #     render :index
-    # end
+    def index
+        @workspaces = current_user.workspaces
+        render :index
+    end
 
     def delete
         @target_workspace = current_user.owned_workspaces.find_by(id: params[:id])
