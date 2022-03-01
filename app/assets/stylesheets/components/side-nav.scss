@@ -1,0 +1,10 @@
+@import 'variables'; 
+
+.side-nav-user-options-hidden {
+    display: none;
+}
+
+.side-nav-user-options {
+    display: flex;
+    flex-direction: column;
+}
