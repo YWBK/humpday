@@ -22,6 +22,9 @@ class Api::UsersController < ApplicationController
                 @workspace.workspace_owner_id = @user.id
                 @workspace.save
                 WorkspaceMember.create(workspace_id: @workspace.id, user_id: @user.id)
+            else
+                @workspace = @account.workspaces[0]
+                WorkspaceMember.create(workspace_id: @workspace.id, user_id: @user.id)
             end
             login!(@user)
             render :show
@@ -29,6 +32,17 @@ class Api::UsersController < ApplicationController
             @account.destroy if @workspace
             render json: @user.errors.full_messages, status: 422
         end
+    end
+
+    def index
+        account = Account.find_by(id: current_user.account_id)
+        @users = account.users
+        render :index
+    end
+
+    def show
+        @user = User.find_by(id: params[:id])
+        render :show
     end
 
     private

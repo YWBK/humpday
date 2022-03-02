@@ -1,0 +1,19 @@
+@import 'variables'; 
+
+.workspace-nav-hidden {
+    display: none;
+}
+
+.workspace-nav {
+    display: flex;
+    flex-direction: column;
+}
+
+.workspace-nav-dropdown-hidden {
+    display: none;
+}
+
+.workspace-nav-dropdown {
+    display: flex;
+    flex-direction: column;
+}
