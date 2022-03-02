@@ -1,8 +1,10 @@
 class Api::WorkspacesController < ApplicationController
     def create
         @workspace = Workspace.new(workspace_params)
-        @workspace.owner = current_user.id
+        @workspace.workspace_owner_id = current_user.id
+        @workspace.account_id = current_user.account_id
         if @workspace.save
+            WorkspaceMember.create(workspace_id: @workspace.id, user_id: @workspace.workspace_owner_id)
             render :show
         else
             render json: @workspace.errors.full_messages, status: 422
@@ -23,10 +25,10 @@ class Api::WorkspacesController < ApplicationController
         render :index
     end
 
-    def delete
+    def destroy
         @target_workspace = current_user.owned_workspaces.find_by(id: params[:id])
         @workspace = current_user.account.workspaces.first
-        if @target_workspace && @target_workspace != @workspace
+        if @target_workspace && (@target_workspace != @workspace)
             @target_workspace.destroy
             render :show
         else

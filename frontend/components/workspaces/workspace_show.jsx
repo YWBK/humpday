@@ -9,9 +9,11 @@ export default class WorkspaceShow extends React.Component {
         this.state = { active: true, workspaceName: '' };
         this.toggleClass = this.toggleClass.bind(this);
     }
+    
     componentDidMount() {
-        this.props.fetchWorkspaces();
+        // debugger
     }
+
     toggleClass() {
         this.setState({ active: !this.state.active })
     }
@@ -22,10 +24,11 @@ export default class WorkspaceShow extends React.Component {
 
     render() {
         const { currentWorkspace, workspaceMembers, account } = this.props;
+        // debugger
         return (
             <div>
                 <SideNavContainer />
-                <div className={ this.state.active ? 'workspace-nav' : 'workspace-nav-hidden' } ><WorkspaceNavContainer /></div>
+                <WorkspaceNavContainer />
                 <div className='workspace-cover'>COVER IMAGE TO GO HERE</div>
                 <div className='workspace-icon'>M</div>
                 <div className='workspace-name'>
