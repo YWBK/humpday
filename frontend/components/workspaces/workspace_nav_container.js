@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom'; 
 import WorkspaceNav from './workspace_nav';
-import { fetchWorkspaces } from '../../actions/workspace_actions';
+import { fetchWorkspaces, deleteWorkspace } from '../../actions/workspace_actions';
 import { openModal } from '../../actions/modal_actions';
 
 const mapSTP = (state, ownProps) => {
@@ -19,9 +20,10 @@ const mapSTP = (state, ownProps) => {
 
 const mapDTP = dispatch => {
     return ({
+        deleteWorkspace: workspaceId => dispatch(deleteWorkspace(workspaceId)),
         fetchWorkspaces: () => dispatch(fetchWorkspaces()),
         openModal: (modal) => dispatch(openModal(modal))
     })
 }
 
-export default connect(mapSTP, mapDTP)(WorkspaceNav);
+export default withRouter(connect(mapSTP, mapDTP)(WorkspaceNav));

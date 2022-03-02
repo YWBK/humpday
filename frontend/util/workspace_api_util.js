@@ -22,10 +22,12 @@ export const addWorkspace = workspace => (
     })
 )
 
-export const deleteWorkspace = workspaceId => (
-    $.ajax({
-        method: 'DELETE',
-        url: `/api/workspaces/${workspaceId}`
-    })
-)
+export const deleteWorkspace = workspaceId => {
+    return (
+        $.ajax({
+            method: 'DELETE',
+            url: `/api/workspaces/${workspaceId}`
+        })
+    )
+}
 

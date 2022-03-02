@@ -26,8 +26,9 @@ export default class WorkspaceForm extends React.Component {
         });
         const createWorkspace = async () => {
             const response = await this.props.processForm(workspace);
-            const id = await response.workspace.id;
-            this.props.history.push({pathname: `/demo/workspaces/${id}` })
+            const id = response.workspace.id;
+            // debugger
+            this.props.history.push({pathname: `/${this.props.currentAccountName}/workspaces/${id}` })
             this.props.closeModal();
         };
         createWorkspace()
@@ -48,9 +49,7 @@ export default class WorkspaceForm extends React.Component {
                             <button onClick={ (e) => this.handleCancel(e) }>Cancel</button>
                         </div>
                         <div className='modal-submit-btn'>
-                            <button onClick={ (e) => {
-                                this.handleSubmit(e);
-                            }}>Create Workspace</button>
+                            <button onClick={ (e) => this.handleSubmit(e)}>Create Workspace</button>
                         </div>
                     </form>
                 </div>

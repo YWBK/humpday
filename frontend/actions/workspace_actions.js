@@ -15,10 +15,11 @@ const receiveWorkspace = workspace => {
         workspace
     })
 }
-const removeWorkspace = workspaceId => {
+const removeWorkspace = (workspaceId, mainId) => {
     return ({
         type: REMOVE_WORKSPACE,
-        workspaceId
+        workspaceId,
+        mainId
     })
 }
 
@@ -49,11 +50,11 @@ export const addWorkspace = workspace => dispatch => {
 }
 
 
-export const deleteWorkspace = workspaceId => {
+export const deleteWorkspace = workspaceId => dispatch => {
     return (
         WorkspaceApiUtil.deleteWorkspace(workspaceId)
             .then(
-                () => dispatch(removeWorkspace(workspaceId))
+                (main) => dispatch(removeWorkspace(workspaceId, main.id))
             )
     )
 }

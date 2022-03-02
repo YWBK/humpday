@@ -12,6 +12,7 @@ const mapSTP = ({ entities, session, errors }) => {
         formType: 'login',
         currentUserId: session.currentUserId,
         currentAccountId: session.currentAccountId,
+        currentAccountName: entities.accounts[session.currentAccountId].account_name
     })
 }
 

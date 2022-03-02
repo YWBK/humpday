@@ -25,10 +25,10 @@ class Api::WorkspacesController < ApplicationController
         render :index
     end
 
-    def delete
+    def destroy
         @target_workspace = current_user.owned_workspaces.find_by(id: params[:id])
         @workspace = current_user.account.workspaces.first
-        if @target_workspace && @target_workspace != @workspace
+        if @target_workspace && (@target_workspace != @workspace)
             @target_workspace.destroy
             render :show
         else

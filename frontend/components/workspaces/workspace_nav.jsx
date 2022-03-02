@@ -20,10 +20,21 @@ export default class Workspace extends React.Component {
         this.setState({ listActive: !this.state.listActive })
     }
 
+    handleDelete(e) {
+        e.stopPropagation();
+        const { deleteWorkspace, currentAccount, match, history } = this.props;
+        const workspaceId = match.params.workspaceId;
+        const acctName = currentAccount.account_name;
+        const deleteCurrentWorkspace = async () => {
+            const response = await deleteWorkspace(workspaceId);
+            const id = response.mainId;
+            history.push({ pathname: `/${acctName}/workspaces/${id}` });
+        };
+        deleteCurrentWorkspace()
+    }
 
     render() {
-        const { workspaces, currentAccount} = this.props;
-        // debugger
+        const { workspaces, currentAccount } = this.props;
         return (
             <div>
                 <div className={ this.state.navActive ? 'workspace-nav' : 'workspace-nav-hidden' } >
@@ -42,8 +53,11 @@ export default class Workspace extends React.Component {
                                 </Link>
                             ))}
                         </ul>
-                        <div className='workspace-nav-add' onClick={()=> this.props.openModal('workspace')}>
+                        <div className='workspace-nav-create' onClick={()=> this.props.openModal('workspace')}>
                             + Add workspace
+                        </div>
+                        <div className='workspace-nav-delete' onClick={ (e) => this.handleDelete(e) }>
+                            - Delete workspace
                         </div>
                     </div>
                 </div>
