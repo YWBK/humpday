@@ -4,10 +4,13 @@ import { fetchWorkspaces } from '../../actions/workspace_actions';
 import { openModal } from '../../actions/modal_actions';
 
 const mapSTP = (state, ownProps) => {
+    // debugger
+    const currentAccount = state.entities.accounts[state.session.currentAccountId];
     // const currentUser = state.entities.users[state.session.currentUserId]
     // const currentWorkspace = state.entities.workspaces[ownProps.match.params.workspaceId];
     return ({
-        workspaces: Object.values(state.entities.workspaces)
+        workspaces: Object.values(state.entities.workspaces),
+        currentAccount: currentAccount
         // currentWorkspace: currentWorkspace,
         // account: currentUser.account,
         // currentUser: currentUser

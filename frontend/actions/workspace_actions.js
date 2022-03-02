@@ -22,14 +22,15 @@ const removeWorkspace = workspaceId => {
     })
 }
 
+
 export const fetchWorkspaces = () => dispatch => {
     return (
         WorkspaceApiUtil.fetchWorkspaces()
-            .then(
-                workspaces => dispatch(receiveWorkspaces(workspaces))
+        .then(
+            workspaces => dispatch(receiveWorkspaces(workspaces))
             )
-    );
-}
+            );
+        }
 export const fetchWorkspace = workspaceId => dispatch => {
     return (
         WorkspaceApiUtil.fetchWorkspace(workspaceId)

@@ -1,25 +1,24 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom'
 import { CLEAR_SESSION_ERRORS } from '../../actions/session_actions'
-import { addWorkspace } from '../../actions/workspace_actions';
+import { addWorkspace, fetchWorkspaces } from '../../actions/workspace_actions';
 import { openModal, closeModal } from '../../actions/modal_actions';
 import WorkspaceForm from './workspace_form';
 
-const mapSTP = ({ errors }) => {
+const mapSTP = ({ entities, session, errors }) => {
     return({
         errors: errors,
-        formType: 'login'
+        formType: 'login',
+        currentUserId: session.currentUserId,
+        currentAccountId: session.currentAccountId,
     })
 }
 
 const mapDTP = dispatch => {
     return({
+        fetchWorkspaces: () => dispatch(fetchWorkspaces()),
         processForm: workspace => dispatch(addWorkspace(workspace)),
-        otherForm: (
-            <button onClick={() => dispatch(openModal('workspace'))}>
-                Add workspace
-            </button> 
-        ),
         closeModal: () => {
             dispatch({
                 type: CLEAR_SESSION_ERRORS,
@@ -29,4 +28,4 @@ const mapDTP = dispatch => {
     })
 }
 
-export default connect(mapSTP, mapDTP)(WorkspaceForm);
+export default withRouter(connect(mapSTP, mapDTP)(WorkspaceForm));

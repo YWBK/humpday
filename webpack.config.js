@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-  entry: './frontend/humpday.jsx', 
+  entry: ['@babel/polyfill', './frontend/humpday.jsx'], 
   output: { 
     path: path.resolve(__dirname, "app", "assets", "javascripts"),
     filename: 'bundle.js',

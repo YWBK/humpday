@@ -10,6 +10,10 @@ export default class WorkspaceShow extends React.Component {
         this.toggleClass = this.toggleClass.bind(this);
     }
     
+    componentDidMount() {
+        // debugger
+    }
+
     toggleClass() {
         this.setState({ active: !this.state.active })
     }

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 // import WorkspaceCreateModal from '../modal/modal';
 
 export default class Workspace extends React.Component {
@@ -21,16 +22,24 @@ export default class Workspace extends React.Component {
 
 
     render() {
-        const { workspaces} = this.props;
+        const { workspaces, currentAccount} = this.props;
+        // debugger
         return (
             <div>
                 <div className={ this.state.navActive ? 'workspace-nav' : 'workspace-nav-hidden' } >
-                    <div className='workspace-nav-current' onClick={this.toggleListClass} >Main Workspace</div>
+                    <div className='workspace-nav-current' onClick={this.toggleListClass} >My Workspaces</div>
                     <div className={ this.state.listActive ? 'workspace-nav-dropdown' : 'workspace-nav-dropdown-hidden' }>
-                        <span>My Workspaces</span>
+                        {/* <span>My Workspaces</span> */}
                         <ul>
                             { workspaces.map(workspace => (
-                                <li key={workspace.id}>{workspace.workspaceName}</li>
+                                <Link 
+                                    key={workspace.id} 
+                                    to={{
+                                        pathname: `/${currentAccount.account_name}/workspaces/${workspace.id}`, 
+                                        workspaceMembers: workspace.members 
+                                    }}>
+                                        <li key={workspace.id}>{workspace.workspaceName}</li>
+                                </Link>
                             ))}
                         </ul>
                         <div className='workspace-nav-add' onClick={()=> this.props.openModal('workspace')}>

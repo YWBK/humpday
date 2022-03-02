@@ -17,7 +17,7 @@ export const fetchWorkspace = workspaceId => (
 export const addWorkspace = workspace => (
     $.ajax({
         method: 'POST',
-        url: '/api/workspace',
+        url: '/api/workspaces',
         data: { workspace }
     })
 )

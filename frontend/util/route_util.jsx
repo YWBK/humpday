@@ -8,6 +8,7 @@ class Auth extends React.Component {
     // keep as class during dev for testing purposes
     render() {
         const { component: Component, path, loggedIn, exact, accountName} = this.props
+        // debugger
         return (
             <Route
                 path={path}
@@ -45,9 +46,11 @@ const Protected = ({ component: Component, path, loggedIn, exact }) => {
 };
 
 const mapSTP = (state, ownProps) => {
-    const accountName = state.session.currentAccountId ?
-        state.entities.accounts[state.session.currentAccountId].accountName :
-        '';
+    // const accountName = state.session.currentAccountId ?
+    //     state.entities.accounts[state.session.currentAccountId].accountName :
+    //     '';
+    const currentUser = state.entities.users[state.session.currentUserId];
+    const accountName = currentUser ? currentUser.account.account_name : '';
     return {
         loggedIn: Boolean(state.session.currentUserId),
         accountName: accountName
