@@ -25,11 +25,11 @@ demo_workspace_main = Workspace.create(
     workspace_owner_id: demo_user.id,
     account_id: demo_account.id
 )
-demo_workspace_member = WorkspaceMember.create(
+WorkspaceMember.create(
     workspace_id: demo_workspace_main.id,
     user_id: demo_user.id
 )
-demo_workspace_member_2 = WorkspaceMember.create(
+WorkspaceMember.create(
     workspace_id: demo_workspace_main.id,
     user_id: demo_user_2.id
 )
@@ -38,4 +38,9 @@ demo_workspace = Workspace.create(
     workspace_name: 'Demo Workspace',
     workspace_owner_id: demo_user.id,
     account_id: demo_account.id
+)
+
+WorkspaceMember.create(
+    workspace_id: demo_workspace.id,
+    user_id: demo_user.id
 )
