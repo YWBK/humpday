@@ -7,14 +7,14 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 demo_account = Account.create(account_name: 'demo')
-demo_user User.create(
+demo_user = User.create(
     email: 'user@demo.com',
     full_name: 'demo user', 
     password: 'Demo123', 
     account_id: demo_account.id,
     owned_account_id: demo_account.id
 )
-demo_user_2 User.create(
+demo_user_2 = User.create(
     email: 'johndoe@demo.com',
     full_name: 'John Doe', 
     password: 'Demo123', 
