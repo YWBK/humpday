@@ -1,31 +1,32 @@
-@import 'variables'; 
 
-.login-form-container {
+.login-form-3-container {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     align-items: center;
+    position: absolute;
     width: 100%;
+    height: 100%;
+    left: 0;
     padding-top: 90px;
-    padding-bottom: 50%;
     background-color: $white;
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.login-form-container h3 {
+.login-form-3-container h3 {
     font-size: 28px;
     font-weight: lighter;
     letter-spacing: 2px;
-    color: $login-darker-grey;
     padding-bottom: 22px;
 }
 
-.login-form-container p {
+.login-form-3-container p:first-of-type {
     font-size: 16px;
     height: 24px;
-    width: 240px;
+    // width: 240px;
+    text-align: center;
 }
-.login-form-container input {
+.login-form-3-container input {
     height: 30px;
     width: 240px;
     padding: 0 10px 0 10px;
@@ -33,10 +34,10 @@
     border-radius: 5px;
     color: $login-darker-grey;
 }
-.login-form-container input::placeholder {
+.login-form-3-container input::placeholder {
     color: $login-dark-grey;
 }
-.login-form-container input:focus {
+.login-form-3-container input:focus {
     outline: 1px solid $signup-blue;
 }
 
@@ -57,17 +58,17 @@
 }
 
 
-.login-with-demo {
+.login-3-with-demo {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-.login-with-demo p {
+.login-3-with-demo p {
     color: $login-darker-grey;
     text-align: center;
 }
 
-.login-demo-btn {
+.login-3-demo-btn {
     font-size: 12px;
     width: 90px;
     height: 35px;
@@ -77,23 +78,11 @@
     cursor: pointer;
 }
 
-.login-to-signup {
-    display: flex;
-    justify-content: center;
-}
 
-.login-to-signup p {
-    width: inherit;
-    margin-right: 3px;
-    color: $login-darker-grey;
-    font-size: 14px;
-    
-}
 .login-to-signup-link {
     color: $login-blue;
     font-size: 14px;
 }
-
 
 .log {
     font-weight: 900;
@@ -103,15 +92,18 @@
     background-color: $login-grey;
 }
 
-.login-email-error {
-    text-align: center;
-    background-color: $login-red;
-    color:$white;
-    margin-bottom: 80px;
-    padding: 12px 260px 2px 260px;
-    font-size: 12px;
-    letter-spacing: 0.4px;
+.login-to-another-account {
+    width: 100%;
+    height: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
 }
-.login-email-error-none {
-    margin-bottom: 80px;
+
+.login-to-another-account p {
+    width: inherit;
+    margin-right: 3px;
+    color: $login-darker-grey;
+    font-size: 14px;
 }

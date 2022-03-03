@@ -1,0 +1,22 @@
+#root > div:first-of-type {
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 1fr 10fr;
+    grid-template-areas:
+        "side-nav workspace-nav main-content";
+}
+
+.side-nav {
+    grid-area: side-nav;
+}
+
+.home-page {
+    grid-area: main-content;
+    display: flex;
+    flex-direction: row;
+    
+
+
+}

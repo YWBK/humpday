@@ -27,7 +27,7 @@ export default class WorkspaceShow extends React.Component {
         // debugger
         return (
             <div>
-                <SideNavContainer />
+                {/* <SideNavContainer /> */}
                 <WorkspaceNavContainer />
                 <div className='workspace-cover'>COVER IMAGE TO GO HERE</div>
                 <div className='workspace-icon'>M</div>

@@ -35,23 +35,27 @@ export default class Workspace extends React.Component {
 
     render() {
         const { workspaces, currentAccount } = this.props;
+        // debugger
         return (
-            <div>
+            <div className='workspace-nav-wrapper'>
                 <div className={ this.state.navActive ? 'workspace-nav' : 'workspace-nav-hidden' } >
                     <div className='workspace-nav-current' onClick={this.toggleListClass} >My Workspaces</div>
                     <div className={ this.state.listActive ? 'workspace-nav-dropdown' : 'workspace-nav-dropdown-hidden' }>
                         {/* <span>My Workspaces</span> */}
                         <ul>
-                            { workspaces.map(workspace => (
-                                <Link 
+                            { workspaces.map(workspace => {
+                                
+                                return (
+                                    <Link 
                                     key={workspace.id} 
                                     to={{
-                                        pathname: `/${currentAccount.account_name}/workspaces/${workspace.id}`, 
+                                        pathname: `/${currentAccount.accountName ? currentAccount.accountName : currentAccount.account_name }/workspaces/${workspace.id}`, 
                                         workspaceMembers: workspace.members 
                                     }}>
                                         <li key={workspace.id}>{workspace.workspaceName}</li>
                                 </Link>
-                            ))}
+                                        )
+                                })}
                         </ul>
                         <div className='workspace-nav-create' onClick={()=> this.props.openModal('workspace')}>
                             + Add workspace

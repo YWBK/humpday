@@ -8,7 +8,7 @@ export default class HomePage extends React.Component {
         const { currentUser } = this.props
         return(
             <div className='home-page'>
-                <SideNavContainer />
+                {/* <SideNavContainer /> */}
                 <ul>
                     { currentUser.workspaces.map((workspace) => (
                         <WorkspaceListItem key={workspace.id} workspace={workspace} account={currentUser.account} />
