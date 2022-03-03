@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
-// import WorkspaceCreateModal from '../modal/modal';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default class Workspace extends React.Component {
     constructor(props) {
@@ -39,7 +39,10 @@ export default class Workspace extends React.Component {
         return (
             <div className='workspace-nav-wrapper'>
                 <div className={ this.state.navActive ? 'workspace-nav' : 'workspace-nav-hidden' } >
-                    <div className='workspace-nav-current' onClick={this.toggleListClass} >My Workspaces</div>
+                    <div className='workspace-nav-current' onClick={this.toggleListClass} >
+                        My Workspaces
+                        <FontAwesomeIcon icon={`fa-solid fa-chevron-${this.state.listActive ? 'up' : 'down'}`} />    
+                    </div>
                     <div className={ this.state.listActive ? 'workspace-nav-dropdown' : 'workspace-nav-dropdown-hidden' }>
                         {/* <span>My Workspaces</span> */}
                         <ul>
@@ -65,7 +68,9 @@ export default class Workspace extends React.Component {
                         </div>
                     </div>
                 </div>
-                <button onClick={this.toggleNavClass} >{ this.state.navActive ? '<' : '> ' }</button>
+                <button onClick={this.toggleNavClass} >
+                    <FontAwesomeIcon icon={`fa-solid fa-chevron-${this.state.navActive ? 'left' : 'right'}`} />
+                </button>
             </div>
         )
     }

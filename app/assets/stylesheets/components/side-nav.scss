@@ -1,3 +1,11 @@
+.side-nav-btn-wrapper {
+    &:hover {
+        background-color: $side-nav-hover;
+    }
+}
+.side-nav-btn {
+    color: $white;
+}
 
 .side-nav-user-options-hidden {
     display: none;
@@ -6,4 +14,9 @@
 .side-nav-user-options {
     display: flex;
     flex-direction: column;
+    background-color: $workspace-bgc;
+    a {
+        text-decoration: none;
+    }
 }
+

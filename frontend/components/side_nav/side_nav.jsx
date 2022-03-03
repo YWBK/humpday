@@ -15,7 +15,7 @@ export default class SideNav extends React.Component {
             const firstLetter = words[0][0];
             return (
                 <div className='userInitials'>
-                    <FontAwesomeIcon icon={`fa-solid fa-${firstLetter}`} />
+                    <FontAwesomeIcon icon={`fa-solid fa-${firstLetter}`} size='2x' />
                 </div>
             ) 
         } else {
@@ -24,8 +24,8 @@ export default class SideNav extends React.Component {
             const secondLetter = words[1][0];
             return (
                 <div className='userInitials'>
-                    <FontAwesomeIcon icon={`fa-solid fa-${firstLetter}`} />
-                    <FontAwesomeIcon icon={`fa-solid fa-${secondLetter}`} />
+                    <FontAwesomeIcon icon={`fa-solid fa-${firstLetter}`} size='2x' />
+                    <FontAwesomeIcon icon={`fa-solid fa-${secondLetter}`} size='2x' />
                 </div>
             )
         }
@@ -41,39 +41,43 @@ export default class SideNav extends React.Component {
         const { mainWorkspace, account } = this.props
         return (
             <div className='side-nav'>
-                <div className='side-nav-home-btn'>
-                    <Link to='/'>
-                        <FontAwesomeIcon icon="fa-solid fa-house" />
+                <div className='side-nav-btn-wrapper'>
+                    <Link to='/' className='side-nav-btn'>
+                        <FontAwesomeIcon icon="fa-solid fa-house" size='2x' />
                     </Link>
                 </div>
 
-                <div className='side-nav-workspaces-btn'>
-                    <Link to={`/${account.account_name}/workspaces/${mainWorkspace.id}`}>
-                        <FontAwesomeIcon icon="fa-solid fa-table-cells-large" />
+                <div className='side-nav-btn-wrapper'>
+                    <Link to={`/${account.account_name}/workspaces/${mainWorkspace.id}`} className='side-nav-btn'>
+                        <FontAwesomeIcon icon="fa-solid fa-table-cells-large" size='2x' />
                     </Link>
                 </div>
 
-                <div className='side-nav-linked-in'>
-                    <a href="https://github.com/YWBK/humpday" target="_blank" >
-                        <FontAwesomeIcon icon="fa-brands fa-github-alt" />
+                <div className='side-nav-btn-wrapper'>
+                    <a href="https://github.com/YWBK/humpday" target="_blank" className='side-nav-btn'>
+                    {/* <a href="https://github.com/YWBK/humpday" target="_blank" className='side-nav-btn'> */}
+                        <FontAwesomeIcon icon="fa-brands fa-github-alt" size='2x' />
                     </a>
                     
                 </div>
 
-                <div className='side-nav-linked-in'>
-                    <a href="https://www.linkedin.com/in/bill-kim-88987a42/" target="_blank" >
-                        <FontAwesomeIcon icon="fa-brands fa-linkedin-in" />
+                <div className='side-nav-btn-wrapper'>
+                    <a href="https://www.linkedin.com/in/bill-kim-88987a42/" target="_blank" className='side-nav-btn'>
+                        <FontAwesomeIcon icon="fa-brands fa-linkedin-in" size='2x' />
                     </a>
                 </div>
 
-                <div className='side-nav-linked-in'>
-                    <a href="https://angel.co/u/yong-woo-kim-1" target="_blank" >
-                        <FontAwesomeIcon icon="fa-brands fa-angellist" />
+                <div className='side-nav-btn-wrapper'>
+                    <a href="https://angel.co/u/yong-woo-kim-1" target="_blank" className='side-nav-btn'>
+                        <FontAwesomeIcon icon="fa-brands fa-angellist" size='2x' />
                     </a>
                 </div>
 
-                <div className='side-nav-user-initials' onClick={this.toggleClass}>
-                    {this.userInitials(this.props.currentUser.fullName)}
+                <div onClick={this.toggleClass} className='side-nav-btn-wrapper'>
+                    <div className='side-nav-btn'>
+                        {this.userInitials(this.props.currentUser.fullName)}
+                        <FontAwesomeIcon icon={`fa-solid fa-chevron-${this.state.active ? 'up' : 'down'}`} />
+                    </div>
                 </div>
                 
                 <div className={ this.state.active ? 'side-nav-user-options' : 'side-nav-user-options-hidden' } >
