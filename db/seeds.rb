@@ -7,10 +7,35 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 demo_account = Account.create(account_name: 'demo')
-User.create(
+demo_user User.create(
     email: 'user@demo.com',
     full_name: 'demo user', 
     password: 'Demo123', 
     account_id: demo_account.id,
     owned_account_id: demo_account.id
+)
+demo_user_2 User.create(
+    email: 'johndoe@demo.com',
+    full_name: 'John Doe', 
+    password: 'Demo123', 
+    account_id: demo_account.id
+)
+demo_workspace_main = Workspace.create(
+    workspace_name: 'Main Workspace',
+    workspace_owner_id: demo_user.id,
+    account_id: demo_account.id
+)
+demo_workspace_member = WorkspaceMember.create(
+    workspace_id: demo_workspace_main.id,
+    user_id: demo_user.id
+)
+demo_workspace_member_2 = WorkspaceMember.create(
+    workspace_id: demo_workspace_main.id,
+    user_id: demo_user_2.id
+)
+
+demo_workspace = Workspace.create(
+    workspace_name: 'Demo Workspace',
+    workspace_owner_id: demo_user.id,
+    account_id: demo_account.id
 )
