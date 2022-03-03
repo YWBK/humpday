@@ -30,7 +30,7 @@ const Splash = ({ login, history }) => {
     ];
 
     return (
-        <div>
+        <div className='main-content' id='splash-main'>
             <div className='nav-bar'>
                 <div className='left-nav'>
                     <h2><Link className='nav-link' style={{ textDecoration: 'none' }} to='/'><span>humpday</span>.com</Link></h2> 
@@ -41,7 +41,7 @@ const Splash = ({ login, history }) => {
                     <div className='get-started-btn-wrapper'>{getStarted}</div>
                 </div>
             </div>
-            <section className='splash'>
+            <div className='splash-content'>
                 <h1>A platform built for a new way of working</h1>
                 <br/>
                 <h3>What would you like to manage with humpday.com Work OS?</h3>
@@ -57,7 +57,7 @@ const Splash = ({ login, history }) => {
                 <div className='get-started-btn-wrapper'>{getStarted2}</div>
                 <br/>
                 <p>Free forever. No credit card.</p>
-            </section>
+            </div>
         </div>
     )
 }

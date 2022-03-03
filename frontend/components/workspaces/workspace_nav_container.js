@@ -5,8 +5,8 @@ import { fetchWorkspaces, deleteWorkspace } from '../../actions/workspace_action
 import { openModal } from '../../actions/modal_actions';
 
 const mapSTP = (state, ownProps) => {
-    // debugger
     const currentAccount = state.entities.accounts[state.session.currentAccountId];
+    // debugger
     // const currentUser = state.entities.users[state.session.currentUserId]
     // const currentWorkspace = state.entities.workspaces[ownProps.match.params.workspaceId];
     return ({

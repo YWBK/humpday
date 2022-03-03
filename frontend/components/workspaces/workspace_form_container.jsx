@@ -7,12 +7,13 @@ import { openModal, closeModal } from '../../actions/modal_actions';
 import WorkspaceForm from './workspace_form';
 
 const mapSTP = ({ entities, session, errors }) => {
+    const currentAccount = entities.accounts[session.currentAccountId];
     return({
         errors: errors,
         formType: 'login',
         currentUserId: session.currentUserId,
         currentAccountId: session.currentAccountId,
-        currentAccountName: entities.accounts[session.currentAccountId].account_name
+        currentAccountName: currentAccount.account_name ? currentAccount.account_name : currentAccount.accountName
     })
 }
 

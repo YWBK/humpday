@@ -16,7 +16,7 @@ export default class Workspace extends React.Component {
         this.setState({ navActive: !this.state.navActive })
     }
     toggleListClass() {
-        console.log('clicked')
+        // console.log('clicked')
         this.setState({ listActive: !this.state.listActive })
     }
 
@@ -24,10 +24,12 @@ export default class Workspace extends React.Component {
         e.stopPropagation();
         const { deleteWorkspace, currentAccount, match, history } = this.props;
         const workspaceId = match.params.workspaceId;
-        const acctName = currentAccount.account_name;
+        const acctName = currentAccount.account_name ? currentAccount.account_name : currentAccount.accountName;
+        // debugger
         const deleteCurrentWorkspace = async () => {
             const response = await deleteWorkspace(workspaceId);
             const id = response.mainId;
+            // debugger
             history.push({ pathname: `/${acctName}/workspaces/${id}` });
         };
         deleteCurrentWorkspace()
@@ -37,7 +39,7 @@ export default class Workspace extends React.Component {
         const { workspaces, currentAccount } = this.props;
         // debugger
         return (
-            <div className='workspace-nav-wrapper'>
+            <div className='workspace-nav-wrapper' onClick={ e => e.stopPropagation() }>
                 <div className={ this.state.navActive ? 'workspace-nav' : 'workspace-nav-hidden' } >
                     <div className='workspace-nav-current' onClick={this.toggleListClass} >
                         My Workspaces
@@ -53,7 +55,8 @@ export default class Workspace extends React.Component {
                                     key={workspace.id} 
                                     to={{
                                         pathname: `/${currentAccount.accountName ? currentAccount.accountName : currentAccount.account_name }/workspaces/${workspace.id}`, 
-                                        workspaceMembers: workspace.members 
+                                        workspaceMembers: workspace.members,
+                                        currentAccountName: currentAccount.account_name
                                     }}>
                                         <li key={workspace.id}>{workspace.workspaceName}</li>
                                 </Link>
