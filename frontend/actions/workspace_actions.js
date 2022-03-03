@@ -48,8 +48,14 @@ export const addWorkspace = workspace => dispatch => {
             )
     );
 }
-
-
+export const updateWorkspace = workspace => dispatch => {
+    return (
+        WorkspaceApiUtil.updateWorkspace(workspace)
+            .then(
+                updated => dispatch(receiveWorkspace(updated))
+            )
+    );
+}
 export const deleteWorkspace = workspaceId => dispatch => {
     return (
         WorkspaceApiUtil.deleteWorkspace(workspaceId)

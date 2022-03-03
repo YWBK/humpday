@@ -24,11 +24,12 @@ export default class WorkspaceForm extends React.Component {
         const workspace = Object.assign({}, {
             workspace_name: this.state.workspaceName, 
         });
+        const { currentAccountName } = this.props
         const createWorkspace = async () => {
             const response = await this.props.processForm(workspace);
             const id = response.workspace.id;
             // debugger
-            this.props.history.push({pathname: `/${this.props.currentAccountName}/workspaces/${id}` })
+            this.props.history.push({pathname: `/${currentAccountName}/workspaces/${id}` })
             this.props.closeModal();
         };
         createWorkspace()

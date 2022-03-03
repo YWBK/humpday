@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import library from './library/library';
 import configureStore from './store/store';
 import { getCurrentUser } from './util/session_api_util';
-import { fetchWorkspaces } from './util/workspace_api_util';
+import { fetchWorkspaces, updateWorkspace } from './util/workspace_api_util';
 import { signup, login, logout } from './actions/session_actions';
 import Root from './components/root';
 // import logo from '../app/assets/images/logo.png';
@@ -35,6 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.logout = logout;
     window.getCurrentUser = getCurrentUser;
     window.fetchWorkspaces = fetchWorkspaces;
+    window.updateWorkspace = updateWorkspace;
     window.getState = store.getState;
     window.dispatch = store.dispatch;
 
