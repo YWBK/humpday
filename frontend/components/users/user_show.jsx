@@ -16,7 +16,7 @@ export default class UserShow extends React.Component {
         // debugger
         return(
             <div className='user-show'>
-                <SideNavContainer />
+                {/* <SideNavContainer /> */}
                 { this.props.user ?
                     <div className='user-info'>
                         <div className='user-name'>{ this.props.user.fullName }</div>

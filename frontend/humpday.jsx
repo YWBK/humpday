@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import library from './library/library';
 import configureStore from './store/store';
 import { getCurrentUser } from './util/session_api_util';
 import { fetchWorkspaces } from './util/workspace_api_util';

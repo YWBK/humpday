@@ -1,0 +1,38 @@
+#root > div:first-of-type {
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 10fr;
+    grid-template-areas:
+        "side-nav main-content";
+}
+
+.modal-background {
+    grid-column: 1 / span 1;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 10;
+}
+.modal-child {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: grey;
+}
+
+.side-nav {
+    grid-area: side-nav;
+    background-color: $side-nav;
+}
+
+.main-content {
+    grid-area: main-content;
+    background-color: $main-bgc;
+}
+

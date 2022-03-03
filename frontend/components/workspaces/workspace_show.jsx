@@ -26,21 +26,23 @@ export default class WorkspaceShow extends React.Component {
         const { currentWorkspace, workspaceMembers, account } = this.props;
         // debugger
         return (
-            <div>
-                <SideNavContainer />
+            <div className='main-content' id='workspace-content'>
+                {/* <SideNavContainer /> */}
                 <WorkspaceNavContainer />
-                <div className='workspace-cover'>COVER IMAGE TO GO HERE</div>
-                <div className='workspace-icon'>M</div>
-                <div className='workspace-name'>
-                    <input type='text' value={currentWorkspace ? currentWorkspace.workspaceName : '' } onChange={this.update('workspaceName')} />
-                </div>
-                <div className='workspace-members-list-wrapper'>
-                    <p>Members</p>
-                    <ul className='workspace-members-list'>
-                        { workspaceMembers.map(member => (
-                            <WorkspaceMembersItem key={member.id} member={member} account={account}/>
-                        ))}
-                    </ul>
+                <div className='workspace-content'>
+                    <div className='workspace-cover'>COVER IMAGE TO GO HERE</div>
+                    <div className='workspace-icon'>M</div>
+                    <div className='workspace-name'>
+                        <input type='text' value={currentWorkspace ? currentWorkspace.workspaceName : '' } onChange={this.update('workspaceName')} />
+                    </div>
+                    <div className='workspace-members-list-wrapper'>
+                        <p>Members</p>
+                        <ul className='workspace-members-list'>
+                            { workspaceMembers.map(member => (
+                                <WorkspaceMembersItem key={member.id} member={member} account={account}/>
+                            ))}
+                        </ul>
+                    </div>
                 </div>
             </div>
         )

@@ -12,12 +12,14 @@ import UserShowContainer from './users/user_show_container';
 import UsersIndexContainer from './users/users_index_container';
 import WorkspaceShowContainer from './workspaces/workspace_show_container';
 import Modal from './modal/modal';
+import SideNavContainer from './side_nav/side_nav_container';
 const App = () => {
 
 
     return (
     <div>
         <Modal />
+        <SideNavContainer />
         <Switch>
             <AuthRoute path='/users/signup' component={SignupFormContainer} />
             <AuthRoute path='/users/invitation' component={InvitationFormContainer} />

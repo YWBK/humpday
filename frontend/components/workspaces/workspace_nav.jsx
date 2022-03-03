@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
-// import WorkspaceCreateModal from '../modal/modal';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default class Workspace extends React.Component {
     constructor(props) {
@@ -35,23 +35,30 @@ export default class Workspace extends React.Component {
 
     render() {
         const { workspaces, currentAccount } = this.props;
+        // debugger
         return (
-            <div>
+            <div className='workspace-nav-wrapper'>
                 <div className={ this.state.navActive ? 'workspace-nav' : 'workspace-nav-hidden' } >
-                    <div className='workspace-nav-current' onClick={this.toggleListClass} >My Workspaces</div>
+                    <div className='workspace-nav-current' onClick={this.toggleListClass} >
+                        My Workspaces
+                        <FontAwesomeIcon icon={`fa-solid fa-chevron-${this.state.listActive ? 'up' : 'down'}`} />    
+                    </div>
                     <div className={ this.state.listActive ? 'workspace-nav-dropdown' : 'workspace-nav-dropdown-hidden' }>
                         {/* <span>My Workspaces</span> */}
                         <ul>
-                            { workspaces.map(workspace => (
-                                <Link 
+                            { workspaces.map(workspace => {
+                                
+                                return (
+                                    <Link 
                                     key={workspace.id} 
                                     to={{
-                                        pathname: `/${currentAccount.account_name}/workspaces/${workspace.id}`, 
+                                        pathname: `/${currentAccount.accountName ? currentAccount.accountName : currentAccount.account_name }/workspaces/${workspace.id}`, 
                                         workspaceMembers: workspace.members 
                                     }}>
                                         <li key={workspace.id}>{workspace.workspaceName}</li>
                                 </Link>
-                            ))}
+                                        )
+                                })}
                         </ul>
                         <div className='workspace-nav-create' onClick={()=> this.props.openModal('workspace')}>
                             + Add workspace
@@ -61,7 +68,9 @@ export default class Workspace extends React.Component {
                         </div>
                     </div>
                 </div>
-                <button onClick={this.toggleNavClass} >{ this.state.navActive ? '<' : '> ' }</button>
+                <button onClick={this.toggleNavClass} >
+                    <FontAwesomeIcon icon={`fa-solid fa-chevron-${this.state.navActive ? 'left' : 'right'}`} />
+                </button>
             </div>
         )
     }
