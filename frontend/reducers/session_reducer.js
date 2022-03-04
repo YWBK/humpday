@@ -1,4 +1,5 @@
 import { RECEIVE_CURRENT_USER, LOGOUT_CURRENT_USER } from '../actions/session_actions';
+import { RECEIVE_WORKSPACE } from '../actions/workspace_actions';
 
 const sessionReducer = (state = {currentUserId: null}, action) => {
     Object.freeze(state);
@@ -7,6 +8,9 @@ const sessionReducer = (state = {currentUserId: null}, action) => {
         case RECEIVE_CURRENT_USER:
             nextState.currentUserId = action.currentUser.id;
             nextState.currentAccountId = action.currentAccount.id;
+            return nextState;
+        case RECEIVE_WORKSPACE:
+            nextState.currentWorkspaceId = action.workspace.id;
             return nextState;
         case LOGOUT_CURRENT_USER:
             nextState.currentUserId = null;

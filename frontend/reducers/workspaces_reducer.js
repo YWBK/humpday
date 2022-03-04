@@ -1,7 +1,9 @@
 import { LOGOUT_CURRENT_USER } from '../actions/session_actions';
 import { RECEIVE_WORKSPACES, RECEIVE_WORKSPACE, REMOVE_WORKSPACE } from '../actions/workspace_actions';
+import { RECEIVE_WORKSPACE_MEMBER } from '../actions/workspace_member_actions';
 
 const workspacesReducer = (state = {}, action) => {
+    // debugger
     Object.freeze(state);
     let nextState = Object.assign({}, state);
     switch (action.type) {
@@ -9,6 +11,9 @@ const workspacesReducer = (state = {}, action) => {
             return action.workspaces;
         case RECEIVE_WORKSPACE:
             nextState[action.workspace.id] = action.workspace;
+            return nextState;
+        case RECEIVE_WORKSPACE_MEMBER:
+            nextState[action.workspaceMember.workspace.id].users.push(action.workspaceMember.user)
             return nextState;
         case REMOVE_WORKSPACE:
             delete nextState[action.workspaceId]

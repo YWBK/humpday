@@ -11,20 +11,31 @@ class Api::WorkspacesController < ApplicationController
         end
     end
 
+    
+    def index
+        @workspaces = current_user.workspaces
+        render :index
+    end
+
+    def show
+        @workspace = current_user.owned_workspaces.find_by(id: params[:id])
+        if @workspace
+            render :show
+        else
+            render json: ['Workspace not found'], status: 404
+        end
+    end
+
     def update
         @workspace = current_user.owned_workspaces.find_by(id: params[:id])
         @main_workspace = current_user.account.workspaces.first
-        if @workspace.update(workspace_params) && (@workspace != @main_workspace)
+        if @workspace == @main_workspace
+            render :show
+        elsif @workspace.update(workspace_params) && (@workspace != @main_workspace)
              render :show
         else
             render json: @workspace.errors.full_messages, status: 422
         end
-    end
-
-
-    def index
-        @workspaces = current_user.workspaces
-        render :index
     end
 
     def destroy

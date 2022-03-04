@@ -2,3 +2,7 @@
 @import './side-nav.scss';
 @import './workspace/workspace-nav.scss';
 @import './workspace/workspace-content.scss';
+
+.hidden {
+    display: none;
+}

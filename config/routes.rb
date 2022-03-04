@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resource :session, only: [:create, :destroy]
     resources :accounts, only: [:show]
     resources :workspaces, only: [:create, :index, :show, :update, :destroy]
+    resources :workspace_members, only: [:create]
     get 'accounts_by_name/:account_name', to: 'accounts#show_by_name', as: 'account_name'
   end
 end

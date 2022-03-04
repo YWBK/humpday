@@ -76,5 +76,3 @@ export const getCurrentUser = currentUserId => dispatch => {
     )
 }
 
-
-

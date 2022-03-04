@@ -8,7 +8,7 @@ export default class SideNav extends React.Component {
         this.state = { active: false }
         this.toggleClass = this.toggleClass.bind(this);
     }
-
+    
     userInitials = string => {
         const words = string.split(' ')
         if (words.length < 2) {
@@ -36,9 +36,7 @@ export default class SideNav extends React.Component {
     }
 
     render() {
-        
         const { currentUser, mainWorkspace, account } = this.props
-        // debugger
         if (currentUser) {
             return (
                 <div className='side-nav'>
@@ -81,7 +79,7 @@ export default class SideNav extends React.Component {
                         </div>
                     </div>
                     
-                    <div className={ this.state.active ? 'side-nav-user-options' : 'side-nav-user-options-hidden' } >
+                    <div className={ this.state.active ? 'side-nav-user-options' : 'side-nav-user-options hidden' } >
                         <div className='side-nav-user-options-user-show'>
                             <Link to={`/${account.account_name}/users/${this.props.currentUser.id}`}>
                                 My profile
@@ -99,7 +97,8 @@ export default class SideNav extends React.Component {
                 </div>
             )
         } else {
-            return (<div></div>)
+            return null;
+            // return (<div></div>)
         }
     }
 }

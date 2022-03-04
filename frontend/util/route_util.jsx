@@ -49,6 +49,7 @@ const mapSTP = (state, ownProps) => {
     // const accountName = state.session.currentAccountId ?
     //     state.entities.accounts[state.session.currentAccountId].accountName :
     //     '';
+    // debugger
     const currentUser = state.entities.users[state.session.currentUserId];
     const accountName = currentUser ? currentUser.account.account_name : '';
     return {
