@@ -5,13 +5,13 @@ export default class WorkspaceForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = { 
-            workspaceName: 'New workspace',
+            formName: `New ${props.formType}`,
             workspaceOwnerId: this.props.currentUserId,
             accountId: this.props.currentAccountId,
         };
     }
     update(e) {
-        this.setState({ workspaceName: e.target.value })
+        this.setState({ formName: e.target.value })
     }
 
     handleCancel(e) {
@@ -20,36 +20,42 @@ export default class WorkspaceForm extends React.Component {
     }
     handleSubmit(e) {
         e.preventDefault();
-        const workspace = Object.assign({}, {
-            workspace_name: this.state.workspaceName, 
+        const { currentAccountName, formType, currentWorkspaceId } = this.props
+        const k = formType + '_name';
+        const newObj = Object.assign({}, {
+            [k]: this.state.formName, 
         });
-        const { currentAccountName } = this.props
-        const createWorkspace = async () => {
-            const response = await this.props.processForm(workspace);
-            const id = response.workspace.id;
-            // debugger
-            this.props.history.push({pathname: `/${currentAccountName}/workspaces/${id}` })
+        if (formType === 'board') {
+            newObj.workspace_id = currentWorkspaceId;
+        }
+        const createBoard = async () => {
+            const response = await this.props.processForm(newObj);
+            const id = response[formType].id
+            this.props.history.push({pathname: `/${currentAccountName}/${formType}s/${id}` })
             this.props.closeModal();
         };
-        createWorkspace()
+        createBoard()
     }
 
     render() {
+        const capitalize = str => {
+            return (str[0].toUpperCase() + str.slice(1));
+        }
+        const formName = capitalize(this.props.formType);
         return(
             <div className='workspace-modal'>
-                <div className='modal-title'>Create Workspace</div>
+                <div className='modal-title'>Create {formName}</div>
                 <div className='modal-form-wrapper'>
                     <form onKeyPress={ (e) => { e.key === 'Enter' ? this.handleSubmit(e) : null }}>
                         <label>
-                            <span>{ this.state.workspaceName[0] }</span>
-                            Workspace name
-                            <input type="text" value={ this.state.workspaceName } onChange={ (e) => this.update(e) } />
+                            {formName} name
+                            <input type="text" value={ this.state.formName } onChange={ (e) => this.update(e) } />
                         </label>
                         <div className='modal-cancel-btn'>
                             <button onClick={ (e) => this.handleCancel(e) }>Cancel</button>
                         </div>
                         <div className='modal-submit-btn'>
-                            <button onClick={ (e) => this.handleSubmit(e)}>Create Workspace</button>
+                            <button onClick={ (e) => this.handleSubmit(e)}>Create {formName}</button>
                         </div>
                     </form>
                 </div>
@@ -57,5 +63,3 @@ export default class WorkspaceForm extends React.Component {
         )
     }
 }
-
-// export default withRouter(WorkspaceForm);

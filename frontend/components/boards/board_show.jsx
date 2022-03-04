@@ -7,6 +7,10 @@ export default class BoardShow extends React.Component {
         this.state = { active: true, boardName: '' };
         // this.toggleClass = this.toggleClass.bind(this);
     }
+
+    componentDidMount() {
+    }
+
     render() {
         return(
             <div className=''>

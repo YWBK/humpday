@@ -9,7 +9,8 @@ class Board < ApplicationRecord
 
     has_many :board_members,
     foreign_key: :board_id,
-    class_name: 'BoardMember'
+    class_name: 'BoardMember',
+    dependent: :destroy
 
     has_many :users,
     through: :board_members
