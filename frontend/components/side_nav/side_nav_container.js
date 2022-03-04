@@ -4,7 +4,6 @@ import { logout } from '../../actions/session_actions'
 import { fetchWorkspaces } from '../../actions/workspace_actions';
 
 const mapSTP = (state) => {
-    // debugger
     const currentUserId = state.session.currentUserId
     if (currentUserId) {
         const currentUser = state.entities.users[state.session.currentUserId];

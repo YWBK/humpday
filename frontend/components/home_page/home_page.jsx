@@ -10,14 +10,17 @@ export default class HomePage extends React.Component {
     render() {
         const { currentUser } = this.props
         return(
-            <div className='main-content'>
-                {/* <SideNavContainer /> */}
-                <span>My workspaces</span>
-                <ul>
-                    { currentUser.workspaces.map((workspace) => (
-                        <WorkspaceListItem key={workspace.id} workspace={workspace} account={currentUser.account} />
-                    ))}
-                </ul>
+            <div>
+                <SideNavContainer className='side-nav' />
+                
+                <div className='main-content'>
+                    <span>My workspaces</span>
+                    <ul>
+                        { currentUser.workspaces.map((workspace) => (
+                            <WorkspaceListItem key={workspace.id} workspace={workspace} account={currentUser.account} />
+                        ))}
+                    </ul>
+                </div>
             </div>
         )
     }

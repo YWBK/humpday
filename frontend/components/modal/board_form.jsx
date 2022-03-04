@@ -9,7 +9,7 @@ class BoardForm extends React.Component {
             boardName: 'New Board',
             boardOwnerId: props.curentUserId,
             workspaceId: props.workspaceId
-        }
+        };
     }
     update(e) {
         this.setState({ boardName: e.target.value })
@@ -37,6 +37,7 @@ class BoardForm extends React.Component {
         //     this.props.closeModal();
         // };
         // createWorkspace()
+        
     }
 
     render() {

@@ -1,8 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-export default class WorkspaceNav extends React.Component {
+class WorkspaceNav extends React.Component {
     constructor(props) {
         super(props);
         this.state = { navActive: true, listActive: false };
@@ -10,41 +10,35 @@ export default class WorkspaceNav extends React.Component {
         this.toggleListClass = this.toggleListClass.bind(this);
     }
     componentDidMount() {
-        // debugger
-        // if (!this.props.loggedIn) return null;
-        this.props.fetchWorkspaces();
+        this.props.fetchWorkspace(this.props.match.params.workspaceId);
     }
     toggleNavClass() {
         this.setState({ navActive: !this.state.navActive })
     }
     toggleListClass() {
-        // console.log('clicked')
         this.setState({ listActive: !this.state.listActive })
     }
 
     handleDelete(e) {
         e.stopPropagation();
-        const { deleteWorkspace, currentAccount, currentWorkspaceId, history } = this.props;
-        const acctName = currentAccount.account_name ? currentAccount.account_name : currentAccount.accountName;
-        // debugger
+        const { deleteWorkspace, account, currentWorkspace, history } = this.props;
+        const acctName = account.account_name ? account.account_name : account.accountName;
         const deleteCurrentWorkspace = async () => {
-            const response = await deleteWorkspace(currentWorkspaceId);
+            const response = await deleteWorkspace(currentWorkspace.id);
             const id = response.mainId;
-            history.push({ pathname: `/${acctName}/workspaces/${id}`, currentWorkspaceId: id });
+            history.push({ pathname: `/${acctName}/workspaces/${id}`, currentWorkspace: currentWorkspace });
         };
         deleteCurrentWorkspace()
     }
 
     render() {
-        const { workspaces, currentAccount, fetchWorkspace, boards } = this.props;
-        // debugger
+        const { workspaces, currentWorkspace, account, fetchWorkspace, boards } = this.props;
         const location = this.props.location.pathname;
         const regex = /\/(workspaces|boards)/;
         const regexResult = location.match(regex) ? location.match(regex)[1] : null;
-        // debugger
         if (!regexResult) {
             return null
-        } else if (workspaces) {
+        } else if (boards) {
             // debugger
             return (
                 <div className='workspace-nav-wrapper' onClick={ e => e.stopPropagation() }>
@@ -57,14 +51,13 @@ export default class WorkspaceNav extends React.Component {
                             {/* <span>My Workspaces</span> */}
                             <ul>
                                 { workspaces.map(workspace => {
-                                    
                                     return (
                                         <Link 
                                         key={workspace.id} 
                                         to={{
-                                            pathname: `/${currentAccount.accountName ? currentAccount.accountName : currentAccount.account_name }/workspaces/${workspace.id}`, 
+                                            pathname: `/${account.accountName ? account.accountName : account.account_name }/workspaces/${workspace.id}`, 
                                             workspaceMembers: workspace.members,
-                                            currentAccountName: currentAccount.account_name
+                                            accountName: account.account_name
                                         }}
                                         onClick={ () => fetchWorkspace(workspace.id) }
                                         >
@@ -76,27 +69,21 @@ export default class WorkspaceNav extends React.Component {
                             <div className='workspace-nav-create' onClick={()=> this.props.openModal('workspace')}>
                                 + Add workspace
                             </div>
+                            { currentWorkspace === workspaces[0] ? '' :
                             <div className='workspace-nav-delete' onClick={ (e) => this.handleDelete(e) }>
-                                - Delete workspace
-                            </div>
+                                 - Delete workspace
+                            </div> }
                             <div className='workspace-nav-create-board' onClick={()=> this.props.openModal('board')}>
                                 + Add board
                             </div>
                             <div className='workspace-nav-boards' >
                                 <ul>
-                                { boards ? 
-                                    boards.map(board => {
-                                        return(
-                                            <li key={board.id}>{board.board_name}</li>
-                                        )
-                                    }) : ''
-                                }
-                                {/* { boards.map(board => {
+                                { boards.map(board => {
                                     // debugger
                                     return (
                                         <li key={board.id}>{board.board_name}</li>
                                     )
-                                })}  */}
+                                })} 
                                 </ul>
                             </div>
                         </div>
@@ -111,3 +98,5 @@ export default class WorkspaceNav extends React.Component {
         }
     }
 }
+
+export default withRouter(WorkspaceNav);

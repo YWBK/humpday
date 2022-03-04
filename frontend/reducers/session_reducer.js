@@ -13,7 +13,6 @@ const sessionReducer = (state = {currentUserId: null}, action) => {
             nextState.currentWorkspaceId = action.workspace.id;
             return nextState;
         case REMOVE_WORKSPACE:
-            debugger
             nextState.currentWorkspaceId = action.mainId;
             return nextState;
         case LOGOUT_CURRENT_USER:

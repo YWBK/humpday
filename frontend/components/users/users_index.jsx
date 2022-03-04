@@ -12,13 +12,15 @@ export default class UsersIndex extends React.Component {
         // debugger
         return(
             <div className='users-index'>
-                {/* <SideNavContainer /> */}
-                <ul>
-                    { users.map(user => (
-                        <WorkspaceMembersItem key={user.id} member={user} account={account}/>
-                        // <li key={user.id} >{user.fullName}</li>
-                    ))}
-                </ul>
+                <SideNavContainer className='side-nav' />
+                <div className='main-content'>
+                    <ul>
+                        { users.map(user => (
+                            <WorkspaceMembersItem key={user.id} member={user} account={account}/>
+                            // <li key={user.id} >{user.fullName}</li>
+                        ))}
+                    </ul>
+                </div>
             </div>
         ) 
     }

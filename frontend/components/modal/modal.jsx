@@ -1,8 +1,8 @@
 import React from 'react';
 import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
-import WorkspaceFormContainer from '../workspaces/workspace_form_container';
-import BoardForm from '../boards/board_form';
+import WorkspaceFormContainer from './workspace_form_container';
+import BoardForm from './board_form';
 
 function Modal({modal, closeModal, currentUserId, currentAccountId, currentWorkspaceId}) {
   if (!modal) {

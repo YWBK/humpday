@@ -6,7 +6,7 @@ import { openModal } from '../../actions/modal_actions';
 
 const mapSTP = (state, ownProps) => {
     // debugger
-    if (!state.session.currentUserId) return {workspaces: null, loggedIn: false}
+    // if (!state.session.currentUserId) return {workspaces: null, loggedIn: false}
     const workspaces = state.entities.workspaces;
     const currentWorkspaceId = state.session.currentWorkspaceId;
     const boards = currentWorkspaceId ? workspaces[currentWorkspaceId].boards : null;
