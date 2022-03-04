@@ -36,7 +36,7 @@ export default class SideNav extends React.Component {
     }
 
     render() {
-        const { currentUser, mainWorkspace, account } = this.props
+        const { currentUser, mainWorkspace, account, workspaces } = this.props
         if (currentUser) {
             return (
                 <div className='side-nav'>
@@ -47,7 +47,7 @@ export default class SideNav extends React.Component {
                     </div>
     
                     <div className='side-nav-btn-wrapper'>
-                        <Link to={`/${account.account_name}/workspaces/${mainWorkspace.id}`} className='side-nav-btn'>
+                        <Link to={{pathname:`/${account.account_name}/workspaces/${mainWorkspace.id}`, workspaces: { workspaces }}} className='side-nav-btn'>
                             <FontAwesomeIcon icon="fa-solid fa-table-cells-large" size='2x' />
                         </Link>
                     </div>

@@ -8,6 +8,7 @@ class Api::UsersController < ApplicationController
             # if a new Account is made, then the new user also owns the Account
             @account = Account.new(account_params)
             @workspace = Workspace.new(workspace_name: 'Main Workspace')
+            @board = Board.new(board_name: 'Start from scratch')
             if @account.save
                 @user.owned_account_id = @account.id
                 @workspace.account_id = @account.id
@@ -22,9 +23,20 @@ class Api::UsersController < ApplicationController
                 @workspace.workspace_owner_id = @user.id
                 @workspace.save
                 WorkspaceMember.create(workspace_id: @workspace.id, user_id: @user.id)
+
+                @board.board_owner_id = @user.id
+                @board.workspace_id = @workspace.id
+                @board.save
+                BoardMember.create(board_id: @board.id, user_id: @user.id)
+
+                # @workspace.board_ids.push(@board.id)
+                # @workspace.save
             else
                 @workspace = @account.workspaces[0]
                 WorkspaceMember.create(workspace_id: @workspace.id, user_id: @user.id)
+
+                @board = @workspace.boards[0]
+                BoardMember.create(board_id: @board.id, user_id: @user.id)
             end
             login!(@user)
             render :show

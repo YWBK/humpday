@@ -11,15 +11,17 @@ import HomePageContainer from './home_page/home_page_container';
 import UserShowContainer from './users/user_show_container';
 import UsersIndexContainer from './users/users_index_container';
 import WorkspaceShowContainer from './workspaces/workspace_show_container';
+import BoardShowContainer from './boards/board_show_container';
 import Modal from './modal/modal';
 import SideNavContainer from './side_nav/side_nav_container';
 import WorkspaceNavContainer from './workspace_nav/workspace_nav_container';
-const App = () => {
 
+const App = () => {
     return (
     <div>
         <Modal />
         <SideNavContainer />
+        <div id='main-content'>
         <WorkspaceNavContainer />
         <Switch>
             <AuthRoute path='/users/signup' component={SignupFormContainer} />
@@ -30,9 +32,11 @@ const App = () => {
             <AuthRoute path='/auth/login_humpday/' component={LoginForm1Container} />
             <AuthRoute path='/:accountName/auth/login_humpday/email_password' component={LoginForm3Container} />
             <ProtectedRoute path='/:accountName/workspaces/:workspaceId' component={WorkspaceShowContainer} />
+            <ProtectedRoute path='/:accountName/boards/:boardId' component={BoardShowContainer} />
             <ProtectedRoute path='/:accountName' component={HomePageContainer} />
             <AuthRoute exact path='/' component={SplashContainer} />
         </Switch>
+        </div>
     </div>
     )
 }

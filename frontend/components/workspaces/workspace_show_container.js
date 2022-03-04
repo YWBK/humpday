@@ -20,8 +20,7 @@ const mapSTP = (state, ownProps) => {
 
 const mapDTP = dispatch => {
     return ({
-        logout: () => dispatch(logout()),
-        fetchAccount: accountId => dispatch(fetchAccount(accountId)),
+        // fetchAccount: accountId => dispatch(fetchAccount(accountId)),
         fetchUsers: () => dispatch(fetchUsers()),
         fetchWorkspace: workspaceId => dispatch(fetchWorkspace(workspaceId)),
         updateWorkspace: workspace => dispatch(updateWorkspace(workspace)),

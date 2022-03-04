@@ -5,10 +5,17 @@ import { fetchWorkspace, fetchWorkspaces, deleteWorkspace } from '../../actions/
 import { openModal } from '../../actions/modal_actions';
 
 const mapSTP = (state, ownProps) => {
+    // debugger
+    if (!state.session.currentUserId) return {workspaces: null, loggedIn: false}
+    const workspaces = state.entities.workspaces;
+    const currentWorkspaceId = state.session.currentWorkspaceId;
+    const boards = currentWorkspaceId ? workspaces[currentWorkspaceId].boards : null;
     return ({
-        workspaces: Object.values(state.entities.workspaces),
+        loggedIn: true,
+        workspaces: Object.values(workspaces),
         currentAccount: state.entities.accounts[state.session.currentAccountId],
-        currentWorkspaceId: state.session.currentWorkspaceId
+        currentWorkspaceId: currentWorkspaceId,
+        boards: boards
     })
 }
 

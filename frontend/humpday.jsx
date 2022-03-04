@@ -11,8 +11,6 @@ import Root from './components/root';
 
 
 document.addEventListener('DOMContentLoaded', () => {
-  // debugger
-    // img.src = logo;
     let store = configureStore();
     if (window.currentUser) {
         const preloadedState = {

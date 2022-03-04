@@ -18,8 +18,8 @@ class WorkspaceMembersList extends React.Component {
         const { workspaceMembers, account, accountMembers, addWorkspaceMember } = this.props
         const acctMembers = Object.values(accountMembers);
         // debugger
-        console.log('workspace:', workspaceMembers)
-        console.log('account:', accountMembers);
+        // console.log('workspace:', workspaceMembers)
+        // console.log('account:', accountMembers);
         return (
             <div className='workspace-members-list-wrapper'>
                 <div className='workspace-members-invite'>

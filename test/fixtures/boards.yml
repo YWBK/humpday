@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  board_name: MyString
+  workspace_id: 1
+  board_owner_id: 1
+  board_permissions: 1
+  column_ids: MyText
+  group_ids: MyText
+
+two:
+  board_name: MyString
+  workspace_id: 1
+  board_owner_id: 1
+  board_permissions: 1
+  column_ids: MyText
+  group_ids: MyText

@@ -23,6 +23,19 @@ class User < ApplicationRecord
 
     has_many :workspaces,
     through: :workspace_members
+
+    has_many :owned_boards,
+    foreign_key: :board_owner_id,
+    class_name: 'Board'
+
+    has_many :board_members,
+    foreign_key: :user_id,
+    class_name: 'BoardMember'
+
+    has_many :boards,
+    through: :board_members
+
+
     def self.find_by_credentials(account_id, email, password)
         user = User.find_by(account_id: account_id, email: email)
         user && user.is_password?(password) ? user : nil

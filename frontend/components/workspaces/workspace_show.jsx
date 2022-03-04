@@ -56,7 +56,7 @@ export default class WorkspaceShow extends React.Component {
         // debugger
             // debugger
             return (
-                <div className='main_content' id='workspace-content' onClick={ () => this.updateWorkspaceName() } >
+                <div onClick={ () => this.updateWorkspaceName() } >
                     {/* <WorkspaceNavContainer /> */}
                     <div className='workspace-content' >
                         <div className='workspace-cover'>COVER IMAGE TO GO HERE</div>

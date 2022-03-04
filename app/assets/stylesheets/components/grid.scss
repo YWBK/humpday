@@ -3,7 +3,7 @@
     height: 100vh;
     display: grid;
     grid-template-rows: 1fr 10fr;
-    grid-template-columns: 1fr 10fr;
+    grid-template-columns: 60px 10fr;
     grid-template-areas:
         "nav-corner splash-nav
         side-nav main-content";
@@ -38,10 +38,11 @@
     grid-column: 1 / span 2;
     grid-row: 1;
 }
-.main-content {
+#main-content {
     grid-row: 1 / span 2;
     grid-column: 2;
     background-color: $main-bgc;
+    display: flex;
 }
 
 
