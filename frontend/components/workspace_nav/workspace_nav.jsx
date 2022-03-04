@@ -73,6 +73,9 @@ class WorkspaceNav extends React.Component {
                             <div className='workspace-nav-delete' onClick={ (e) => this.handleDelete(e) }>
                                  - Delete workspace
                             </div> }
+                        </div>
+                        <div className='boards-wrapper' >
+                            My Boards
                             <div className='workspace-nav-create-board' onClick={()=> this.props.openModal('board')}>
                                 + Add board
                             </div>
