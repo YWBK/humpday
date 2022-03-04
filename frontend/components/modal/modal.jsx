@@ -2,9 +2,9 @@ import React from 'react';
 import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
 import WorkspaceFormContainer from './workspace_form_container';
-import BoardForm from './board_form';
+import BoardFormContainer from './board_form_container';
 
-function Modal({modal, closeModal, currentUserId, currentAccountId, currentWorkspaceId}) {
+function Modal({modal, closeModal}) {
   if (!modal) {
     return null;
   }
@@ -15,7 +15,7 @@ function Modal({modal, closeModal, currentUserId, currentAccountId, currentWorks
       break;
     case 'board':
       // debugger
-      component = <BoardForm currentUserId={currentUserId} currentAccountId={currentAccountId} currentWorkspaceId={currentWorkspaceId} />;
+      component = <BoardFormContainer />;
       break;
     default:
       return null;
@@ -31,10 +31,7 @@ function Modal({modal, closeModal, currentUserId, currentAccountId, currentWorks
 
 const mapSTP = state => {
   return {
-    modal: state.ui.modal,
-    currentUserId: state.session.currentUserId,
-    currentAccountId: state.session.currentAccountId,
-    currentWorkspaceId: state.session.currentWorkspaceId
+    modal: state.ui.modal
   };
 };
 

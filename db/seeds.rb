@@ -44,3 +44,18 @@ WorkspaceMember.create(
     workspace_id: demo_workspace.id,
     user_id: demo_user.id
 )
+
+demo_board = Board.create(
+    board_name: 'Start from scratch',
+    board_owner_id: demo_user.id,
+    workspace_id: demo_workspace_main.id
+)
+
+BoardMember.create(
+    board_id: demo_board.id,
+    user_id: demo_user.id
+)
+BoardMember.create(
+    board_id: demo_board.id,
+    user_id: demo_user_2.id
+)
