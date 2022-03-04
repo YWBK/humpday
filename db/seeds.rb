@@ -6,6 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+[Account, User, Workspace, WorkspaceMember, Board, BoardMember].each { |obj| obj.destroy_all }
+
 demo_account = Account.create(account_name: 'demo')
 demo_user = User.create(
     email: 'user@demo.com',
