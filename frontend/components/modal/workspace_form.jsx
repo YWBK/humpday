@@ -8,7 +8,6 @@ export default class WorkspaceForm extends React.Component {
             workspaceName: 'New workspace',
             workspaceOwnerId: this.props.currentUserId,
             accountId: this.props.currentAccountId,
-            redirect: null
         };
     }
     update(e) {

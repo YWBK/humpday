@@ -51,6 +51,6 @@ class Api::WorkspacesController < ApplicationController
 
     private
     def workspace_params
-        params.require(:workspace).permit(:workspace_name, :board_ids)
+        params.require(:workspace).permit(:workspace_name, :board_ids, selected: [])
     end
 end

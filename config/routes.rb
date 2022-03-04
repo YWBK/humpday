@@ -7,6 +7,8 @@ Rails.application.routes.draw do
     resources :accounts, only: [:show]
     resources :workspaces, only: [:create, :index, :show, :update, :destroy]
     resources :workspace_members, only: [:create]
+    resources :boards, only: [:create, :index, :show, :update, :destroy]
+    resources :board_members, only: [:create]
     get 'accounts_by_name/:account_name', to: 'accounts#show_by_name', as: 'account_name'
   end
 end

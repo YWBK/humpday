@@ -13,4 +13,8 @@ class Workspace < ApplicationRecord
 
     has_many :users,
     through: :workspace_members
+
+    has_many :boards,
+    foreign_key: :workspace_id,
+    class_name: 'Board'
 end

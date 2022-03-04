@@ -15,14 +15,16 @@ export default class UserShow extends React.Component {
     render() {
         // debugger
         return(
-            <div className='user-show'>
-                {/* <SideNavContainer /> */}
-                { this.props.user ?
-                    <div className='user-info'>
-                        <div className='user-name'>{ this.props.user.fullName }</div>
-                        <div className='user-email'>{ this.props.user.email }</div>
-                    </div> : ''
-                }
+            <div>
+                <SideNavContainer className='side-nav' />
+                <div className='main-content'>
+                    { this.props.user ?
+                        <div className='user-info'>
+                            <div className='user-name'>{ this.props.user.fullName }</div>
+                            <div className='user-email'>{ this.props.user.email }</div>
+                        </div> : ''
+                    }
+                </div>
             </div>
         ) 
     }

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_28_151404) do
+ActiveRecord::Schema.define(version: 2022_03_04_022310) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,32 @@ ActiveRecord::Schema.define(version: 2022_02_28_151404) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["account_name"], name: "index_accounts_on_account_name", unique: true
+  end
+
+  create_table "board_members", force: :cascade do |t|
+    t.integer "board_id", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["board_id"], name: "index_board_members_on_board_id"
+    t.index ["user_id", "board_id"], name: "index_board_members_on_user_id_and_board_id", unique: true
+    t.index ["user_id"], name: "index_board_members_on_user_id"
+  end
+
+  create_table "boards", force: :cascade do |t|
+    t.string "board_name", null: false
+    t.integer "workspace_id", null: false
+    t.integer "board_owner_id", null: false
+    t.integer "board_permissions", default: 4
+    t.text "column_ids", default: [], null: false, array: true
+    t.text "group_ids", default: [], null: false, array: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["board_name"], name: "index_boards_on_board_name"
+    t.index ["board_owner_id"], name: "index_boards_on_board_owner_id"
+    t.index ["column_ids"], name: "index_boards_on_column_ids"
+    t.index ["group_ids"], name: "index_boards_on_group_ids"
+    t.index ["workspace_id"], name: "index_boards_on_workspace_id"
   end
 
   create_table "users", force: :cascade do |t|
