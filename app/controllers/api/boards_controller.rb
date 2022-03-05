@@ -40,6 +40,18 @@ class Api::BoardsController < ApplicationController
         end
     end
 
+    def destroy
+        @board = current_user.owned_boards.find_by(id: params[:id])
+        @workspace = Workspace.find_by(id: @board.workspace_id)
+        if @board
+            @board.destroy
+            render 'api/workspaces/show'
+        else
+            render json: ['You cannot delete this board'], status: 422
+        end
+    end
+
+
     private
     def board_params
         params.require(:board).permit(:board_name, :workspace_id, :board_owner_id)

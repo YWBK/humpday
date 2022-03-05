@@ -51,7 +51,8 @@ class WorkspaceNav extends React.Component {
             currentWorkspace, 
             fetchWorkspace, 
             fetchBoard,
-            updateBoard } = this.props;
+            updateBoard, 
+            deleteBoard } = this.props;
         const location = this.props.location.pathname;
         const regex = /\/(workspaces|boards)/;
         const regexResult = location.match(regex) ? location.match(regex)[1] : null;
@@ -59,6 +60,7 @@ class WorkspaceNav extends React.Component {
             return null
         } else if (boards) {
             const filteredBoards = boards.filter(board => currentWorkspace.boards.find(({ id }) => board.id === id));
+            // debugger
             return (
                 <div className='workspace-nav-wrapper' onClick={ e => e.stopPropagation() }>
                     <div className={ this.state.navActive ? 'workspace-nav' : 'workspace-nav hidden' } >
@@ -103,7 +105,8 @@ class WorkspaceNav extends React.Component {
                                             currentAccount={currentAccount} 
                                             currentWorkspace={currentWorkspace} 
                                             fetchBoard={fetchBoard}
-                                            updateBoard={updateBoard}                                            
+                                            updateBoard={updateBoard}
+                                            deleteBoard={deleteBoard}                                            
                                         />
                                         // <div key={board.id} className='board-item-wrapper'>
                                         //     { this.state.boardNameEdit ?

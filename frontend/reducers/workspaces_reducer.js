@@ -1,6 +1,7 @@
 import { LOGOUT_CURRENT_USER } from '../actions/session_actions';
 import { RECEIVE_WORKSPACES, RECEIVE_WORKSPACE, REMOVE_WORKSPACE } from '../actions/workspace_actions';
 import { RECEIVE_WORKSPACE_MEMBER } from '../actions/workspace_member_actions';
+import { REMOVE_BOARD } from '../actions/board_actions';
 
 const workspacesReducer = (state = {}, action) => {
     // debugger
@@ -17,6 +18,9 @@ const workspacesReducer = (state = {}, action) => {
             return nextState;
         case REMOVE_WORKSPACE:
             delete nextState[action.workspaceId]
+            return nextState;
+        case REMOVE_BOARD:
+            nextState[action.workspace.id] = action.workspace;
             return nextState;
         case LOGOUT_CURRENT_USER:
             nextState = {};

@@ -6,6 +6,7 @@ import { getCurrentUser } from './util/session_api_util';
 import { fetchWorkspaces, updateWorkspace } from './util/workspace_api_util';
 import { addWorkspaceMember } from './util/workspace_member_api_util';
 import { updateBoard } from './util/board_api_util';
+import { deleteBoard } from './actions/board_actions';
 import { signup, login, logout } from './actions/session_actions';
 import Root from './components/root';
 // import logo from '../app/assets/images/logo.png';
@@ -38,6 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.updateWorkspace = updateWorkspace;
     window.addWorkspaceMember = addWorkspaceMember;
     window.updateBoard = updateBoard;
+    window.deleteBoard = deleteBoard;
     window.getState = store.getState;
     window.dispatch = store.dispatch;
 
