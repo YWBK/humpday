@@ -1,6 +1,7 @@
 import * as BoardApiUtil from '../util/board_api_util';
 export const RECEIVE_BOARD = 'RECEIVE_BOARD';
 export const RECEIVE_BOARDS = 'RECEIVE_BOARDS';
+export const REMOVE_BOARD = 'REMOVE_BOARD';
 
 const receiveBoard = board => {
     return ({
@@ -12,6 +13,13 @@ const receiveBoards = boards => {
     return ({
         type: RECEIVE_BOARDS,
         boards
+    })
+}
+const removeBoard = (boardId, workspace) => {
+    return ({
+        type: REMOVE_BOARD,
+        boardId,
+        workspace
     })
 }
 
@@ -48,3 +56,11 @@ export const updateBoard = board => dispatch => {
             )
     )
 };
+export const deleteBoard = boardId => dispatch => {
+    return (
+        BoardApiUtil.deleteBoard(boardId)
+            .then(
+                (workspace) => dispatch(removeBoard(boardId, workspace))
+            )
+    )
+}

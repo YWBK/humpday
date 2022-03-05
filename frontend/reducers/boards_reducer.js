@@ -1,5 +1,5 @@
 import { LOGOUT_CURRENT_USER } from '../actions/session_actions';
-import { RECEIVE_BOARD, RECEIVE_BOARDS } from '../actions/board_actions';
+import { RECEIVE_BOARD, RECEIVE_BOARDS, REMOVE_BOARD } from '../actions/board_actions';
 
 const boardsReducer = (state = {}, action) => {
     Object.freeze(state);
@@ -10,6 +10,9 @@ const boardsReducer = (state = {}, action) => {
             return nextState;
         case RECEIVE_BOARDS:
             return action.boards;
+        case RECEIVE_BOARDS:
+            delete nextState[action.boardId];
+            return nextState;
         case LOGOUT_CURRENT_USER:
             nextState = {};
             return nextState;
