@@ -5,6 +5,7 @@ import configureStore from './store/store';
 import { getCurrentUser } from './util/session_api_util';
 import { fetchWorkspaces, updateWorkspace } from './util/workspace_api_util';
 import { addWorkspaceMember } from './util/workspace_member_api_util';
+import { updateBoard } from './util/board_api_util';
 import { signup, login, logout } from './actions/session_actions';
 import Root from './components/root';
 // import logo from '../app/assets/images/logo.png';
@@ -36,6 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.fetchWorkspaces = fetchWorkspaces;
     window.updateWorkspace = updateWorkspace;
     window.addWorkspaceMember = addWorkspaceMember;
+    window.updateBoard = updateBoard;
     window.getState = store.getState;
     window.dispatch = store.dispatch;
 
