@@ -19,18 +19,32 @@ export default class WorkspaceShow extends React.Component {
         //     await this.props.fetchWorkspaces();
         // }
         // fetchInfo();
-        this.props.fetchUsers()
-            .then(() => this.props.fetchBoards())
-            .then(() => this.props.fetchWorkspace(this.props.match.params.workspaceId))
-            .then(() => this.props.fetchWorkspaces());
+        if (this.props.showType === 'workspace') {
+            // debugger
+            this.props.fetchUsers()
+                .then(() => this.props.fetchBoards())
+                .then(() => this.props.fetchWorkspace(this.props.match.params.workspaceId))
+                .then(() => this.props.fetchWorkspaces());
+        } else if (this.props.showType === 'board') {
+            // debugger
+            this.props.fetchUsers()
+                .then(() => this.props.fetchBoard(this.props.match.params.boardId))
+                .then((board) => {
+                    return this.props.fetchWorkspace(board.board.workspace.id) })
+                .then(() => { 
+                    return this.props.fetchBoards()})
+                .then(() => this.props.fetchWorkspaces());
+        }
     }
 
     componentDidUpdate(prevProps) {
-        let currentWorkspaceName;
-        const locationChanged = this.props.location.pathname !== prevProps.location.pathname;
-        if (!this.state.workspaceName || locationChanged) {
-            currentWorkspaceName = this.props.workspaces[this.props.match.params.workspaceId].workspaceName
-            this.setState ({ workspaceName: currentWorkspaceName})
+        if (this.props.showType === 'workspace') {
+            let currentWorkspaceName;
+            const locationChanged = this.props.location.pathname !== prevProps.location.pathname;
+            if (!this.state.workspaceName || locationChanged) {
+                currentWorkspaceName = this.props.workspaces[this.props.match.params.workspaceId].workspaceName
+                this.setState ({ workspaceName: currentWorkspaceName})
+            }
         }
     }
 
@@ -57,6 +71,7 @@ export default class WorkspaceShow extends React.Component {
     render() {
         // debugger
         const { 
+                showType,
                 // accountMembers, 
                 workspaces, 
                 // workspaceMembers, 
@@ -65,6 +80,7 @@ export default class WorkspaceShow extends React.Component {
                 currentAccount,
                 currentAccountUsers,
                 currentWorkspace,
+                currentBoard,
                 openModal, 
                 // fetchWorkspaces, 
                 fetchWorkspace, 
@@ -74,8 +90,39 @@ export default class WorkspaceShow extends React.Component {
                 fetchBoard } = this.props;
             // debugger
         if (boards) {
+            // debugger
+            let content;
+            if (showType === 'workspace') {
+                // debugger
+                content = 
+                <div className='workspace-content' >
+                    <div className='workspace-cover'>COVER IMAGE TO GO HERE</div>
+                    <div className='workspace-name'>
+                        <input 
+                            type='text' 
+                            value={this.state.workspaceName} 
+                            onChange={ e => this.update(e) } 
+                            onClick={ e => e.stopPropagation() } />
+                    </div>
+                    <WorkspaceMembersList 
+                        currentAccount={currentAccount}
+                        currentAccountUsers={currentAccountUsers}
+                        currentWorkspace={currentWorkspace}
+                        addWorkspaceMember={addWorkspaceMember}
+                        // fetchUsers={fetchUsers}
+                    />
+                </div> 
+            } else if (showType === 'board') {
+                // debugger
+                content =
+                <div>{currentBoard.boardName}</div>
+            } else {
+                content =
+                <div>A SHOW PAGE</div>
+            }
+
             return (
-                <div className='' onClick={ () => this.updateWorkspaceName() } >
+                <div className='' onClick={ () => showType === 'workspace' ? this.updateWorkspaceName() : null } >
                     <SideNavContainer className='side-nav' />
                     <div className='main-content' >
                         <WorkspaceNav 
@@ -88,7 +135,8 @@ export default class WorkspaceShow extends React.Component {
                             deleteWorkspace={deleteWorkspace}
                             fetchBoard={fetchBoard}
                         />
-                        <div className='workspace-content' >
+                        { content }
+                        {/* <div className='workspace-content' >
                             <div className='workspace-cover'>COVER IMAGE TO GO HERE</div>
                             <div className='workspace-name'>
                                 <input 
@@ -104,7 +152,7 @@ export default class WorkspaceShow extends React.Component {
                                 addWorkspaceMember={addWorkspaceMember}
                                 // fetchUsers={fetchUsers}
                             />
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             )
