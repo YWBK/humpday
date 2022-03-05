@@ -17,8 +17,17 @@ class Api::BoardsController < ApplicationController
         end
     end
 
+    def show
+        @board = current_user.boards.find_by(id: params[:id])
+        # debugger
+        if @board
+            render :show
+        else
+            render json: ['Board not found'], status: 404
+        end
+    end
     def index
-        @boards = Workspace.find_by(id: board_params[:workspace_id]).boards
+        @boards = current_user.boards
         render :index
     end
 

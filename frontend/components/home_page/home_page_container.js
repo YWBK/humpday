@@ -1,12 +1,23 @@
 import { connect } from 'react-redux';
 import HomePage from './home_page';
+import { fetchWorkspace, fetchWorkspaces } from '../../actions/workspace_actions';
 
 const mapSTP = (state) => {
     const currentUser = state.entities.users[state.session.currentUserId];
+    // debugger
     return ({
-        currentUser: currentUser
+        currentUser: currentUser,
+        // currentAccount: state.entities.accounts[state.session.currentAccountId],
+        workspaces: Object.values(state.entities.workspaces)
     })
 }
 
-export default connect(mapSTP, null)(HomePage);
+const mapDTP = (dispatch) => {
+    return ({
+        fetchWorkspace: (workspaceId) => dispatch(fetchWorkspace(workspaceId)),
+        fetchWorkspaces: () => dispatch(fetchWorkspaces())
+    })
+}
+
+export default connect(mapSTP, mapDTP)(HomePage);
 

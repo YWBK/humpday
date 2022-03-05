@@ -9,7 +9,8 @@ export default class UserShow extends React.Component {
     }
 
     componentDidMount() {
-        this.props.fetchUser(this.props.match.params.userId);
+        this.props.fetchUser(this.props.match.params.userId)
+            .then(() => this.props.fetchWorkspaces());
     }
 
     render() {

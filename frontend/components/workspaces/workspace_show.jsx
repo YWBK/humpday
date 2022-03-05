@@ -1,6 +1,5 @@
 import React from 'react';
 import SideNavContainer from '../side_nav/side_nav_container';
-import WorkspaceNavContainer from '../workspace_nav/workspace_nav_container';
 import WorkspaceNav from '../workspace_nav/workspace_nav';
 import WorkspaceMembersList from './workspace_members_list';
 
@@ -13,9 +12,17 @@ export default class WorkspaceShow extends React.Component {
     }
 
     componentDidMount() {
-        this.props.fetchUsers();
-        this.props.fetchWorkspaces();
-        this.props.fetchWorkspace(this.props.match.params.workspaceId);
+        // const fetchInfo = async() => {
+        //     await this.props.fetchUsers();
+        //     await this.props.fetchBoards();
+        //     await this.props.fetchWorkspace(this.props.match.params.workspaceId)
+        //     await this.props.fetchWorkspaces();
+        // }
+        // fetchInfo();
+        this.props.fetchUsers()
+            .then(() => this.props.fetchBoards())
+            .then(() => this.props.fetchWorkspace(this.props.match.params.workspaceId))
+            .then(() => this.props.fetchWorkspaces());
     }
 
     componentDidUpdate(prevProps) {
@@ -48,47 +55,61 @@ export default class WorkspaceShow extends React.Component {
     }
 
     render() {
-        const { account, 
-                accountMembers, 
+        // debugger
+        const { 
+                // accountMembers, 
                 workspaces, 
-                workspaceMembers, 
-                currentWorkspace,
+                // workspaceMembers, 
                 boards, 
+                currentUser,
+                currentAccount,
+                currentAccountUsers,
+                currentWorkspace,
                 openModal, 
-                fetchUsers, 
+                // fetchWorkspaces, 
                 fetchWorkspace, 
+                // fetchUsers, 
                 deleteWorkspace, 
-                addWorkspaceMember } = this.props;
+                addWorkspaceMember, 
+                fetchBoard } = this.props;
+            // debugger
+        if (boards) {
             return (
                 <div className='' onClick={ () => this.updateWorkspaceName() } >
                     <SideNavContainer className='side-nav' />
                     <div className='main-content' >
                         <WorkspaceNav 
-                            account={account}
                             workspaces={Object.values(workspaces)}
+                            boards={Object.values(boards)}
+                            currentAccount={currentAccount}
                             currentWorkspace={currentWorkspace}
-                            boards={boards}
                             openModal={openModal}
                             fetchWorkspace={fetchWorkspace}
                             deleteWorkspace={deleteWorkspace}
+                            fetchBoard={fetchBoard}
                         />
-                        {/* <WorkspaceNavContainer /> */}
                         <div className='workspace-content' >
                             <div className='workspace-cover'>COVER IMAGE TO GO HERE</div>
                             <div className='workspace-name'>
-                                <input type='text' value={this.state.workspaceName} onChange={ e => this.update(e) } onClick={ e => e.stopPropagation() } />
+                                <input 
+                                    type='text' 
+                                    value={this.state.workspaceName} 
+                                    onChange={ e => this.update(e) } 
+                                    onClick={ e => e.stopPropagation() } />
                             </div>
                             <WorkspaceMembersList 
-                                workspaceMembers={workspaceMembers}
-                                account={account}
-                                accountMembers={accountMembers}
-                                fetchUsers={fetchUsers}
+                                currentAccount={currentAccount}
+                                currentAccountUsers={currentAccountUsers}
+                                currentWorkspace={currentWorkspace}
                                 addWorkspaceMember={addWorkspaceMember}
+                                // fetchUsers={fetchUsers}
                             />
                         </div>
                     </div>
                 </div>
             )
-        
+        } else {
+            return null;
+        }
     }
 }

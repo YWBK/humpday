@@ -7,8 +7,13 @@ export default class HomePage extends React.Component {
         super(props);
     }
 
+    componentDidMount() {
+        this.props.fetchWorkspaces();
+    }
+
     render() {
-        const { currentUser } = this.props
+        const { currentUser, workspaces, fetchWorkspace } = this.props
+        if (Object.keys(workspaces).length < 1) return null;
         return(
             <div>
                 <SideNavContainer className='side-nav' />
@@ -16,9 +21,15 @@ export default class HomePage extends React.Component {
                 <div className='main-content'>
                     <span>My workspaces</span>
                     <ul>
-                        { currentUser.workspaces.map((workspace) => (
-                            <WorkspaceListItem key={workspace.id} workspace={workspace} account={currentUser.account} />
-                        ))}
+                        { workspaces.map((workspace) => {
+                            return (
+                            <WorkspaceListItem 
+                                key={workspace.id} 
+                                workspace={workspace}
+                                currentAccount={currentUser.account}
+                                fetchWorkspace={fetchWorkspace}
+                            />
+                        )})}
                     </ul>
                 </div>
             </div>

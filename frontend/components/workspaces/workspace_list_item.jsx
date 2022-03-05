@@ -1,13 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const WorkspaceListItem = ({ workspace, account }) => {
+const WorkspaceListItem = ({ workspace, currentAccount, fetchWorkspace }) => {
     return (
-        <li>
-            <Link to={`/${account.account_name}/workspaces/${workspace.id}`}>
-                {workspace.workspace_name}
+            <Link 
+                to={{
+                    pathname: `/${currentAccount.account_name}/workspaces/${workspace.id}`,
+                    // workspaceMembers: workspace.users,
+                    currentAccount: currentAccount,
+                    currentWorkspace: workspace,
+                }}
+                onClick={ ()=> fetchWorkspace(workspace.id)}>
+                <li>{workspace.workspaceName}</li>
             </Link>
-        </li>
 
     );
 }

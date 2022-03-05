@@ -4,24 +4,33 @@ import WorkspaceMembersItem from '../workspaces/workspace_members_item';
 
 export default class UsersIndex extends React.Component {
     componentDidMount() {
-        this.props.fetchUsers();
+        this.props.fetchUsers()
+            .then(() => this.props.fetchWorkspaces());
     }
 
     render() {
         const { users, account } = this.props
         // debugger
-        return(
-            <div className='users-index'>
-                <SideNavContainer className='side-nav' />
-                <div className='main-content'>
-                    <ul>
-                        { users.map(user => (
-                            <WorkspaceMembersItem key={user.id} member={user} account={account}/>
-                            // <li key={user.id} >{user.fullName}</li>
-                        ))}
-                    </ul>
+        if (users) {
+            return(
+                <div className='users-index'>
+                    <SideNavContainer className='side-nav' />
+                    <div className='main-content'>
+                        <ul>
+                            { Object.values(users).map(user => (
+                                <WorkspaceMembersItem 
+                                    key={user.id} 
+                                    user={user} 
+                                    currentAccount={account}
+                                />
+                                // <li key={user.id} >user</li>
+                            ))}
+                        </ul>
+                    </div>
                 </div>
-            </div>
-        ) 
+            ) 
+        } else {
+            return null
+        }
     }
 }
