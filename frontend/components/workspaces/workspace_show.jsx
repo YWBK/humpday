@@ -92,7 +92,8 @@ export default class WorkspaceShow extends React.Component {
                 deleteWorkspace, 
                 addWorkspaceMember, 
                 fetchBoard, 
-                updateBoard } = this.props;
+                updateBoard, 
+                deleteBoard } = this.props;
             // debugger
         if (boards) {
             // debugger
@@ -140,6 +141,7 @@ export default class WorkspaceShow extends React.Component {
                             deleteWorkspace={deleteWorkspace}
                             fetchBoard={fetchBoard}
                             updateBoard={updateBoard}
+                            deleteBoard={deleteBoard}
                         />
                         { content }
                         {/* <div className='workspace-content' >

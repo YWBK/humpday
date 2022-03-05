@@ -33,19 +33,33 @@ class BoardItem extends React.Component {
         }
         this.toggleBoardNameEdit();
     }
+    handleDelete(e) {
+        e.preventDefault();
+        const { deleteBoard, board, currentWorkspace, currentAccount, history } = this.props
+
+        const deleteCurrentBoard = async() => {
+            await history.push({
+                pathname: `/${currentAccount.account_name}/workspaces/${currentWorkspace.id}`,
+            })
+            deleteBoard(board.id);
+        }
+        deleteCurrentBoard();
+    }
 
     render() {
-        const { board, currentAccount, currentWorkspace, fetchBoard } = this.props;
+        const { 
+            board, 
+            currentAccount, 
+            currentWorkspace, 
+            fetchBoard, 
+            deleteBoard } = this.props;
         return (
             <div className='board-item-wrapper'>
             { this.state.boardNameEdit ?
                 <form onKeyPress={ e => e.key === 'Enter' ? this.handleSubmit(e) : null }>
                     <input type='text' value={this.state.boardName} onChange={e => this.update(e)} />
-                    {/* <button type='submit'> */}
                     <FontAwesomeIcon icon="fa-regular fa-circle-check" onClick={e => this.handleSubmit(e)}/>
-                    {/* </button> */}
                     <FontAwesomeIcon icon="fa-regular fa-circle-xmark" onClick={this.toggleBoardNameEdit} />
-
                 </form> :
                 <Link
                     className='board-item-link'
@@ -61,7 +75,7 @@ class BoardItem extends React.Component {
             }
                 <div className='board-item-u-d-wrapper'>
                     <FontAwesomeIcon icon="fa-solid fa-pencil" className='board-item-u-d' onClick={this.toggleBoardNameEdit}/>
-                    <FontAwesomeIcon icon="fa-solid fa-trash" className='board-item-u-d' />
+                    <FontAwesomeIcon icon="fa-solid fa-trash" className='board-item-u-d' onClick={e => this.handleDelete(e)} />
                 </div>
             </div>
         )

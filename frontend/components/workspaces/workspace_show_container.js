@@ -3,7 +3,7 @@ import WorkspaceShow from './workspace_show';
 import { openModal } from '../../actions/modal_actions'; 
 import { fetchUsers } from '../../actions/user_actions'; 
 import { fetchWorkspace, fetchWorkspaces, updateWorkspace, deleteWorkspace } from '../../actions/workspace_actions';
-import { fetchBoard, fetchBoards, updateBoard } from '../../actions/board_actions';
+import { fetchBoard, fetchBoards, updateBoard, deleteBoard } from '../../actions/board_actions';
 import { addWorkspaceMember } from '../../actions/workspace_member_actions';
 
 const mapSTP = (state, ownProps) => {
@@ -59,7 +59,8 @@ const mapDTP = dispatch => {
         addWorkspaceMember: workspaceMember => dispatch(addWorkspaceMember(workspaceMember)),
         fetchBoards: () => dispatch(fetchBoards()),
         fetchBoard: boardId => dispatch(fetchBoard(boardId)),
-        updateBoard: board => dispatch(updateBoard(board))
+        updateBoard: board => dispatch(updateBoard(board)),
+        deleteBoard: boardId => dispatch(deleteBoard(boardId))
         // fetchAccount: accountId => dispatch(fetchAccount(accountId)),
     })
 }

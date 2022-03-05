@@ -3,7 +3,7 @@ import WorkspaceShow from '../workspaces/workspace_show';
 import { openModal } from '../../actions/modal_actions'; 
 import { fetchUsers } from '../../actions/user_actions'; 
 import { fetchWorkspace, fetchWorkspaces, updateWorkspace, deleteWorkspace } from '../../actions/workspace_actions';
-import { fetchBoard, fetchBoards, updateBoard } from '../../actions/board_actions';
+import { fetchBoard, fetchBoards, updateBoard, deleteBoard } from '../../actions/board_actions';
 import { addWorkspaceMember } from '../../actions/workspace_member_actions';
 
 // const mapSTP = (state, ownProps) => {
@@ -50,6 +50,7 @@ import { addWorkspaceMember } from '../../actions/workspace_member_actions';
 
 const mapSTP = (state, ownProps) => {
     // const isEmpty = state.session.currentWorkspaceId;
+    // debugger
     const isEmpty = Object.keys(state.entities.workspaces).length < 1
     if (isEmpty) {
         return ({ showType: 'board', boards: null })
@@ -62,7 +63,6 @@ const mapSTP = (state, ownProps) => {
         const currentBoard = state.session.currentBoardId ?
             boards[state.session.currentBoardId] :
             ownProps.location.currentBoard;
-        // debugger
         const currentWorkspace = workspaces[currentBoard.workspace.id];
         // debugger
 
@@ -106,6 +106,7 @@ const mapDTP = dispatch => {
         fetchBoards: () => dispatch(fetchBoards()),
         fetchBoard: boardId => dispatch(fetchBoard(boardId)),
         updateBoard: board => dispatch(updateBoard(board)),
+        deleteBoard: boardId => dispatch(deleteBoard(boardId))
         // fetchAccount: accountId => dispatch(fetchAccount(accountId)),
     })
 }
