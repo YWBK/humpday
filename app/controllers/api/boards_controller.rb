@@ -41,7 +41,7 @@ class Api::BoardsController < ApplicationController
     end
 
     def destroy
-        @board = current_user.owned_boards.find_by(id: params[])
+        @board = current_user.owned_boards.find_by(id: params[:id])
         @workspace = Workspace.find_by(id: @board.workspace_id)
         if @board
             @board.destroy

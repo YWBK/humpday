@@ -10,7 +10,6 @@ export const fetchBoards = () => (
         url: `/api/boards`,
     })
 )
-
 export const addBoard = board => (
     $.ajax({
         method: 'POST',
@@ -23,5 +22,11 @@ export const updateBoard = board => (
         method: 'PATCH',
         url: `/api/boards/${board.id}`,
         data: { board }
+    })
+)
+export const removeBoard = boardId => (
+    $.ajax({
+        method: 'DELETE',
+        url: `/api/boards/${boardId}`,
     })
 )
