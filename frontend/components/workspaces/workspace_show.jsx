@@ -57,14 +57,18 @@ export default class WorkspaceShow extends React.Component {
     }
 
     updateWorkspaceName() {
-        const oldWorkspaceName = this.props.currentWorkspace.workspaceName;
-        const workspaceId = this.props.currentWorkspace.id
-        const workspace = Object.assign({}, { id: workspaceId , workspace_name: this.state.workspaceName });
-        // debugger
-        if (oldWorkspaceName !== this.state.workspaceName) {
-            this.props.updateWorkspace(workspace);
+        if (this.props.showType === 'workspace') {
+            const oldWorkspaceName = this.props.currentWorkspace.workspaceName;
+            const workspaceId = this.props.currentWorkspace.id
+            const workspace = Object.assign({}, { id: workspaceId , workspace_name: this.state.workspaceName });
+            // debugger
+            if (oldWorkspaceName !== this.state.workspaceName) {
+                this.props.updateWorkspace(workspace);
+            } else {
+                null;
+            }
         } else {
-            null;
+            // debugger
         }
     }
 
@@ -87,7 +91,8 @@ export default class WorkspaceShow extends React.Component {
                 // fetchUsers, 
                 deleteWorkspace, 
                 addWorkspaceMember, 
-                fetchBoard } = this.props;
+                fetchBoard, 
+                updateBoard } = this.props;
             // debugger
         if (boards) {
             // debugger
@@ -122,7 +127,7 @@ export default class WorkspaceShow extends React.Component {
             }
 
             return (
-                <div className='' onClick={ () => showType === 'workspace' ? this.updateWorkspaceName() : null } >
+                <div className='' onClick={ () => this.updateWorkspaceName() } >
                     <SideNavContainer className='side-nav' />
                     <div className='main-content' >
                         <WorkspaceNav 
@@ -134,6 +139,7 @@ export default class WorkspaceShow extends React.Component {
                             fetchWorkspace={fetchWorkspace}
                             deleteWorkspace={deleteWorkspace}
                             fetchBoard={fetchBoard}
+                            updateBoard={updateBoard}
                         />
                         { content }
                         {/* <div className='workspace-content' >

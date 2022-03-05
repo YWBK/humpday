@@ -40,3 +40,11 @@ export const addBoard = board => dispatch => {
             )
     )
 };
+export const updateBoard = board => dispatch => {
+    return (
+        BoardApiUtil.updateBoard(board)
+            .then(
+                updated => dispatch(receiveBoard(updated))
+            )
+    )
+};
