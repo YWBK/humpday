@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; 
+import { fetchWorkspace } from '../../util/workspace_api_util';
 
 export default class SideNav extends React.Component {
     constructor(props) {
@@ -36,7 +37,12 @@ export default class SideNav extends React.Component {
     }
 
     render() {
-        const { currentUser, mainWorkspace, account, workspaces } = this.props
+        const { 
+            currentUser, 
+            mainWorkspace, 
+            account, 
+            fetchWorkspace } = this.props
+        // debugger
         if (currentUser) {
             return (
                 <div className='side-nav'>
@@ -47,7 +53,14 @@ export default class SideNav extends React.Component {
                     </div>
     
                     <div className='side-nav-btn-wrapper'>
-                        <Link to={{pathname:`/${account.account_name}/workspaces/${mainWorkspace.id}`, workspaces: { workspaces }}} className='side-nav-btn'>
+                        <Link 
+                            className='side-nav-btn'
+                            to={{
+                                pathname:`/${account.account_name}/workspaces/${mainWorkspace.id}`, 
+                                currentAccount: account,
+                                currentWorkspace: mainWorkspace
+                            }}
+                            onClick={ () => fetchWorkspace(mainWorkspace.id )} >
                             <FontAwesomeIcon icon="fa-solid fa-table-cells-large" size='2x' />
                         </Link>
                     </div>

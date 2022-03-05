@@ -10,8 +10,6 @@
         border-radius: 10px;
         background-color: $workspace-bgc;
     }
-
-
 }
 
 .workspace-nav-hidden {
@@ -30,6 +28,20 @@
 .workspace-nav-dropdown {
     display: flex;
     flex-direction: column;
+}
+
+.board-item-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.board-item-u-d-wrapper {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.board-item-u-d {
+    color: $side-nav;
 }
 
 

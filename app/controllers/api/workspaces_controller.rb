@@ -18,7 +18,7 @@ class Api::WorkspacesController < ApplicationController
     end
 
     def show
-        @workspace = current_user.owned_workspaces.find_by(id: params[:id])
+        @workspace = current_user.workspaces.find_by(id: params[:id])
         if @workspace
             render :show
         else

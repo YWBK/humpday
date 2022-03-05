@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom'
 import { CLEAR_SESSION_ERRORS } from '../../actions/session_actions'
-import { addBoard, fetchBoards } from '../../actions/board_actions';
+import { addBoard } from '../../actions/board_actions';
 import { closeModal } from '../../actions/modal_actions';
 import WorkspaceForm from './workspace_form';
 
