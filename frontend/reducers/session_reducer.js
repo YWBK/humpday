@@ -1,5 +1,6 @@
 import { RECEIVE_CURRENT_USER, LOGOUT_CURRENT_USER } from '../actions/session_actions';
 import { RECEIVE_WORKSPACE, REMOVE_WORKSPACE } from '../actions/workspace_actions';
+import { RECEIVE_BOARD } from '../actions/board_actions';
 
 const sessionReducer = (state = {currentUserId: null}, action) => {
     Object.freeze(state);
@@ -14,6 +15,9 @@ const sessionReducer = (state = {currentUserId: null}, action) => {
             return nextState;
         case REMOVE_WORKSPACE:
             nextState.currentWorkspaceId = action.mainId;
+            return nextState;
+        case RECEIVE_BOARD:
+            nextState.currentBoardId = action.board.id;
             return nextState;
         case LOGOUT_CURRENT_USER:
             nextState.currentUserId = null;
