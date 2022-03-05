@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom'
 import WorkspaceListItem from '../workspaces/workspace_list_item';
+import BoardItem from './board_item';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class WorkspaceNav extends React.Component {
@@ -49,7 +50,8 @@ class WorkspaceNav extends React.Component {
             currentAccount, 
             currentWorkspace, 
             fetchWorkspace, 
-            fetchBoard } = this.props;
+            fetchBoard,
+            updateBoard } = this.props;
         const location = this.props.location.pathname;
         const regex = /\/(workspaces|boards)/;
         const regexResult = location.match(regex) ? location.match(regex)[1] : null;
@@ -95,23 +97,35 @@ class WorkspaceNav extends React.Component {
                                 <ul>
                                 { filteredBoards.map(board => {
                                     return (
-                                        <div key={board.id} className='board-item-wrapper'>
-                                            <Link
-                                                className='board-item-link'
-                                                to={{
-                                                    pathname: `/${currentAccount.account_name }/boards/${board.id}`,
-                                                    currentAccount: currentAccount,
-                                                    currentWorkspace: currentWorkspace,
-                                                    currentBoard: board
-                                                }}
-                                                onClick={ () => fetchBoard(board.id)} >
-                                                <li>{board.boardName}</li>
-                                            </Link>
-                                            <div className='board-item-u-d-wrapper'>
-                                                <FontAwesomeIcon icon="fa-solid fa-pencil" className='board-item-u-d' />
-                                                <FontAwesomeIcon icon="fa-solid fa-trash" className='board-item-u-d' />
-                                            </div>
-                                        </div>
+                                        < BoardItem 
+                                            key={board.id} 
+                                            board={board} 
+                                            currentAccount={currentAccount} 
+                                            currentWorkspace={currentWorkspace} 
+                                            fetchBoard={fetchBoard}
+                                            updateBoard={updateBoard}                                            
+                                        />
+                                        // <div key={board.id} className='board-item-wrapper'>
+                                        //     { this.state.boardNameEdit ?
+                                        //         <div>BOARD NAME</div> :
+                                        //         <Link
+                                        //             className='board-item-link'
+                                        //             to={{
+                                        //                 pathname: `/${currentAccount.account_name }/boards/${board.id}`,
+                                        //                 currentAccount: currentAccount,
+                                        //                 currentWorkspace: currentWorkspace,
+                                        //                 currentBoard: board
+                                        //             }}
+                                        //             onClick={ () => fetchBoard(board.id)} >
+                                        //             <li>{board.boardName}</li>
+                                        //         </Link>
+
+                                        //     }
+                                        //     <div className='board-item-u-d-wrapper'>
+                                        //         <FontAwesomeIcon icon="fa-solid fa-pencil" className='board-item-u-d' onClick={this.toggleBoardNameEdit}/>
+                                        //         <FontAwesomeIcon icon="fa-solid fa-trash" className='board-item-u-d' />
+                                        //     </div>
+                                        // </div>
                                     )
                                 })} 
                                 </ul>
