@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import SideNavContainer from '../side_nav/side_nav_container';
 import WorkspaceNav from '../workspace_nav/workspace_nav';
 import WorkspaceMembersList from './workspace_members_list';
+import ColumnListItem from '../columns/column_list_item';
 
 
 export default class MainShow extends React.Component {
@@ -140,11 +141,12 @@ export default class MainShow extends React.Component {
                     {currentBoard.boardName}
                     <ul className='column-headers'>
                         {currentBoard.columns.map(col => (
-                            <li key={col.id} className='column-header'>
-                                {col.column_name}
-                                {/* <FontAwesomeIcon icon="fa-solid fa-minus" /> */}
-                                <FontAwesomeIcon icon="fa-solid fa-ellipsis" />
-                            </li>
+                            <ColumnListItem key={col.id} col={col} itemCol={currentBoard.columns[0]}/>
+                            // <li key={col.id} className='column-header'>
+                            //     {col.column_name}
+                            //     {/* <FontAwesomeIcon icon="fa-solid fa-minus" /> */}
+                            //     <FontAwesomeIcon icon="fa-solid fa-ellipsis" />
+                            // </li>
                         ))}
                         <li key='add-column' className='column-header' onClick={ () => this.toggleAddCol() }>
                             <FontAwesomeIcon icon={`fa-solid fa-${this.state.addColActive ? 'minus' : 'plus'}`} />
