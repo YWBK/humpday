@@ -14,6 +14,12 @@ class Api::BoardsController < ApplicationController
                     column_type: col.downcase, 
                     board_id: @board.id)
             end
+            ['blue', 'purple'].each do |color|
+                @group = Group.create(
+                    group_name: 'Group Title',
+                    group_color: color,
+                    board_id: @board.id)
+            end
 
             render :show
         else
