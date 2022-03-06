@@ -133,6 +133,7 @@ export default class MainShow extends React.Component {
                         {currentBoard.columns.map(col => (
                             <li key={col.id} className='column-header'>
                                 {col.column_name}
+                                <FontAwesomeIcon icon="fa-solid fa-minus" />
                             </li>
                         ))}
                         <li key='add-column' className='column-header' onClick={e => this.addColumn(e)}>
