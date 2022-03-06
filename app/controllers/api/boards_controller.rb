@@ -8,8 +8,12 @@ class Api::BoardsController < ApplicationController
             # debugger
             BoardMember.create(board_id: @board.id, user_id: @board.board_owner_id)
             @workspace = Workspace.find_by(id: board_params[:workspace_id])
-            # @workspace.board_ids.push(@board.id)
-            # @workspace.save
+            ['Item', 'Person', 'Status', 'Date'].each do |col|
+                @column = Column.create(
+                    column_name: col, 
+                    column_type: col.downcase, 
+                    board_id: @board.id)
+            end
 
             render :show
         else
