@@ -67,17 +67,17 @@ demo_column_1 = Column.create(
 )
 
 demo_column_2 = Column.create(
-    column_name: 'Person'
-    column_type: 'person'
+    column_name: 'Person',
+    column_type: 'person',
     board_id: demo_board.id
 )
 demo_column_3 = Column.create(
-    column_name: 'Status'
-    column_type: 'status'
+    column_name: 'Status',
+    column_type: 'status',
     board_id: demo_board.id
 )
 demo_column_4 = Column.create(
-    column_name: 'Date'
-    column_type: 'date'
+    column_name: 'Date',
+    column_type: 'date',
     board_id: demo_board.id
 )
