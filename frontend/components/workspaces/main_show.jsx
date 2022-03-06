@@ -8,7 +8,7 @@ import WorkspaceMembersList from './workspace_members_list';
 export default class MainShow extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { active: true, workspaceName: '' };
+        this.state = { active: true, workspaceName: '', addColActive: false };
         this.toggleClass = this.toggleClass.bind(this);
     }
 
@@ -52,6 +52,9 @@ export default class MainShow extends React.Component {
     toggleClass() {
         this.setState({ active: !this.state.active })
     }
+    toggleAddCol() {
+        this.setState({ addColActive: !this.state.addColActive})
+    }
 
     update(e) {
         this.setState({ workspaceName: e.currentTarget.value })
@@ -73,9 +76,15 @@ export default class MainShow extends React.Component {
         }
     }
 
-    addColumn(e) {
+    addCol(e, colName) {
         e.preventDefault();
-        console.log('add button clicked!');
+        const { currentBoard, addColumn } = this.props;
+        // const colType = colName[0].toLowerCase() + colName.slice(1);
+        const column = {
+            column_name: colName, 
+            column_type: colName[0].toLowerCase() + colName.slice(1),
+            board_id: currentBoard.id };
+        addColumn(column);
     }
 
     render() {
@@ -133,11 +142,18 @@ export default class MainShow extends React.Component {
                         {currentBoard.columns.map(col => (
                             <li key={col.id} className='column-header'>
                                 {col.column_name}
-                                <FontAwesomeIcon icon="fa-solid fa-minus" />
+                                {/* <FontAwesomeIcon icon="fa-solid fa-minus" /> */}
+                                <FontAwesomeIcon icon="fa-solid fa-ellipsis" />
                             </li>
                         ))}
-                        <li key='add-column' className='column-header' onClick={e => this.addColumn(e)}>
-                            <FontAwesomeIcon icon="fa-solid fa-plus" />
+                        <li key='add-column' className='column-header' onClick={ () => this.toggleAddCol() }>
+                            <FontAwesomeIcon icon={`fa-solid fa-${this.state.addColActive ? 'minus' : 'plus'}`} />
+                            <ul className={ this.state.addColActive ? 'addColMenu' : 'addColMenu hidden'}>
+                                <span>Add Column</span>
+                                <li onClick={e => this.addCol(e, 'Person')}><FontAwesomeIcon icon="fa-solid fa-circle-user" />People</li>
+                                <li onClick={e => this.addCol(e, 'Status')}><FontAwesomeIcon icon="fa-solid fa-bars-progress" />Status</li>
+                                <li onClick={e => this.addCol(e, 'Date')}><FontAwesomeIcon icon="fa-solid fa-calendar" />Date</li>
+                            </ul>
                         </li>
                     </ul>
                 </div>

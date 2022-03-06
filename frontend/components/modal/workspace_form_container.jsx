@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom'
 import { CLEAR_SESSION_ERRORS } from '../../actions/session_actions'
 import { addWorkspace, fetchWorkspaces } from '../../actions/workspace_actions';
 import { closeModal } from '../../actions/modal_actions';
-import WorkspaceForm from './workspace_form';
+import MainForm from './main_form';
 
 const mapSTP = ({ entities, session, errors }) => {
     const currentAccount = entities.accounts[session.currentAccountId];
@@ -30,4 +30,4 @@ const mapDTP = dispatch => {
     })
 }
 
-export default withRouter(connect(mapSTP, mapDTP)(WorkspaceForm));
+export default withRouter(connect(mapSTP, mapDTP)(MainForm));
