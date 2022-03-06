@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resources :workspace_members, only: [:create]
     resources :boards, only: [:create, :index, :show, :update, :destroy]
     resources :board_members, only: [:create]
+    resources :columns, only: [:create, :index, :update, :destroy]
     get 'accounts_by_name/:account_name', to: 'accounts#show_by_name', as: 'account_name'
   end
 end
