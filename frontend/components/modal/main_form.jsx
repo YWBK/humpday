@@ -1,7 +1,7 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 
-export default class WorkspaceForm extends React.Component {
+export default class MainForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = { 
