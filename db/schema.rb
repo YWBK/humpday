@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_04_022310) do
+ActiveRecord::Schema.define(version: 2022_03_05_235920) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,15 @@ ActiveRecord::Schema.define(version: 2022_03_04_022310) do
     t.index ["column_ids"], name: "index_boards_on_column_ids"
     t.index ["group_ids"], name: "index_boards_on_group_ids"
     t.index ["workspace_id"], name: "index_boards_on_workspace_id"
+  end
+
+  create_table "columns", force: :cascade do |t|
+    t.string "column_name", default: "Item", null: false
+    t.string "column_type", default: "item", null: false
+    t.integer "board_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["board_id"], name: "index_columns_on_board_id"
   end
 
   create_table "users", force: :cascade do |t|

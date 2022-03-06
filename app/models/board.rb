@@ -14,5 +14,10 @@ class Board < ApplicationRecord
 
     has_many :users,
     through: :board_members
+
+    has_many :columns,
+    foreign_key: :board_id,
+    class_name: 'Column',
+    dependent: :destroy
 end
     
