@@ -1,10 +1,10 @@
 import * as ColumnApiUtil from '../util/column_api_util';
-export const RECEIVE_COLUMN = 'RECEIVE_COLUMN';
+import { RECEIVE_BOARD } from './board_actions';
 
-const receiveColumn = column => {
+const receiveBoard = board => {
     return ({
-        type: RECEIVE_COLUMN,
-        column
+        type: RECEIVE_BOARD,
+        board
     })
 }
 
@@ -12,7 +12,7 @@ export const addColumn = column => dispatch => {
     return (
         ColumnApiUtil.addColumn(column)
             .then(
-                created => dispatch(receiveColumn(column))
+                board => dispatch(receiveBoard(board))
             )
     )
 }
