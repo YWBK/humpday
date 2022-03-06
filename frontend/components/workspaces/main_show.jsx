@@ -109,7 +109,8 @@ export default class MainShow extends React.Component {
                 addWorkspaceMember, 
                 fetchBoard, 
                 updateBoard, 
-                deleteBoard } = this.props;
+                deleteBoard,
+                deleteColumn } = this.props;
             // debugger
         if (boards) {
             // debugger
@@ -141,7 +142,12 @@ export default class MainShow extends React.Component {
                     {currentBoard.boardName}
                     <ul className='column-headers'>
                         {currentBoard.columns.map(col => (
-                            <ColumnListItem key={col.id} col={col} itemCol={currentBoard.columns[0]}/>
+                            <ColumnListItem 
+                                key={col.id} 
+                                col={col} 
+                                itemCol={currentBoard.columns[0]}
+                                deleteColumn={deleteColumn} 
+                            />
                             // <li key={col.id} className='column-header'>
                             //     {col.column_name}
                             //     {/* <FontAwesomeIcon icon="fa-solid fa-minus" /> */}

@@ -5,3 +5,10 @@ export const addColumn = column => (
         data: { column }
     })
 )
+
+export const deleteColumn = columnId => (
+    $.ajax({
+        method: 'DELETE',
+        url: `/api/columns/${columnId}`
+    })
+)
