@@ -9,6 +9,17 @@ class Api::ColumnsController < ApplicationController
         end
     end
 
+    def destroy
+        @column = Column.find_by(id: params[:id])
+        if @column
+            @board = Board.find_by(id: @column.board_id)
+            @column.destroy
+            render 'api/boards/show'
+        else
+            render json: ['You cannot delete this column'], status: 422
+        end
+    end
+
     private
     def column_params
         params.require(:column).permit(:column_name, :column_type, :board_id)
