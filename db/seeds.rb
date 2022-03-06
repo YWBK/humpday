@@ -62,6 +62,17 @@ BoardMember.create(
     user_id: demo_user_2.id
 )
 
+demo_group_1 = Group.create(
+    group_name: 'Group Title',
+    group_color: 'blue',
+    board_id: demo_board.id
+)
+demo_group_2 = Group.create(
+    group_name: 'Group Title',
+    group_color: 'purple',
+    board_id: demo_board.id
+)
+
 demo_column_1 = Column.create(
     board_id: demo_board.id
 )

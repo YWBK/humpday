@@ -1,4 +1,6 @@
 class Workspace < ApplicationRecord
+    validates :workspace_name, :workspace_owner_id, :account_id, presence: true
+
     belongs_to :account,
     foreign_key: :account_id,
     class_name: 'Account'
