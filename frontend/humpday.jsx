@@ -8,7 +8,7 @@ import { addWorkspaceMember } from './util/workspace_member_api_util';
 import { updateBoard } from './util/board_api_util';
 import { deleteBoard } from './actions/board_actions';
 // import { addColumn } from './util/column_api_util';
-import { addColumn } from './actions/column_actions';
+import { addColumn, deleteColumn } from './actions/column_actions';
 import { signup, login, logout } from './actions/session_actions';
 import Root from './components/root';
 // import logo from '../app/assets/images/logo.png';
@@ -43,6 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.updateBoard = updateBoard;
     window.deleteBoard = deleteBoard;
     window.addColumn = addColumn;
+    window.deleteColumn = deleteColumn;
     window.getState = store.getState;
     window.dispatch = store.dispatch;
 

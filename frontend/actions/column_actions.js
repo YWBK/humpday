@@ -1,5 +1,5 @@
 import * as ColumnApiUtil from '../util/column_api_util';
-import { RECEIVE_BOARD } from './board_actions';
+import { RECEIVE_BOARD, REMOVE_BOARD } from './board_actions';
 
 const receiveBoard = board => {
     return ({
@@ -7,10 +7,24 @@ const receiveBoard = board => {
         board
     })
 }
+// const removeColumn = board => {
+//     return({
+//         type: REMOVE_BOARD,
+//         board
+//     })
+// }
 
 export const addColumn = column => dispatch => {
     return (
         ColumnApiUtil.addColumn(column)
+            .then(
+                board => dispatch(receiveBoard(board))
+            )
+    )
+}
+export const deleteColumn = columnId => dispatch => {
+    return (
+        ColumnApiUtil.deleteColumn(columnId)
             .then(
                 board => dispatch(receiveBoard(board))
             )
