@@ -1,10 +1,11 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import SideNavContainer from '../side_nav/side_nav_container';
 import WorkspaceNav from '../workspace_nav/workspace_nav';
 import WorkspaceMembersList from './workspace_members_list';
 
 
-export default class WorkspaceShow extends React.Component {
+export default class MainShow extends React.Component {
     constructor(props) {
         super(props);
         this.state = { active: true, workspaceName: '' };
@@ -72,6 +73,11 @@ export default class WorkspaceShow extends React.Component {
         }
     }
 
+    addColumn(e) {
+        e.preventDefault();
+        console.log('add button clicked!');
+    }
+
     render() {
         // debugger
         const { 
@@ -121,7 +127,19 @@ export default class WorkspaceShow extends React.Component {
             } else if (showType === 'board') {
                 // debugger
                 content =
-                <div>{currentBoard.boardName}</div>
+                <div>
+                    {currentBoard.boardName}
+                    <ul className='column-headers'>
+                        {currentBoard.columns.map(col => (
+                            <li key={col.id} className='column-header'>
+                                {col.column_name}
+                            </li>
+                        ))}
+                        <li key='add-column' className='column-header' onClick={e => this.addColumn(e)}>
+                            <FontAwesomeIcon icon="fa-solid fa-plus" />
+                        </li>
+                    </ul>
+                </div>
             } else {
                 content =
                 <div>A SHOW PAGE</div>

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import WorkspaceShow from './workspace_show';
+import MainShow from './main_show';
 import { openModal } from '../../actions/modal_actions'; 
 import { fetchUsers } from '../../actions/user_actions'; 
 import { fetchWorkspace, fetchWorkspaces, updateWorkspace, deleteWorkspace } from '../../actions/workspace_actions';
@@ -65,4 +65,4 @@ const mapDTP = dispatch => {
     })
 }
 
-export default connect(mapSTP, mapDTP)(WorkspaceShow);
+export default connect(mapSTP, mapDTP)(MainShow);
