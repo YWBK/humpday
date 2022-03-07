@@ -88,6 +88,16 @@ export default class MainShow extends React.Component {
         addColumn(column);
     }
 
+    addGroup(e) {
+        e.preventDefault();
+        const { currentBoard, addGroup } = this.props;
+        const group = {
+            group_name: 'New Group',
+            board_id: currentBoard.id};
+        // debugger
+        addGroup(group);
+    }
+
     render() {
         // debugger
         const { 
@@ -142,30 +152,37 @@ export default class MainShow extends React.Component {
                 content =
                 <div>
                     {currentBoard.boardName}
-                    {groups.map(group => (
-                        <div key={group.id}>
-                            { group.groupName}
-                            <ul className='column-headers'>
-                                {columns.map(col => (
-                                    <ColumnListItem 
-                                        key={col.id} 
-                                        col={col} 
-                                        itemCol={columns[0]}
-                                        deleteColumn={deleteColumn} 
-                                    />
-                                ))}
-                                <li key='add-column' className='column-header' onClick={ () => this.toggleAddCol() }>
-                                    <FontAwesomeIcon icon={`fa-solid fa-${this.state.addColActive ? 'minus' : 'plus'}`} />
-                                    <ul className={ this.state.addColActive ? 'addColMenu' : 'addColMenu hidden'}>
-                                        <span>Add Column</span>
-                                        <li onClick={e => this.addCol(e, 'Person')}><FontAwesomeIcon icon="fa-solid fa-circle-user" />People</li>
-                                        <li onClick={e => this.addCol(e, 'Status')}><FontAwesomeIcon icon="fa-solid fa-bars-progress" />Status</li>
-                                        <li onClick={e => this.addCol(e, 'Date')}><FontAwesomeIcon icon="fa-solid fa-calendar" />Date</li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                    ))}
+                    <ul className='group-list'>
+                        {groups.map(group => (
+                            <li key={group.id} className='group-list-item'>
+                                <FontAwesomeIcon icon="fa-solid fa-circle-chevron-down" />
+                                { group.groupName}
+                                <ul className='column-headers'>
+                                    {columns.map(col => (
+                                        <ColumnListItem 
+                                            key={col.id} 
+                                            col={col} 
+                                            itemCol={columns[0]}
+                                            deleteColumn={deleteColumn} 
+                                        />
+                                    ))}
+                                    <li key='add-column' className='column-header' onClick={ () => this.toggleAddCol() }>
+                                        <FontAwesomeIcon icon={`fa-solid fa-${this.state.addColActive ? 'minus' : 'plus'}`} />
+                                        <ul className={ this.state.addColActive ? 'addColMenu' : 'addColMenu hidden'}>
+                                            <span>Add Column</span>
+                                            <li onClick={e => this.addCol(e, 'Person')}><FontAwesomeIcon icon="fa-solid fa-circle-user" />People</li>
+                                            <li onClick={e => this.addCol(e, 'Status')}><FontAwesomeIcon icon="fa-solid fa-bars-progress" />Status</li>
+                                            <li onClick={e => this.addCol(e, 'Date')}><FontAwesomeIcon icon="fa-solid fa-calendar" />Date</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        ))}
+                        <button className='add-group-btn' onClick={e => this.addGroup(e)}>
+                            <FontAwesomeIcon icon='fa-solid fa-plus' />
+                            <span>Add Group</span>
+                        </button>
+                    </ul>
                 </div>
             } else {
                 content =
