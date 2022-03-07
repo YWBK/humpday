@@ -5,7 +5,7 @@ const WorkspaceListItem = ({ workspace, currentAccount, fetchWorkspace }) => {
     return (
             <Link 
                 to={{
-                    pathname: `/${currentAccount.account_name}/workspaces/${workspace.id}`,
+                    pathname: `/${currentAccount.accountName}/workspaces/${workspace.id}`,
                     // workspaceMembers: workspace.users,
                     currentAccount: currentAccount,
                     currentWorkspace: workspace,

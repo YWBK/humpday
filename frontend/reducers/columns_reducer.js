@@ -8,7 +8,7 @@ const columnsReducer = (state = {}, action) => {
         case RECEIVE_BOARD:
             // debugger
             nextState = {};
-            return action.board.columns
+            return action.board.columns;
             // action.board.columns.forEach(column => (
             //     nextState[column.id] = column
             // ));

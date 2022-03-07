@@ -51,7 +51,7 @@ const mapSTP = (state, ownProps) => {
     //     '';
     // debugger
     const currentUser = state.entities.users[state.session.currentUserId];
-    const accountName = currentUser ? currentUser.account.account_name : '';
+    const accountName = currentUser ? currentUser.account.accountName : '';
     return {
         loggedIn: Boolean(state.session.currentUserId),
         accountName: accountName

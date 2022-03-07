@@ -13,7 +13,8 @@ const mapSTP = ({ entities, session, errors }) => {
         formType: 'workspace',
         currentUserId: session.currentUserId,
         currentAccountId: session.currentAccountId,
-        currentAccountName: currentAccount.account_name ? currentAccount.account_name : currentAccount.accountName
+        currentAccountName: currentAccount.accountName
+        // currentAccountName: currentAccount.account_name ? currentAccount.account_name : currentAccount.accountName
     })
 }
 

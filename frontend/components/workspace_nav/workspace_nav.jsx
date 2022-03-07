@@ -31,7 +31,7 @@ class WorkspaceNav extends React.Component {
             currentWorkspace, 
             history 
         } = this.props;
-        const acctName = currentAccount.account_name;  
+        const acctName = currentAccount.accountName;  
         const deleteCurrentWorkspace = async () => {
             const response = await deleteWorkspace(currentWorkspace.id);
             const id = response.mainId;

@@ -8,10 +8,10 @@ const groupsReducer = (state = {}, action) => {
         case RECEIVE_BOARD:
             // debugger
             nextState = {};
-            action.board.groups.forEach(group => (
-                nextState[group.id] = group
-            ));
-            return nextState;
+            return action.board.groups;
+            // action.board.groups.forEach(group => (
+            //     nextState[group.id] = group
+            // ));
         case REMOVE_BOARD:
             nextState = {};
             return nextState;
