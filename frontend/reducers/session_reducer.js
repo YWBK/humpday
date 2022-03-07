@@ -27,6 +27,7 @@ const sessionReducer = (state = {currentUserId: null}, action) => {
             nextState.currentUserId = null;
             nextState.currentAccountId = null;
             nextState.currentWorkspaceId = null;
+            nextState.currentBoardId = null;
             return nextState;
         default:
             return state;

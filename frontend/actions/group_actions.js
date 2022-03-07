@@ -1,5 +1,5 @@
 import * as GroupApiUtil from '../util/group_api_util';
-import { RECEIVE_BOARD, REMOVE_BOARD } from './board_actions';
+import { RECEIVE_BOARD } from './board_actions';
 
 const receiveBoard = board => {
     return ({
@@ -11,6 +11,14 @@ const receiveBoard = board => {
 export const addGroup = group => dispatch => {
     return (
         GroupApiUtil.addGroup(group)
+            .then(
+                board => dispatch(receiveBoard(board))
+            )
+    )
+}
+export const deleteGroup = groupId => dispatch => {
+    return (
+        GroupApiUtil.deleteGroup(groupId)
             .then(
                 board => dispatch(receiveBoard(board))
             )
