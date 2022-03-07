@@ -1,15 +1,15 @@
 import { LOGOUT_CURRENT_USER } from '../actions/session_actions';
 import { RECEIVE_BOARD, REMOVE_BOARD } from '../actions/board_actions';
 
-const columnsReducer = (state = {}, action) => {
+const groupsReducer = (state = {}, action) => {
     Object.freeze(state);
     let nextState = Object.assign({}, state);
     switch (action.type) {
         case RECEIVE_BOARD:
             // debugger
             nextState = {};
-            action.board.columns.forEach(column => (
-                nextState[column.id] = column
+            action.board.groups.forEach(group => (
+                nextState[group.id] = group
             ));
             return nextState;
         case REMOVE_BOARD:
@@ -23,4 +23,4 @@ const columnsReducer = (state = {}, action) => {
     }
 }
 
-export default columnsReducer
+export default groupsReducer
