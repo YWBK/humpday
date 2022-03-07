@@ -7,11 +7,11 @@ const accountsReducer = (state = {}, action) => {
     // debugger
     switch (action.type) {
         case RECEIVE_CURRENT_USER:
-            // debugger
+            debugger
             nextState[action.currentAccount.id] = action.currentAccount;
             return nextState;
         case REC_CURR_ACCT:
-            // debugger
+            debugger
             nextState[action.account.id] = action.account;
             return nextState;
         default:

@@ -56,7 +56,7 @@ export default class SideNav extends React.Component {
                         <Link 
                             className='side-nav-btn'
                             to={{
-                                pathname:`/${account.account_name}/workspaces/${mainWorkspace.id}`, 
+                                pathname:`/${account.accountName}/workspaces/${mainWorkspace.id}`, 
                                 currentAccount: account,
                                 currentWorkspace: mainWorkspace
                             }}
@@ -94,12 +94,12 @@ export default class SideNav extends React.Component {
                     
                     <div className={ this.state.active ? 'side-nav-user-options' : 'side-nav-user-options hidden' } >
                         <div className='side-nav-user-options-user-show'>
-                            <Link to={`/${account.account_name}/users/${this.props.currentUser.id}`}>
+                            <Link to={`/${account.accountName}/users/${this.props.currentUser.id}`}>
                                 My profile
                             </Link>
                         </div>
                         <div className='side-nav-user-options-users-index'>
-                            <Link to ={`/${account.account_name}/users`}>
+                            <Link to ={`/${account.accountName}/users`}>
                                 Team
                             </Link>
                         </div>

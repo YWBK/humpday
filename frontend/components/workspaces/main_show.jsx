@@ -137,25 +137,22 @@ export default class MainShow extends React.Component {
                 </div> 
             } else if (showType === 'board') {
                 // debugger
+                const groups = Object.values(currentBoard.groups);
+                const columns = Object.values(currentBoard.columns);
                 content =
                 <div>
                     {currentBoard.boardName}
-                    {currentBoard.groups.map(group => (
+                    {groups.map(group => (
                         <div key={group.id}>
-                            { group.group_name}
+                            { group.groupName}
                             <ul className='column-headers'>
-                                {currentBoard.columns.map(col => (
+                                {columns.map(col => (
                                     <ColumnListItem 
                                         key={col.id} 
                                         col={col} 
-                                        itemCol={currentBoard.columns[0]}
+                                        itemCol={columns[0]}
                                         deleteColumn={deleteColumn} 
                                     />
-                                    // <li key={col.id} className='column-header'>
-                                    //     {col.column_name}
-                                    //     {/* <FontAwesomeIcon icon="fa-solid fa-minus" /> */}
-                                    //     <FontAwesomeIcon icon="fa-solid fa-ellipsis" />
-                                    // </li>
                                 ))}
                                 <li key='add-column' className='column-header' onClick={ () => this.toggleAddCol() }>
                                     <FontAwesomeIcon icon={`fa-solid fa-${this.state.addColActive ? 'minus' : 'plus'}`} />

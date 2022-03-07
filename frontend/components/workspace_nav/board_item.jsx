@@ -39,7 +39,7 @@ class BoardItem extends React.Component {
 
         const deleteCurrentBoard = async() => {
             await history.push({
-                pathname: `/${currentAccount.account_name}/workspaces/${currentWorkspace.id}`,
+                pathname: `/${currentAccount.accountName}/workspaces/${currentWorkspace.id}`,
             })
             deleteBoard(board.id);
         }
@@ -64,7 +64,7 @@ class BoardItem extends React.Component {
                 <Link
                     className='board-item-link'
                     to={{
-                        pathname: `/${currentAccount.account_name }/boards/${board.id}`,
+                        pathname: `/${currentAccount.accountName }/boards/${board.id}`,
                         currentAccount: currentAccount,
                         currentWorkspace: currentWorkspace,
                         currentBoard: board
