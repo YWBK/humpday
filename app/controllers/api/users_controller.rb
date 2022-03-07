@@ -29,6 +29,19 @@ class Api::UsersController < ApplicationController
                 @board.save
                 BoardMember.create(board_id: @board.id, user_id: @user.id)
 
+                ['Item', 'Person', 'Status', 'Date'].each do |col|
+                    @column = Column.create(
+                        column_name: col, 
+                        column_type: col.downcase, 
+                        board_id: @board.id)
+                end
+                ['blue', 'purple'].each do |color|
+                    @group = Group.create(
+                        group_name: 'Group Title',
+                        group_color: color,
+                        board_id: @board.id)
+                end
+
                 # @workspace.board_ids.push(@board.id)
                 # @workspace.save
             else

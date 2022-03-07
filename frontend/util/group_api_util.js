@@ -5,3 +5,10 @@ export const addGroup = group => (
         data: { group }
     })
 )
+
+export const deleteGroup = groupId => (
+    $.ajax({
+        method: 'DELETE',
+        url: `/api/groups/${groupId}`
+    })
+)

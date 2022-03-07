@@ -19,3 +19,5 @@ json.groups do
         end
     end
 end
+
+# debugger

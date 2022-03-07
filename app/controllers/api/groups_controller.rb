@@ -4,6 +4,7 @@ class Api::GroupsController < ApplicationController
         @group.group_color = Group::COLORS.sample
         if @group.save
             @board = Board.find_by(id: group_params[:board_id])
+            # debugger
             render 'api/boards/show'
         else
             render json: @board.errors.full_messages, status: 422
@@ -14,11 +15,12 @@ class Api::GroupsController < ApplicationController
         @group = Group.find_by(id: params[:id])
         if @group
             @board = Board.find_by(id: @group.board_id)
-            
             if @board.groups.length == 1
                 render json: ['Board has to have at least one group']
             else
+                board_id = @group.board_id
                 @group.destroy
+                @board = Board.find_by(id: board_id)
                 render 'api/boards/show'
             end
         else

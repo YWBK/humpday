@@ -79,7 +79,6 @@ export default class MainShow extends React.Component {
     }
 
     render() {
-        // debugger
         const { 
                 showType,
                 // accountMembers, 
@@ -131,6 +130,7 @@ export default class MainShow extends React.Component {
                 // debugger
                 const groups = Object.values(currentBoard.groups);
                 const columns = Object.values(currentBoard.columns);
+                // debugger
                 content =
                 <div>
                     {currentBoard.boardName}
@@ -174,23 +174,6 @@ export default class MainShow extends React.Component {
                             deleteBoard={deleteBoard}
                         />
                         { content }
-                        {/* <div className='workspace-content' >
-                            <div className='workspace-cover'>COVER IMAGE TO GO HERE</div>
-                            <div className='workspace-name'>
-                                <input 
-                                    type='text' 
-                                    value={this.state.workspaceName} 
-                                    onChange={ e => this.update(e) } 
-                                    onClick={ e => e.stopPropagation() } />
-                            </div>
-                            <WorkspaceMembersList 
-                                currentAccount={currentAccount}
-                                currentAccountUsers={currentAccountUsers}
-                                currentWorkspace={currentWorkspace}
-                                addWorkspaceMember={addWorkspaceMember}
-                                // fetchUsers={fetchUsers}
-                            />
-                        </div> */}
                     </div>
                 </div>
             )
