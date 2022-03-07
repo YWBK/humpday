@@ -12,10 +12,11 @@ class ColumnListItem extends React.Component {
     }
     render() {
         const { col, itemCol, deleteColumn } = this.props; 
+        // debugger
         return (
             <li >
                 <div className='column-header'>
-                    {col.column_name}
+                    {col.columnName}
                     { col.id === itemCol.id ? null : 
                         <FontAwesomeIcon 
                             icon="fa-solid fa-ellipsis" 

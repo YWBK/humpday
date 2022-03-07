@@ -137,6 +137,7 @@ export default class MainShow extends React.Component {
                 </div> 
             } else if (showType === 'board') {
                 // debugger
+                const columns = Object.values(currentBoard.columns)
                 content =
                 <div>
                     {currentBoard.boardName}
@@ -144,15 +145,15 @@ export default class MainShow extends React.Component {
                         <div key={group.id}>
                             { group.group_name}
                             <ul className='column-headers'>
-                                {currentBoard.columns.map(col => (
+                                {columns.map(col => (
                                     <ColumnListItem 
                                         key={col.id} 
                                         col={col} 
-                                        itemCol={currentBoard.columns[0]}
+                                        itemCol={columns[0]}
                                         deleteColumn={deleteColumn} 
                                     />
                                     // <li key={col.id} className='column-header'>
-                                    //     {col.column_name}
+                                    //     {col.columnName}
                                     //     {/* <FontAwesomeIcon icon="fa-solid fa-minus" /> */}
                                     //     <FontAwesomeIcon icon="fa-solid fa-ellipsis" />
                                     // </li>
