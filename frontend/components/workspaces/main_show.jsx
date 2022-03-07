@@ -4,23 +4,17 @@ import SideNavContainer from '../side_nav/side_nav_container';
 import WorkspaceNav from '../workspace_nav/workspace_nav';
 import WorkspaceMembersList from './workspace_members_list';
 import ColumnListItem from '../columns/column_list_item';
+import GroupListItem from '../groups/group_list_item';
 
 
 export default class MainShow extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { active: true, workspaceName: '', addColActive: false };
+        this.state = { active: true, workspaceName: '' };
         this.toggleClass = this.toggleClass.bind(this);
     }
 
     componentDidMount() {
-        // const fetchInfo = async() => {
-        //     await this.props.fetchUsers();
-        //     await this.props.fetchBoards();
-        //     await this.props.fetchWorkspace(this.props.match.params.workspaceId)
-        //     await this.props.fetchWorkspaces();
-        // }
-        // fetchInfo();
         if (this.props.showType === 'workspace') {
             // debugger
             this.props.fetchUsers()
@@ -53,9 +47,6 @@ export default class MainShow extends React.Component {
     toggleClass() {
         this.setState({ active: !this.state.active })
     }
-    toggleAddCol() {
-        this.setState({ addColActive: !this.state.addColActive})
-    }
 
     update(e) {
         this.setState({ workspaceName: e.currentTarget.value })
@@ -75,17 +66,6 @@ export default class MainShow extends React.Component {
         } else {
             // debugger
         }
-    }
-
-    addCol(e, colName) {
-        e.preventDefault();
-        const { currentBoard, addColumn } = this.props;
-        // const colType = colName[0].toLowerCase() + colName.slice(1);
-        const column = {
-            column_name: colName, 
-            column_type: colName[0].toLowerCase() + colName.slice(1),
-            board_id: currentBoard.id };
-        addColumn(column);
     }
 
     addGroup(e) {
@@ -119,8 +99,10 @@ export default class MainShow extends React.Component {
                 addWorkspaceMember, 
                 fetchBoard, 
                 updateBoard, 
-                deleteBoard,
-                deleteColumn } = this.props;
+                deleteBoard, 
+                addColumn,
+                deleteColumn,
+                deleteGroup } = this.props;
             // debugger
         if (boards) {
             // debugger
@@ -154,29 +136,15 @@ export default class MainShow extends React.Component {
                     {currentBoard.boardName}
                     <ul className='group-list'>
                         {groups.map(group => (
-                            <li key={group.id} className='group-list-item'>
-                                <FontAwesomeIcon icon="fa-solid fa-circle-chevron-down" />
-                                { group.groupName}
-                                <ul className='column-headers'>
-                                    {columns.map(col => (
-                                        <ColumnListItem 
-                                            key={col.id} 
-                                            col={col} 
-                                            itemCol={columns[0]}
-                                            deleteColumn={deleteColumn} 
-                                        />
-                                    ))}
-                                    <li key='add-column' className='column-header' onClick={ () => this.toggleAddCol() }>
-                                        <FontAwesomeIcon icon={`fa-solid fa-${this.state.addColActive ? 'minus' : 'plus'}`} />
-                                        <ul className={ this.state.addColActive ? 'addColMenu' : 'addColMenu hidden'}>
-                                            <span>Add Column</span>
-                                            <li onClick={e => this.addCol(e, 'Person')}><FontAwesomeIcon icon="fa-solid fa-circle-user" />People</li>
-                                            <li onClick={e => this.addCol(e, 'Status')}><FontAwesomeIcon icon="fa-solid fa-bars-progress" />Status</li>
-                                            <li onClick={e => this.addCol(e, 'Date')}><FontAwesomeIcon icon="fa-solid fa-calendar" />Date</li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
+                            <GroupListItem 
+                                key={group.id}
+                                currentBoard={currentBoard}
+                                group={group}
+                                columns={columns}
+                                addColumn={addColumn}
+                                deleteColumn={deleteColumn}
+                                deleteGroup={deleteGroup}
+                            />
                         ))}
                         <button className='add-group-btn' onClick={e => this.addGroup(e)}>
                             <FontAwesomeIcon icon='fa-solid fa-plus' />
