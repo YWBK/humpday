@@ -73,6 +73,27 @@ demo_group_2 = Group.create(
     board_id: demo_board.id
 )
 
+demo_item_1 = Item.create(
+    item_name: 'Item 1',
+    group_id: demo_group_1.id
+)
+demo_item_2 = Item.create(
+    item_name: 'Item 2',
+    group_id: demo_group_1.id
+)
+demo_item_3 = Item.create(
+    item_name: 'Item 3',
+    group_id: demo_group_1.id
+)
+demo_item_4 = Item.create(
+    item_name: 'Item 4',
+    group_id: demo_group_2.id
+)
+demo_item_5 = Item.create(
+    item_name: 'Item 5',
+    group_id: demo_group_2.id
+)
+
 demo_column_1 = Column.create(
     board_id: demo_board.id
 )

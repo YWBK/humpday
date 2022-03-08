@@ -3,7 +3,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import SideNavContainer from '../side_nav/side_nav_container';
 import WorkspaceNav from '../workspace_nav/workspace_nav';
 import WorkspaceMembersList from './workspace_members_list';
-import ColumnListItem from '../columns/column_list_item';
 import GroupListItem from '../groups/group_list_item';
 
 
@@ -16,13 +15,11 @@ export default class MainShow extends React.Component {
 
     componentDidMount() {
         if (this.props.showType === 'workspace') {
-            // debugger
             this.props.fetchUsers()
                 .then(() => this.props.fetchBoards())
                 .then(() => this.props.fetchWorkspace(this.props.match.params.workspaceId))
                 .then(() => this.props.fetchWorkspaces());
         } else if (this.props.showType === 'board') {
-            // debugger
             this.props.fetchUsers()
                 .then(() => this.props.fetchBoard(this.props.match.params.boardId))
                 .then((board) => {
@@ -57,14 +54,12 @@ export default class MainShow extends React.Component {
             const oldWorkspaceName = this.props.currentWorkspace.workspaceName;
             const workspaceId = this.props.currentWorkspace.id
             const workspace = Object.assign({}, { id: workspaceId , workspace_name: this.state.workspaceName });
-            // debugger
             if (oldWorkspaceName !== this.state.workspaceName) {
                 this.props.updateWorkspace(workspace);
             } else {
                 null;
             }
         } else {
-            // debugger
         }
     }
 
@@ -74,16 +69,13 @@ export default class MainShow extends React.Component {
         const group = {
             group_name: 'New Group',
             board_id: currentBoard.id};
-        // debugger
         addGroup(group);
     }
 
     render() {
         const { 
                 showType,
-                // accountMembers, 
                 workspaces, 
-                // workspaceMembers, 
                 boards, 
                 currentUser,
                 currentAccount,
@@ -91,9 +83,7 @@ export default class MainShow extends React.Component {
                 currentWorkspace,
                 currentBoard,
                 openModal, 
-                // fetchWorkspaces, 
                 fetchWorkspace, 
-                // fetchUsers, 
                 deleteWorkspace, 
                 addWorkspaceMember, 
                 fetchBoard, 
@@ -102,12 +92,9 @@ export default class MainShow extends React.Component {
                 addColumn,
                 deleteColumn,
                 deleteGroup } = this.props;
-            // debugger
         if (boards) {
-            // debugger
             let content;
             if (showType === 'workspace') {
-                // debugger
                 content = 
                 <div className='workspace-content' >
                     <div className='workspace-cover'>COVER IMAGE TO GO HERE</div>
@@ -123,29 +110,31 @@ export default class MainShow extends React.Component {
                         currentAccountUsers={currentAccountUsers}
                         currentWorkspace={currentWorkspace}
                         addWorkspaceMember={addWorkspaceMember}
-                        // fetchUsers={fetchUsers}
                     />
                 </div> 
             } else if (showType === 'board') {
-                // debugger
                 const groups = Object.values(currentBoard.groups);
                 const columns = Object.values(currentBoard.columns);
-                // debugger
+
                 content =
                 <div>
                     {currentBoard.boardName}
                     <ul className='group-list'>
-                        {groups.map(group => (
-                            <GroupListItem 
-                                key={group.id}
-                                currentBoard={currentBoard}
-                                group={group}
-                                columns={columns}
-                                addColumn={addColumn}
-                                deleteColumn={deleteColumn}
-                                deleteGroup={deleteGroup}
-                            />
-                        ))}
+                        {groups.map(group => {
+                            const items = Object.values(currentBoard.items).filter(item => item.groupId === group.id);
+                            return (
+                                <GroupListItem 
+                                    key={group.id}
+                                    currentBoard={currentBoard}
+                                    group={group}
+                                    columns={columns}
+                                    addColumn={addColumn}
+                                    deleteColumn={deleteColumn}
+                                    deleteGroup={deleteGroup}
+                                    items={items}
+                                />
+                            )
+                        })}
                         <button className='add-group-btn' onClick={e => this.addGroup(e)}>
                             <FontAwesomeIcon icon='fa-solid fa-plus' />
                             <span>Add Group</span>

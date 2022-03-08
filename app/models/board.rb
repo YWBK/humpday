@@ -1,6 +1,6 @@
 class Board < ApplicationRecord
     PERMISSIONS = [1, 2, 3, 4]
-    validates :board_name, :workspace_id, :board_owner_id, presence: true
+    validates :board_name, presence: true
     validates :board_permissions, inclusion: { in: PERMISSIONS }
 
     belongs_to :workspace,
@@ -28,5 +28,8 @@ class Board < ApplicationRecord
     foreign_key: :board_id,
     class_name: 'Group',
     dependent: :destroy
+
+    has_many :items,
+    through: :groups
 end
     

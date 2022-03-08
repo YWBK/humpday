@@ -12,7 +12,6 @@ class ColumnListItem extends React.Component {
     }
     render() {
         const { col, itemCol, deleteColumn } = this.props; 
-        // debugger
         return (
             <li >
                 <div className='column-header'>

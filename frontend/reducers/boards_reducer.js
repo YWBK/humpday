@@ -1,5 +1,5 @@
 import { LOGOUT_CURRENT_USER } from '../actions/session_actions';
-import { RECEIVE_BOARD, RECEIVE_BOARDS, REMOVE_BOARD } from '../actions/board_actions';
+import { RECEIVE_BOARD, RECEIVE_BOARDS } from '../actions/board_actions';
 
 const boardsReducer = (state = {}, action) => {
     Object.freeze(state);
