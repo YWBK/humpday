@@ -61,9 +61,9 @@ class GroupListItem extends React.Component {
                     </li>
                 </ul>
                 <ul className='item-names'>
-                    {items.map(item => (
+                    { items ? items.map(item => (
                         <li key={item.id}>{item.itemName}</li>
-                    ))}
+                    )) : null }
                 </ul>
             </li>
         )

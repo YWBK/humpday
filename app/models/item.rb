@@ -3,6 +3,8 @@ class Item < ApplicationRecord
 
     belongs_to :group,
     foreign_key: :group_id,
-    class_name: 'Item'
+    class_name: 'Group'
 
+    has_one :board,
+    through: :group
 end
