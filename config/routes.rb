@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     resources :board_members, only: [:create]
     resources :columns, only: [:create, :destroy]
     resources :groups, only: [:create, :destroy]
+    resources :items, only: [:create, :destroy]
     get 'accounts_by_name/:account_name', to: 'accounts#show_by_name', as: 'account_name'
   end
 end

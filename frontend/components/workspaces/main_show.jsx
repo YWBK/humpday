@@ -121,7 +121,8 @@ export default class MainShow extends React.Component {
                     {currentBoard.boardName}
                     <ul className='group-list'>
                         {groups.map(group => {
-                            const items = Object.values(currentBoard.items).filter(item => item.groupId === group.id);
+                            // debugger
+                            const items = currentBoard.items ? Object.values(currentBoard.items).filter(item => item.groupId === group.id) : null;
                             return (
                                 <GroupListItem 
                                     key={group.id}

@@ -6,7 +6,7 @@ class Api::GroupsController < ApplicationController
             @board = Board.find_by(id: group_params[:board_id])
             render 'api/boards/show'
         else
-            render json: @board.errors.full_messages, status: 422
+            render json: @group.errors.full_messages, status: 422
         end
     end
 
