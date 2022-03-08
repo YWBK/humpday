@@ -125,13 +125,21 @@ export default class MainShow extends React.Component {
                         {groups.map(group => {
                             // debugger
                             const items = currentBoard.items ? Object.values(currentBoard.items).filter(item => item.groupId === group.id) : null;
+                            const itemPeople = currentBoard.itemPeople ? Object.values(currentBoard.itemPeople).filter(itemPerson => itemPerson.groupId === group.id) : null;
+                            const statuses = currentBoard.statuses ? Object.values(currentBoard.statuses).filter(status => status.groupId === group.id) : null;
+                            const dueDates = currentBoard.dueDates ? Object.values(currentBoard.dueDates).filter(dueDate => dueDate.groupId === group.id) : null;
+                            // debugger
                             return (
                                 <GroupListItem 
                                     key={group.id}
+                                    currentAccountUsers={currentAccountUsers}
                                     currentBoard={currentBoard}
                                     group={group}
                                     columns={columns}
                                     items={items}
+                                    itemPeople={itemPeople}
+                                    statuses={statuses}
+                                    dueDates={dueDates}
                                     addColumn={addColumn}
                                     deleteColumn={deleteColumn}
                                     deleteGroup={deleteGroup}

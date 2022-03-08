@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_07_225548) do
+ActiveRecord::Schema.define(version: 2022_03_08_192730) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,6 +57,17 @@ ActiveRecord::Schema.define(version: 2022_03_07_225548) do
     t.index ["board_id"], name: "index_columns_on_board_id"
   end
 
+  create_table "due_dates", force: :cascade do |t|
+    t.integer "item_id", null: false
+    t.integer "column_id", null: false
+    t.date "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["column_id"], name: "index_due_dates_on_column_id"
+    t.index ["item_id", "column_id"], name: "index_due_dates_on_item_id_and_column_id", unique: true
+    t.index ["item_id"], name: "index_due_dates_on_item_id"
+  end
+
   create_table "groups", force: :cascade do |t|
     t.string "group_name", default: "New Group", null: false
     t.string "group_color", null: false
@@ -68,12 +79,34 @@ ActiveRecord::Schema.define(version: 2022_03_07_225548) do
     t.index ["item_ids"], name: "index_groups_on_item_ids"
   end
 
+  create_table "item_people", force: :cascade do |t|
+    t.integer "item_id", null: false
+    t.integer "column_id", null: false
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["column_id"], name: "index_item_people_on_column_id"
+    t.index ["item_id", "column_id"], name: "index_item_people_on_item_id_and_column_id", unique: true
+    t.index ["item_id"], name: "index_item_people_on_item_id"
+  end
+
   create_table "items", force: :cascade do |t|
     t.string "item_name"
     t.integer "group_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["group_id"], name: "index_items_on_group_id"
+  end
+
+  create_table "statuses", force: :cascade do |t|
+    t.integer "item_id", null: false
+    t.integer "column_id", null: false
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["column_id"], name: "index_statuses_on_column_id"
+    t.index ["item_id", "column_id"], name: "index_statuses_on_item_id_and_column_id", unique: true
+    t.index ["item_id"], name: "index_statuses_on_item_id"
   end
 
   create_table "users", force: :cascade do |t|

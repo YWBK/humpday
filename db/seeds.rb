@@ -62,42 +62,9 @@ BoardMember.create(
     user_id: demo_user_2.id
 )
 
-demo_group_1 = Group.create(
-    group_name: 'Group Title',
-    group_color: 'blue',
-    board_id: demo_board.id
-)
-demo_group_2 = Group.create(
-    group_name: 'Group Title',
-    group_color: 'purple',
-    board_id: demo_board.id
-)
-
-demo_item_1 = Item.create(
-    item_name: 'Item 1',
-    group_id: demo_group_1.id
-)
-demo_item_2 = Item.create(
-    item_name: 'Item 2',
-    group_id: demo_group_1.id
-)
-demo_item_3 = Item.create(
-    item_name: 'Item 3',
-    group_id: demo_group_1.id
-)
-demo_item_4 = Item.create(
-    item_name: 'Item 4',
-    group_id: demo_group_2.id
-)
-demo_item_5 = Item.create(
-    item_name: 'Item 5',
-    group_id: demo_group_2.id
-)
-
 demo_column_1 = Column.create(
     board_id: demo_board.id
 )
-
 demo_column_2 = Column.create(
     column_name: 'Person',
     column_type: 'person',
@@ -113,3 +80,65 @@ demo_column_4 = Column.create(
     column_type: 'date',
     board_id: demo_board.id
 )
+
+demo_group_1 = Group.create(
+    group_name: 'Group Title',
+    group_color: 'blue',
+    board_id: demo_board.id
+)
+demo_group_2 = Group.create(
+    group_name: 'Group Title',
+    group_color: 'purple',
+    board_id: demo_board.id
+)
+
+demo_item_1 = Item.create(
+    item_name: 'Item 1',
+    group_id: demo_group_1.id
+)
+
+demo_group_1.columns.each do |col| 
+    case col.column_type
+    when 'person'
+        ItemPerson.create(
+            item_id: demo_item_1.id,
+            column_id: col.id,
+            user_id: demo_user.id
+        )
+    when 'status'
+        Status.create(
+            item_id: demo_item_1.id,
+            column_id: col.id,
+            status: 'Working on it'
+        )
+    when 'date'
+        DueDate.create(
+            item_id: demo_item_1.id,
+            column_id: col.id,
+            date: col.created_at.to_date + 2
+        )
+    end
+end
+
+# demo_item_1_people = ItemPerson.create(
+#     item_id: demo_item_1.id,
+#     column_id: demo_column_2.id,
+#     person_id: demo_user.id
+# )
+
+# demo_item_2 = Item.create(
+#     item_name: 'Item 2',
+#     group_id: demo_group_1.id
+# )
+# demo_item_3 = Item.create(
+#     item_name: 'Item 3',
+#     group_id: demo_group_1.id
+# )
+# demo_item_4 = Item.create(
+#     item_name: 'Item 4',
+#     group_id: demo_group_2.id
+# )
+# demo_item_5 = Item.create(
+#     item_name: 'Item 5',
+#     group_id: demo_group_2.id
+# )

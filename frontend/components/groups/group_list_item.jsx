@@ -2,6 +2,7 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import ColumnListItem from '../columns/column_list_item';
 import ItemListItem from '../items/item_list_item';
+import { faBreadSlice } from '@fortawesome/free-solid-svg-icons';
 
 class GroupListItem extends React.Component {
     constructor(props) {
@@ -39,9 +40,22 @@ class GroupListItem extends React.Component {
             .then(() => this.setState({itemName: ''}));
     }
     
+
     render() {
-        const { group, columns, items, deleteColumn, deleteGroup, deleteItem } = this.props; 
+        const { 
+            group, 
+            columns, 
+            items, 
+            itemPeople,
+            statuses,
+            dueDates,
+            currentAccountUsers,
+            deleteColumn, 
+            deleteGroup, 
+            deleteItem } = this.props; 
         // debugger
+
+
         return (
             <li key={group.id} className='group-list-item'>
                 <FontAwesomeIcon 
@@ -58,15 +72,58 @@ class GroupListItem extends React.Component {
                         </ul>
                     </div>
                 <ul className='column-headers'>
-                    {columns.map((col, i) => (
-                        <ColumnListItem 
-                            key={col.id} 
-                            col={col} 
-                            itemCol={columns[0]}
-                            deleteColumn={deleteColumn}
-                            i={i} 
-                        />
-                    ))}
+                    {columns.map((col, i) => {
+                        let content;
+                        switch(col.columnType) {
+                            case 'item':
+                                content = <ul className='item-names'>
+                                    { items ? items.map(item => (
+                                        <ItemListItem key={item.id} item={item} deleteItem={deleteItem} />
+                                    )) : null }
+                                    <li className='add-item'>
+                                        <form>
+                                            <input type='text' placeholder='+ Add Item' value={this.state.itemName} onChange={e => this.update(e)} />
+                                            <FontAwesomeIcon icon="fa-regular fa-circle-check" onClick={e => this.handleSubmit(e)}/>
+                                            <FontAwesomeIcon icon="fa-regular fa-circle-xmark" onClick={() => this.setState({itemName: ''})} />
+                                        </form>
+                                    </li>
+                                </ul>;
+                                break;
+                            case 'person':
+                                content = <ul className='item-people'>
+                                    { itemPeople ? itemPeople.map(itemPerson => (
+                                        <li key={itemPerson.id}>{currentAccountUsers[itemPerson.userId].fullName}</li>
+                                    )): null }
+                                </ul>
+                                break;
+                            case 'status':
+                                content = <ul className='status'>
+                                    { statuses ? statuses.map(status => (
+                                        <li key={status.id}>{status.status}</li>
+                                    )): null }
+                                </ul>
+                                break;
+                            case 'date':
+                                content = <ul className='due-date'>
+                                    { dueDates ? dueDates.map(dueDate => (
+                                        <li key={dueDate.id}>{dueDate.date}</li>
+                                    )): null }
+                                </ul>
+                                break;
+                            default:
+                                return null;
+                        }
+                        return (
+                            <div key={col.id} className='column-wrapper'>
+                                <ColumnListItem
+                                    col={col} 
+                                    itemCol={columns[0]}
+                                    deleteColumn={deleteColumn}
+                                    i={i} />
+                                { content }
+                            </div>
+                        )
+                    })}
                     <li key='add-column' className='column-header' onClick={ () => this.toggleAddCol() }>
                         <FontAwesomeIcon icon={`fa-solid fa-${this.state.addColActive ? 'minus' : 'plus'}`} />
                         <ul className={ this.state.addColActive ? 'addColMenu' : 'addColMenu hidden'}>
@@ -75,18 +132,6 @@ class GroupListItem extends React.Component {
                             <li onClick={e => this.addCol(e, 'Status')}><FontAwesomeIcon icon="fa-solid fa-bars-progress" />Status</li>
                             <li onClick={e => this.addCol(e, 'Date')}><FontAwesomeIcon icon="fa-solid fa-calendar" />Date</li>
                         </ul>
-                    </li>
-                </ul>
-                <ul className='item-names'>
-                    { items ? items.map(item => (
-                        <ItemListItem key={item.id} item={item} deleteItem={deleteItem} />
-                    )) : null }
-                    <li className='add-item'>
-                        <form>
-                            <input type='text' placeholder='+ Add Item' value={this.state.itemName} onChange={e => this.update(e)} />
-                            <FontAwesomeIcon icon="fa-regular fa-circle-check" onClick={e => this.handleSubmit(e)}/>
-                            <FontAwesomeIcon icon="fa-regular fa-circle-xmark" onClick={() => this.setState({itemName: ''})} />
-                        </form>
                     </li>
                 </ul>
             </li>
