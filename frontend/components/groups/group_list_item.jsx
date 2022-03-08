@@ -5,7 +5,11 @@ import ColumnListItem from '../columns/column_list_item';
 class GroupListItem extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { active: false, addColActive: false }
+        this.state = { 
+            active: false, 
+            addColActive: false,
+            itemName: ''
+        }
     }
     toggleActive() {
         this.setState({active: !this.state.active});
@@ -22,9 +26,20 @@ class GroupListItem extends React.Component {
             board_id: currentBoard.id };
         addColumn(column);
     }
+    update(e) {
+        this.setState({itemName: e.currentTarget.value})
+    }
+    handleSubmit(e) {
+        e.preventDefault();
+        if (!this.state.itemName) return null;
+        const { group, addItem } = this.props;
+        const item = Object.assign({}, {item_name: this.state.itemName, group_id: group.id})
+        addItem(item)
+            .then(() => this.setState({itemName: ''}));
+    }
     
     render() {
-        const { group, columns, deleteColumn, deleteGroup, items } = this.props; 
+        const { group, columns, items, deleteColumn, deleteGroup, addItem } = this.props; 
         // debugger
         return (
             <li key={group.id} className='group-list-item'>
@@ -64,6 +79,13 @@ class GroupListItem extends React.Component {
                     { items ? items.map(item => (
                         <li key={item.id}>{item.itemName}</li>
                     )) : null }
+                    <li>
+                        <form>
+                            <input type='text' placeholder='+ Add Item' value={this.state.itemName} onChange={e => this.update(e)} />
+                            <FontAwesomeIcon icon="fa-regular fa-circle-check" onClick={e => this.handleSubmit(e)}/>
+                            <FontAwesomeIcon icon="fa-regular fa-circle-xmark" onClick={() => this.setState({itemName: ''})} />
+                        </form>
+                    </li>
                 </ul>
             </li>
         )

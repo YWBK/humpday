@@ -5,6 +5,7 @@ import workspacesReducer from './workspaces_reducer';
 import boardsReducer from './boards_reducer';
 import columnsReducer from './columns_reducer';
 import groupsReducer from './groups_reducer';
+import itemsReducer from './items_reducer';
 
 const entitiesReducer = combineReducers({
     users: usersReducer,
@@ -12,7 +13,8 @@ const entitiesReducer = combineReducers({
     workspaces: workspacesReducer,
     boards: boardsReducer,
     columns: columnsReducer,
-    groups: groupsReducer
+    groups: groupsReducer,
+    items: itemsReducer
 })
 
 export default entitiesReducer;

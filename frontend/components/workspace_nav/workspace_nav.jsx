@@ -11,11 +11,6 @@ class WorkspaceNav extends React.Component {
         this.toggleNavClass = this.toggleNavClass.bind(this);
         this.toggleListClass = this.toggleListClass.bind(this);
     }
-    // componentDidMount() {
-    //     // debugger
-    //     if (this.props.currentWorkspace) return this.props.fetchWorkspace(this.props.currentWorkspace.id);
-    //     this.props.fetchWorkspace(this.props.match.params.workspaceId);
-    // }
     toggleNavClass() {
         this.setState({ navActive: !this.state.navActive })
     }
@@ -108,27 +103,6 @@ class WorkspaceNav extends React.Component {
                                             updateBoard={updateBoard}
                                             deleteBoard={deleteBoard}                                            
                                         />
-                                        // <div key={board.id} className='board-item-wrapper'>
-                                        //     { this.state.boardNameEdit ?
-                                        //         <div>BOARD NAME</div> :
-                                        //         <Link
-                                        //             className='board-item-link'
-                                        //             to={{
-                                        //                 pathname: `/${currentAccount.account_name }/boards/${board.id}`,
-                                        //                 currentAccount: currentAccount,
-                                        //                 currentWorkspace: currentWorkspace,
-                                        //                 currentBoard: board
-                                        //             }}
-                                        //             onClick={ () => fetchBoard(board.id)} >
-                                        //             <li>{board.boardName}</li>
-                                        //         </Link>
-
-                                        //     }
-                                        //     <div className='board-item-u-d-wrapper'>
-                                        //         <FontAwesomeIcon icon="fa-solid fa-pencil" className='board-item-u-d' onClick={this.toggleBoardNameEdit}/>
-                                        //         <FontAwesomeIcon icon="fa-solid fa-trash" className='board-item-u-d' />
-                                        //     </div>
-                                        // </div>
                                     )
                                 })} 
                                 </ul>
