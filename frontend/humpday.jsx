@@ -9,7 +9,7 @@ import { updateBoard } from './util/board_api_util';
 import { deleteBoard } from './actions/board_actions';
 // import { addColumn } from './util/column_api_util';
 import { addColumn, deleteColumn } from './actions/column_actions';
-import { addItem } from './actions/item_actions';
+import { addItem, deleteItem } from './actions/item_actions';
 import { signup, login, logout } from './actions/session_actions';
 import Root from './components/root';
 // import logo from '../app/assets/images/logo.png';
@@ -46,6 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addColumn = addColumn;
     window.deleteColumn = deleteColumn;
     window.addItem = addItem;
+    window.deleteItem = deleteItem;
     window.getState = store.getState;
     window.dispatch = store.dispatch;
 

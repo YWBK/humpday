@@ -5,3 +5,10 @@ export const addItem = item => (
         data: { item }
     })
 )
+
+export const deleteItem = itemId => (
+    $.ajax({
+        method: 'DELETE',
+        url: `/api/items/${itemId}`,
+    })
+)

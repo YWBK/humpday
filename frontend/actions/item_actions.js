@@ -16,3 +16,11 @@ export const addItem = item => dispatch => {
             )
     )
 }
+export const deleteItem = itemId => dispatch => {
+    return (
+        ItemApiUtil.deleteItem(itemId)
+            .then(
+                board => dispatch(receiveBoard(board))
+            )
+    )
+}

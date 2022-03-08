@@ -11,14 +11,14 @@ class ColumnListItem extends React.Component {
         this.setState({active: !this.state.active});
     }
     render() {
-        const { col, itemCol, deleteColumn } = this.props; 
+        const { col, itemCol, deleteColumn, i } = this.props; 
         return (
-            <li >
+            <li className={ i === 0 ? 'col-0' : 'col' }>
                 <div className='column-header'>
                     {col.columnName}
                     { col.id === itemCol.id ? null : 
                         <FontAwesomeIcon 
-                            icon="fa-solid fa-ellipsis" 
+                            icon="fa-solid fa-caret-down" 
                             className='col-edit-button' 
                             onClick={()=>this.toggleActive()} 
                         /> }
@@ -28,8 +28,8 @@ class ColumnListItem extends React.Component {
                         <ul className={ this.state.active ? 'col-edit' : 'col-edit hidden' }>
                             {/* <li>Rename</li> */}
                             <li onClick={() => deleteColumn(col.id)}>
-                                <span>Delete</span>
                                 <FontAwesomeIcon icon="fa-solid fa-trash" className='column-delete' />
+                                <span>Delete</span>
                             </li>
                         </ul>
                     </div>
