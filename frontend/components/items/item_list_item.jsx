@@ -15,9 +15,9 @@ class ItemListItem extends React.Component {
     render() {
         const { item, deleteItem } = this.props;
         return (
-            <li >
+            <li className='col-0'>
                 <FontAwesomeIcon 
-                    icon="fa-solid fa-circle-chevron-down" 
+                    icon="fa-solid fa-caret-down" 
                     className='item-edit-button' 
                     onClick={()=>this.toggleActive()} />
                 {item.itemName}

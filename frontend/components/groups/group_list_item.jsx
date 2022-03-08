@@ -45,7 +45,7 @@ class GroupListItem extends React.Component {
         return (
             <li key={group.id} className='group-list-item'>
                 <FontAwesomeIcon 
-                    icon="fa-solid fa-circle-chevron-down" 
+                    icon="fa-solid fa-square-caret-down" 
                     className='group-edit-button' 
                     onClick={()=>this.toggleActive()} />
                 { group.groupName}
@@ -58,12 +58,13 @@ class GroupListItem extends React.Component {
                         </ul>
                     </div>
                 <ul className='column-headers'>
-                    {columns.map(col => (
+                    {columns.map((col, i) => (
                         <ColumnListItem 
                             key={col.id} 
                             col={col} 
                             itemCol={columns[0]}
-                            deleteColumn={deleteColumn} 
+                            deleteColumn={deleteColumn}
+                            i={i} 
                         />
                     ))}
                     <li key='add-column' className='column-header' onClick={ () => this.toggleAddCol() }>
@@ -80,7 +81,7 @@ class GroupListItem extends React.Component {
                     { items ? items.map(item => (
                         <ItemListItem key={item.id} item={item} deleteItem={deleteItem} />
                     )) : null }
-                    <li>
+                    <li className='add-item'>
                         <form>
                             <input type='text' placeholder='+ Add Item' value={this.state.itemName} onChange={e => this.update(e)} />
                             <FontAwesomeIcon icon="fa-regular fa-circle-check" onClick={e => this.handleSubmit(e)}/>
