@@ -6,6 +6,7 @@ import { fetchWorkspace, fetchWorkspaces, updateWorkspace, deleteWorkspace } fro
 import { fetchBoard, fetchBoards, updateBoard, deleteBoard } from '../../actions/board_actions';
 import { addColumn, deleteColumn } from '../../actions/column_actions';
 import { addGroup, deleteGroup } from '../../actions/group_actions';
+import { addItem } from '../../actions/item_actions';
 import { addWorkspaceMember } from '../../actions/workspace_member_actions';
 
 const mapSTP = (state, ownProps) => {
@@ -53,6 +54,7 @@ const mapDTP = dispatch => {
         deleteColumn: columnId => dispatch(deleteColumn(columnId)),
         addGroup: group => dispatch(addGroup(group)),
         deleteGroup: groupId => dispatch(deleteGroup(groupId)),
+        addItem: item => dispatch(addItem(item)),
     })
 }
 
