@@ -1,14 +1,14 @@
 import { LOGOUT_CURRENT_USER } from '../actions/session_actions';
 import { RECEIVE_BOARD, REMOVE_BOARD } from '../actions/board_actions';
 
-const groupsReducer = (state = {}, action) => {
+const itemsReducer = (state = {}, action) => {
     Object.freeze(state);
     let nextState = Object.assign({}, state);
     switch (action.type) {
         case RECEIVE_BOARD:
             // debugger
             nextState = {};
-            return action.board.groups;
+            return action.board.items;
         case REMOVE_BOARD:
             nextState = {};
             return nextState;
@@ -20,4 +20,4 @@ const groupsReducer = (state = {}, action) => {
     }
 }
 
-export default groupsReducer
+export default itemsReducer
