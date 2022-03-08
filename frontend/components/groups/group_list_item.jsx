@@ -24,7 +24,8 @@ class GroupListItem extends React.Component {
     }
     
     render() {
-        const { group, columns, deleteColumn, deleteGroup } = this.props; 
+        const { group, columns, deleteColumn, deleteGroup, items } = this.props; 
+        // debugger
         return (
             <li key={group.id} className='group-list-item'>
                 <FontAwesomeIcon 
@@ -58,6 +59,11 @@ class GroupListItem extends React.Component {
                             <li onClick={e => this.addCol(e, 'Date')}><FontAwesomeIcon icon="fa-solid fa-calendar" />Date</li>
                         </ul>
                     </li>
+                </ul>
+                <ul className='item-names'>
+                    {items.map(item => (
+                        <li key={item.id}>{item.itemName}</li>
+                    ))}
                 </ul>
             </li>
         )

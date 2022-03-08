@@ -10,7 +10,6 @@ import { addWorkspaceMember } from '../../actions/workspace_member_actions';
 
 const mapSTP = (state, ownProps) => {
     const isEmpty = Object.keys(state.entities.workspaces).length < 1
-    // debugger
     if (isEmpty) {
         return ({ showType: 'board', boards: null })
     } else {
@@ -19,16 +18,10 @@ const mapSTP = (state, ownProps) => {
         const currentUser = state.entities.users[state.session.currentUserId];
         const currentAccount = currentUser.account;
         const currentAccountUsers = state.entities.users;
-        // debugger
         const currentBoard = state.session.currentBoardId ?
             boards[state.session.currentBoardId] :
             ownProps.location.currentBoard
-        // const currentBoard = ownProps.location.currentBoard ?
-        //     ownProps.location.currentBoard :
-        //     boards[state.session.currentBoardId];
-        // debugger
         const currentWorkspace = workspaces[currentBoard.workspace.id];
-        // debugger
 
         return ({
             showType: 'board',
@@ -60,7 +53,6 @@ const mapDTP = dispatch => {
         deleteColumn: columnId => dispatch(deleteColumn(columnId)),
         addGroup: group => dispatch(addGroup(group)),
         deleteGroup: groupId => dispatch(deleteGroup(groupId)),
-        // fetchAccount: accountId => dispatch(fetchAccount(accountId)),
     })
 }
 

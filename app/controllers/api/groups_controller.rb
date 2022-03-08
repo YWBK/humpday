@@ -4,7 +4,6 @@ class Api::GroupsController < ApplicationController
         @group.group_color = Group::COLORS.sample
         if @group.save
             @board = Board.find_by(id: group_params[:board_id])
-            # debugger
             render 'api/boards/show'
         else
             render json: @board.errors.full_messages, status: 422

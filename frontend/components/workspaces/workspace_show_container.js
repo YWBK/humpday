@@ -8,9 +8,7 @@ import { addWorkspaceMember } from '../../actions/workspace_member_actions';
 
 const mapSTP = (state, ownProps) => {
     const isEmpty = Object.keys(state.entities.workspaces).length < 1
-    // debugger
     if (isEmpty) {
-        // debugger
         return ({ showType: 'workspace', boards: null })
     } else {
         const workspaces = state.entities.workspaces;
@@ -19,7 +17,6 @@ const mapSTP = (state, ownProps) => {
         const currentAccount = currentUser.account;
         const currentAccountUsers = state.entities.users;
         const currentWorkspace = workspaces[state.session.currentWorkspaceId];
-        // debugger
         return ({
             showType: 'workspace',
             workspaces: workspaces,

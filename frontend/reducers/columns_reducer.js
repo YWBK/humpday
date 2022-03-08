@@ -6,13 +6,8 @@ const columnsReducer = (state = {}, action) => {
     let nextState = Object.assign({}, state);
     switch (action.type) {
         case RECEIVE_BOARD:
-            // debugger
             nextState = {};
             return action.board.columns;
-            // action.board.columns.forEach(column => (
-            //     nextState[column.id] = column
-            // ));
-            // return nextState;
         case REMOVE_BOARD:
             nextState = {};
             return nextState;

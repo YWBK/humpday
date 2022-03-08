@@ -20,4 +20,14 @@ json.groups do
     end
 end
 
+json.items do
+    board.items.each do |item|
+        json.set! item.id do
+            json.extract! item, :id, :item_name, :group_id
+        end
+    end
+end
+
+
+
 # debugger
