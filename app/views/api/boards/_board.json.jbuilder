@@ -28,6 +28,33 @@ json.items do
     end
 end
 
+json.itemPeople do
+    board.item_people.each do |item_person|
+        # debugger
+        json.set! item_person.id do
+            json.extract! item_person, :id, :item_id, :column_id, :user_id
+            json.groupId item_person.group.id
+        end
+    end
+end
+
+json.statuses do
+    board.statuses.each do |status|
+        json.set! status.id do
+            json.extract! status, :id, :item_id, :column_id, :status
+            json.groupId status.group.id
+        end
+    end
+end
+
+json.dueDates do
+    board.due_dates.each do |due_date|
+        json.set! due_date.id do
+            json.extract! due_date, :id, :item_id, :column_id, :date
+            json.groupId due_date.group.id
+        end
+    end
+end
 
 
 # debugger

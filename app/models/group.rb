@@ -14,4 +14,6 @@ class Group < ApplicationRecord
     class_name: 'Item',
     dependent: :destroy
 
+    has_many :columns,
+    through: :board
 end

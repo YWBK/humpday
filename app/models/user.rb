@@ -35,7 +35,12 @@ class User < ApplicationRecord
     has_many :boards,
     through: :board_members
 
+    has_many :item_people,
+    foreign_key: :user_id,
+    class_name: 'ItemPerson'
 
+
+    
     def self.find_by_credentials(account_id, email, password)
         user = User.find_by(account_id: account_id, email: email)
         user && user.is_password?(password) ? user : nil

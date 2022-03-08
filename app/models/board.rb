@@ -31,5 +31,14 @@ class Board < ApplicationRecord
 
     has_many :items,
     through: :groups
+
+    has_many :item_people,
+    through: :columns
+
+    has_many :statuses,
+    through: :columns
+
+    has_many :due_dates,
+    through: :columns
 end
     
