@@ -1,6 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import ColumnListItem from '../columns/column_list_item';
+import ItemListItem from '../items/item_list_item';
 
 class GroupListItem extends React.Component {
     constructor(props) {
@@ -39,7 +40,7 @@ class GroupListItem extends React.Component {
     }
     
     render() {
-        const { group, columns, items, deleteColumn, deleteGroup, addItem } = this.props; 
+        const { group, columns, items, deleteColumn, deleteGroup, deleteItem } = this.props; 
         // debugger
         return (
             <li key={group.id} className='group-list-item'>
@@ -51,8 +52,8 @@ class GroupListItem extends React.Component {
                 <div className='group-edit-wrapper'>
                         <ul className={ this.state.active ? 'group-edit' : 'group-edit hidden' }>
                             <li onClick={() => deleteGroup(group.id)}>
-                                <span>Delete</span>
                                 <FontAwesomeIcon icon="fa-solid fa-trash" className='column-delete' />
+                                <span>Delete</span>
                             </li>
                         </ul>
                     </div>
@@ -77,7 +78,7 @@ class GroupListItem extends React.Component {
                 </ul>
                 <ul className='item-names'>
                     { items ? items.map(item => (
-                        <li key={item.id}>{item.itemName}</li>
+                        <ItemListItem key={item.id} item={item} deleteItem={deleteItem} />
                     )) : null }
                     <li>
                         <form>

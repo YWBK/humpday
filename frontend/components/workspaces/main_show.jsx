@@ -92,7 +92,8 @@ export default class MainShow extends React.Component {
                 addColumn,
                 deleteColumn,
                 deleteGroup, 
-                addItem } = this.props;
+                addItem, 
+                deleteItem } = this.props;
         if (boards) {
             let content;
             if (showType === 'workspace') {
@@ -135,6 +136,7 @@ export default class MainShow extends React.Component {
                                     deleteColumn={deleteColumn}
                                     deleteGroup={deleteGroup}
                                     addItem={addItem}
+                                    deleteItem={deleteItem}
                                 />
                             )
                         })}

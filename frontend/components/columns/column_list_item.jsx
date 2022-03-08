@@ -28,8 +28,8 @@ class ColumnListItem extends React.Component {
                         <ul className={ this.state.active ? 'col-edit' : 'col-edit hidden' }>
                             {/* <li>Rename</li> */}
                             <li onClick={() => deleteColumn(col.id)}>
-                                <span>Delete</span>
                                 <FontAwesomeIcon icon="fa-solid fa-trash" className='column-delete' />
+                                <span>Delete</span>
                             </li>
                         </ul>
                     </div>
