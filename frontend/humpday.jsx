@@ -11,6 +11,7 @@ import { deleteBoard } from './actions/board_actions';
 import { addColumn, deleteColumn } from './actions/column_actions';
 import { addItem, deleteItem } from './actions/item_actions';
 import { signup, login, logout } from './actions/session_actions';
+import { updateStatus, updateItemPerson } from './actions/cell_actions';
 import Root from './components/root';
 // import logo from '../app/assets/images/logo.png';
 
@@ -47,6 +48,8 @@ document.addEventListener('DOMContentLoaded', () => {
     window.deleteColumn = deleteColumn;
     window.addItem = addItem;
     window.deleteItem = deleteItem;
+    window.updateStatus = updateStatus;
+    window.updateItemPerson = updateItemPerson;
     window.getState = store.getState;
     window.dispatch = store.dispatch;
 

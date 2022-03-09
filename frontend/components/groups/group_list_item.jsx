@@ -1,8 +1,8 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import ColumnListItem from '../columns/column_list_item';
+import ColumnHeaderItem from '../columns/column_header_item';
 import ItemListItem from '../items/item_list_item';
-import CellItem from '../cells/cell_item';
+import CellList from '../cells/cell_list';
 
 class GroupListItem extends React.Component {
     constructor(props) {
@@ -50,11 +50,13 @@ class GroupListItem extends React.Component {
             statuses,
             dueDates,
             currentAccountUsers,
+            currentBoard,
             deleteColumn, 
             deleteGroup, 
-            deleteItem } = this.props; 
-        // debugger
-
+            deleteItem, 
+            updateStatus, 
+            updateItemPerson, 
+            updateDueDate } = this.props; 
 
         return (
             <li key={group.id} className='group-list-item'>
@@ -89,42 +91,21 @@ class GroupListItem extends React.Component {
                                     </li>
                                 </ul>;
                                 break;
-                            case 'person':
-                                if (!itemPeople) break;
-                                const filteredItemPpl = itemPeople.filter(itemPerson => itemPerson.columnId === col.id);
-                                // debugger
-                                content = <ul className='item-people'>
-                                    {filteredItemPpl.map(filteredItemPerson => (
-                                        <li key={filteredItemPerson.id}>
-                                            {!filteredItemPerson.userId ? null : currentAccountUsers[filteredItemPerson.userId].fullName}
-                                        </li>
-                                    ))}
-                                </ul>
-                                break;
-                            case 'status':
-                                if (!statuses) break;
-                                const filteredStatuses = statuses.filter(status =>  status.columnId === col.id);
-                                content = <ul className='status'>
-                                    {filteredStatuses.map(filteredStatus => (
-                                        <li key={filteredStatus.id}>{filteredStatus.status}</li>
-                                    ))}
-                                </ul>
-                                break;
-                            case 'date':
-                                if (!dueDates) break;
-                                const filteredDates = dueDates.filter(dueDate => dueDate.columnId === col.id)
-                                content = <ul className='due-date'>
-                                    {filteredDates.map(filteredDate => (
-                                        <li key={filteredDate.id}>{filteredDate.date}</li>
-                                    ))}
-                                </ul>
-                                break;
                             default:
-                                return null;
+                                content = <CellList 
+                                    col={col}
+                                    currentAccountUsers={currentAccountUsers} 
+                                    currentBoard={currentBoard}
+                                    itemPeople={itemPeople}
+                                    statuses={statuses}
+                                    dueDates={dueDates}
+                                    updateStatus={updateStatus}
+                                    updateItemPerson={updateItemPerson}
+                                    updateDueDate={updateDueDate} />
                         }
                         return (
                             <div key={col.id} className='column-wrapper'>
-                                <ColumnListItem
+                                <ColumnHeaderItem
                                     col={col} 
                                     itemCol={columns[0]}
                                     deleteColumn={deleteColumn}

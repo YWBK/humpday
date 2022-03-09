@@ -8,6 +8,7 @@ import { addColumn, deleteColumn } from '../../actions/column_actions';
 import { addGroup, deleteGroup } from '../../actions/group_actions';
 import { addItem, deleteItem } from '../../actions/item_actions';
 import { addWorkspaceMember } from '../../actions/workspace_member_actions';
+import { updateStatus, updateItemPerson, updateDueDate } from '../../actions/cell_actions';
 
 const mapSTP = (state, ownProps) => {
     const isEmpty = Object.keys(state.entities.workspaces).length < 1
@@ -56,6 +57,9 @@ const mapDTP = dispatch => {
         deleteGroup: groupId => dispatch(deleteGroup(groupId)),
         addItem: item => dispatch(addItem(item)),
         deleteItem: itemId => dispatch(deleteItem(itemId)),
+        updateStatus: status => dispatch(updateStatus(status)),
+        updateItemPerson: itemPerson => dispatch(updateItemPerson(itemPerson)),
+        updateDueDate: dueDate => dispatch(updateDueDate(dueDate)),
     })
 }
 

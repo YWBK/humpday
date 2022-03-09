@@ -1,5 +1,6 @@
 class Api::StatusesController < ApplicationController
     def update
+        # debugger
         @status = current_user.statuses.find_by(id: params[:id])
         if @status.update(status_params)
             @board = @status.board
