@@ -50,9 +50,13 @@ class GroupListItem extends React.Component {
             statuses,
             dueDates,
             currentAccountUsers,
+            currentBoard,
             deleteColumn, 
             deleteGroup, 
-            deleteItem } = this.props; 
+            deleteItem, 
+            updateStatus, 
+            updateItemPerson, 
+            updateDueDate } = this.props; 
 
         return (
             <li key={group.id} className='group-list-item'>
@@ -91,9 +95,13 @@ class GroupListItem extends React.Component {
                                 content = <CellList 
                                     col={col}
                                     currentAccountUsers={currentAccountUsers} 
+                                    currentBoard={currentBoard}
                                     itemPeople={itemPeople}
                                     statuses={statuses}
-                                    dueDates={dueDates} />
+                                    dueDates={dueDates}
+                                    updateStatus={updateStatus}
+                                    updateItemPerson={updateItemPerson}
+                                    updateDueDate={updateDueDate} />
                         }
                         return (
                             <div key={col.id} className='column-wrapper'>

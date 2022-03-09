@@ -1,7 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-class CellListItem extends React.Component {
+class StatusItem extends React.Component {
     constructor(props) {
         super(props);
         this.state = {active: false}
@@ -10,7 +10,7 @@ class CellListItem extends React.Component {
         this.setState({active: !this.state.active});
     }
     render() {
-        const { status } = this.props; 
+        const { status, updateStatus } = this.props; 
         const statusOptions = ['Working on it', 'Stuck', 'Done', '-'];
         return (
             <li onClick={() => this.toggleActive()}>
@@ -20,6 +20,10 @@ class CellListItem extends React.Component {
                         <li 
                             key={i} 
                             className='status-edit-option'
+                            onClick={() => {
+                                const updatedStatus = {id: status.id, status: statusOption}
+                                return updateStatus(updatedStatus);
+                            }}
                         >
                             {statusOption}
                         </li>
@@ -30,4 +34,4 @@ class CellListItem extends React.Component {
     }
 }
 
-export default CellListItem;
+export default StatusItem;

@@ -10,7 +10,7 @@ export const updateItemPerson = itemPerson => (
     $.ajax({
         method: 'PATCH',
         url: `/api/item_people/${itemPerson.id}`,
-        data: { itemPerson }
+        data: { item_person: itemPerson }
     })
 )
 
@@ -18,6 +18,6 @@ export const updateDueDate = dueDate => (
     $.ajax({
         method: 'PATCH',
         url: `/api/due_dates/${dueDate.id}`,
-        data: { dueDate }
+        data: { due_date: dueDate }
     })
 )

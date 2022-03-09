@@ -4,6 +4,14 @@ json.workspace do
     json.extract! board.workspace, :id, :workspace_name, :workspace_owner_id, :board_ids
 end
 
+json.members do
+    board.users.each do |user|
+        json.set! user.id do
+            json.extract! user, :id, :full_name, :email
+        end
+    end
+end
+
 json.columns do
     board.columns.each do |column|
         json.set! column.id do

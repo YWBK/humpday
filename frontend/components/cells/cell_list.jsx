@@ -1,30 +1,31 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import CellListItem from './cell_list_item';
+import StatusItem from './status_item';
+import ItemPersonItem from './item_person_item';
+// import StatusItem from './status_item';
 
 class CellList extends React.Component {
     render() {
-        const { col, currentAccountUsers, itemPeople, statuses, dueDates } = this.props;
+        const { col, currentBoard, itemPeople, statuses, dueDates, updateStatus, updateItemPerson, updateDueDate } = this.props;
         let content;
         switch(col.columnType) {
             case 'person':
                 if (!itemPeople) break;
                 const filteredItemPpl = itemPeople.filter(itemPerson => itemPerson.columnId === col.id);
-                // debugger
+                const boardMembers = currentBoard.members;
                 content = <ul className='item-people'>
                     {filteredItemPpl.map(filteredItemPerson => (
-                        <li key={filteredItemPerson.id}>
-                            {!filteredItemPerson.userId ? null : currentAccountUsers[filteredItemPerson.userId].fullName}
-                        </li>
+                        <ItemPersonItem key={filteredItemPerson.id} itemPerson={filteredItemPerson} boardMembers={boardMembers} updateItemPerson={updateItemPerson} />
                     ))}
                 </ul>
                 break;
             case 'status':
                 if (!statuses) break;
+                // debugger
                 const filteredStatuses = statuses.filter(status =>  status.columnId === col.id);
                 content = <ul className='status'>
                     {filteredStatuses.map(filteredStatus => (
-                        <CellListItem key={filteredStatus.id} cellType={'status'} status={filteredStatus} />
+                        <StatusItem key={filteredStatus.id} status={filteredStatus} updateStatus={updateStatus} />
                         // <li key={filteredStatus.id}>{filteredStatus.status}</li>
                     ))}
                 </ul>

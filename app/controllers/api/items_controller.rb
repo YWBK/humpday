@@ -13,7 +13,7 @@ class Api::ItemsController < ApplicationController
                     Status.create(
                         item_id: @item.id,
                         column_id: col.id,
-                        status: 'Working on it'
+                        status: '-'
                     )
                 when 'date'
                     DueDate.create(
