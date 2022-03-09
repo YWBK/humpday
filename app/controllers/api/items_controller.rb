@@ -19,6 +19,7 @@ class Api::ItemsController < ApplicationController
                     DueDate.create(
                         item_id: @item.id,
                         column_id: col.id
+                        # date: 
                     )
                 end
             end
