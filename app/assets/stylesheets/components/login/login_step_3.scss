@@ -41,6 +41,23 @@
     outline: 1px solid $signup-blue;
 }
 
+.login-form-3-form {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    align-items: center;
+
+    label {
+        width: 72%;
+        display: flex;
+        align-self: flex-start;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 2%;
+    }
+
+}
+
 .login-next {
     margin: auto;
     margin-top: 15px;

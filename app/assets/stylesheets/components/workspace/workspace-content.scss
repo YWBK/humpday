@@ -1,5 +1,8 @@
-#workspace-content {
+.workspace-content {
+    flex-grow: 1;
     display: flex;
-    background-color: $workspace-bgc;
+    flex-direction: column;
+    align-items: center;
+    background-color: $white-3;
 }
 

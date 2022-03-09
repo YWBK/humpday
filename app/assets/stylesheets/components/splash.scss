@@ -80,6 +80,10 @@
     &:hover {
         color: $light-grey;
         background-color: $light-purple-hover;
+        .signup-arrow {
+            transition: 0.5s;
+            transform: translateX(5px);
+        }
     }
 }
 
@@ -97,6 +101,10 @@
     &:hover {
         color: $light-grey;
         background: linear-gradient(to right, $medium-purple-hover 30%, $lightest-purple-hover);
+        .signup-arrow {
+            transition: 0.5s;
+            transform: translateX(10px);
+        }
     }
 }
 
@@ -154,54 +162,71 @@
 
 #splash-checkbox-1:hover {
     border-color: $magenta;
+    transition: 0.2s;
     .splash-checkbox-icon {
         color: $magenta;
     }
 }
 #splash-checkbox-2:hover {
     border-color: $purple;
+    transition: 0.2s;
+
     .splash-checkbox-icon {
         color: $purple;
     }
 }
 #splash-checkbox-3:hover {
     border-color: $orange;
+    transition: 0.2s;
+
     .splash-checkbox-icon {
         color: $orange;
     }
 }
 #splash-checkbox-4:hover {
     border-color: $fuschia;
+    transition: 0.2s;
+
     .splash-checkbox-icon {
         color: $fuschia;
     }
 }
 #splash-checkbox-5:hover {
     border-color: $blue;
+    transition: 0.2s;
+
     .splash-checkbox-icon {
         color: $blue;
     }
 }
 #splash-checkbox-6:hover {
     border-color: $turqoise;
+    transition: 0.2s;
+
     .splash-checkbox-icon {
         color: $turqoise;
     }
 }
 #splash-checkbox-7:hover {
     border-color: $skyblue;
+    transition: 0.2s;
+
     .splash-checkbox-icon {
         color: $skyblue;
     }
 }
 #splash-checkbox-8:hover {
     border-color: $blush;
+    transition: 0.2s;
+
     .splash-checkbox-icon {
         color: $blush;
     }
 }
 #splash-checkbox-9:hover {
     border-color: $teal;
+    transition: 0.2s;
+
     .splash-checkbox-icon {
         color: $teal;
     }

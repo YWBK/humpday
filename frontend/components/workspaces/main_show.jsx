@@ -103,7 +103,7 @@ export default class MainShow extends React.Component {
             if (showType === 'workspace') {
                 content = 
                 <div className='workspace-content' >
-                    <div className='workspace-cover'>COVER IMAGE TO GO HERE</div>
+                    <div className='workspace-cover'></div>
                     <div className='workspace-name'>
                         <input 
                             type='text' 

@@ -7,10 +7,29 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 class WorkspaceNav extends React.Component {
     constructor(props) {
         super(props);
+        this.workspaceList = React.createRef();
         this.state = { navActive: true, listActive: false };
         this.toggleNavClass = this.toggleNavClass.bind(this);
         this.toggleListClass = this.toggleListClass.bind(this);
+        this.handleOuterClick = this.handleOuterClick.bind(this);
     }
+    componentDidMount() {
+        document.addEventListener('mousedown', this.handleOuterClick);
+    }
+    componentWillUnmount() {
+        document.removeEventListener('mousedown', this.handleOuterClick);
+    }
+    handleOuterClick(e) {
+        if (
+            this.workspaceList.current &&
+            !this.workspaceList.current.contains(e.target)
+        ) {
+            this.setState({
+                listActive: false,
+            })
+        }
+    }
+
     toggleNavClass() {
         this.setState({ navActive: !this.state.navActive })
     }
@@ -59,11 +78,15 @@ class WorkspaceNav extends React.Component {
             return (
                 <div className='workspace-nav-wrapper' onClick={ e => e.stopPropagation() }>
                     <div className={ this.state.navActive ? 'workspace-nav' : 'workspace-nav hidden' } >
-                        <div className='workspace-nav-current' onClick={this.toggleListClass} >
-                            My Workspaces
-                            <FontAwesomeIcon icon={`fa-solid fa-chevron-${this.state.listActive ? 'up' : 'down'}`} />    
+                        <div className='workspace-nav-current'  >
+                            <span>Workspace</span>
+                            <div className='workspace-nav-selector' onClick={this.toggleListClass}>
+                                <span>{ currentWorkspace ? currentWorkspace.workspaceName : 'Main Workspace' }</span>
+                                <FontAwesomeIcon icon={`fa-solid fa-chevron-${this.state.listActive ? 'up' : 'down'}`} />    
+                            </div>
                         </div>
-                        <div className={ this.state.listActive ? 'workspace-nav-dropdown' : 'workspace-nav-dropdown hidden' }>
+                        <div className={ this.state.listActive ? 'workspace-nav-dropdown' : 'workspace-nav-dropdown hidden' } ref={this.workspaceList}>
+                            <span>My workpaces</span>
                             <ul>
                                 { workspaces.map(workspace => {
                                     return (
@@ -76,17 +99,16 @@ class WorkspaceNav extends React.Component {
                                     )
                                 })}
                             </ul>
-                            <div className='workspace-nav-create' onClick={()=> this.props.openModal('workspace')}>
+                            <div className='workspace-nav-c-r' onClick={()=> this.props.openModal('workspace')}>
                                 + Add workspace
                             </div>
                             { currentWorkspace === workspaces[0] ? '' :
-                            <div className='workspace-nav-delete' onClick={ (e) => this.handleDelete(e) }>
+                            <div className='workspace-nav-c-r' onClick={ (e) => this.handleDelete(e) }>
                                  - Delete workspace
                             </div> }
                         </div>
 
                         <div className='boards-wrapper' >
-                            My Boards
                             <div className='workspace-nav-create-board' onClick={()=> this.props.openModal('board')}>
                                 + Add board
                             </div>
@@ -111,7 +133,7 @@ class WorkspaceNav extends React.Component {
 
                     </div>
                     <button onClick={this.toggleNavClass} >
-                        <FontAwesomeIcon icon={`fa-solid fa-chevron-${this.state.navActive ? 'left' : 'right'}`} />
+                        <FontAwesomeIcon icon={`fa-solid fa-chevron-${this.state.navActive ? 'left' : 'right'}`} className='workspace-arrow' />
                     </button>
                 </div>
             )

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 const WorkspaceListItem = ({ workspace, currentAccount, fetchWorkspace }) => {
     return (
+        <li className='workspace-link-wrapper'>
             <Link 
                 to={{
                     pathname: `/${currentAccount.accountName}/workspaces/${workspace.id}`,
@@ -10,9 +11,11 @@ const WorkspaceListItem = ({ workspace, currentAccount, fetchWorkspace }) => {
                     currentAccount: currentAccount,
                     currentWorkspace: workspace,
                 }}
-                onClick={ ()=> fetchWorkspace(workspace.id)}>
-                <li>{workspace.workspaceName}</li>
+                onClick={ ()=> fetchWorkspace(workspace.id)}
+                className='workspace-link'>
+                {workspace.workspaceName}
             </Link>
+        </li>
 
     );
 }

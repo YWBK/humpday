@@ -1,14 +1,24 @@
 .workspace-nav-wrapper {
     display: flex;
-    background-color: $main-bgc;
+    background-color: $white-2;
 
     button {
+        position: relative;
+        top: 20px;
+        left: 10px;
         height: 20px;
         width: 20px;
         align-self: flex-start;
         border: 1px solid $login-grey;
         border-radius: 10px;
-        background-color: $workspace-bgc;
+        background-color: $white-3;
+        transition: 0.2s;
+        &:hover {
+            background-color: $blue;
+            .workspace-arrow {
+                color: $white;
+            }
+        }
     }
 }
 
@@ -19,6 +29,19 @@
 .workspace-nav {
     display: flex;
     flex-direction: column;
+    margin: 10px 0 0 10px;
+    > div > span, div, ul {
+        padding: 5px;
+    }
+}
+
+.workspace-nav-selector {
+    display: flex;
+    justify-content: space-between;
+    
+    border: 1px solid $login-darker-grey;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
 .workspace-nav-dropdown-hidden {
@@ -26,22 +49,53 @@
 }
 
 .workspace-nav-dropdown {
+    position: fixed;
+
     display: flex;
+    top: 60px; left: 90px;
     flex-direction: column;
+
+    width: 200px;
+    background-color: $white-3;
+    border-radius: 10px;
+    box-shadow: 0 0 4px $login-dark-grey;
+
 }
 
-.board-item-wrapper {
-    display: flex;
-    justify-content: space-between;
+.workspace-nav-wrapper .workspace-link-wrapper {
+    margin: 5px;
+    // width: 100%;
+    .workspace-link {
+        text-decoration: none;
+        color: black;
+    }
+    &:hover {
+        background-color: $login-grey;
+        border-radius: 5px;
+    }
 }
 
-.board-item-u-d-wrapper {
-    display: flex;
-    justify-content: space-evenly;
+.workspace-nav-c-r {
+    cursor: pointer;
+    &:hover {
+        background-color: $login-grey;
+        border-radius: 5px;
+
+    }
 }
 
-.board-item-u-d {
-    color: $side-nav;
-}
+// .board-item-wrapper {
+//     display: flex;
+//     justify-content: space-between;
+// }
+
+// .board-item-u-d-wrapper {
+//     display: flex;
+//     justify-content: space-evenly;
+// }
+
+// .board-item-u-d {
+//     color: $side-nav;
+// }
 
 

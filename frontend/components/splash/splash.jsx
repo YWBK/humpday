@@ -1,6 +1,8 @@
 import React from 'react';
 import  { Link, } from 'react-router-dom';
 import SplashListItem from './splash_list_item';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 
 const Splash = ({ login, history }) => {
     const demoUser = {email: 'user@demo.com', password: 'Demo123'};
@@ -11,10 +13,16 @@ const Splash = ({ login, history }) => {
         return history.push({pathname: '/users/signup'});
     }
     const getStarted = (
-        <button className='get-started-btn-1' onClick={handleClick}>Get Started</button>
+        <button className='get-started-btn-1' onClick={handleClick}>
+            Get Started
+            <FontAwesomeIcon icon="fa-solid fa-arrow-right-long" className='signup-arrow' />
+        </button>
     )
     const getStarted2 = (
-        <button className='get-started-btn-2' onClick={handleClick}>Get Started</button>
+        <button className='get-started-btn-2' onClick={handleClick}>
+            Get Started
+            <FontAwesomeIcon icon="fa-solid fa-arrow-right-long" className='signup-arrow' />
+        </button>
     )
 
     const splashListItems = [

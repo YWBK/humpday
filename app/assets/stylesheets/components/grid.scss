@@ -2,8 +2,8 @@
     width: 100vw;
     height: 100vh;
     display: grid;
-    grid-template-rows: 1fr 10fr;
-    grid-template-columns: 60px 10fr;
+    grid-template-rows: 70px 10fr;
+    grid-template-columns: 70px 10fr;
     grid-template-areas:
         "nav-corner splash-nav
         side-nav main-content";
@@ -63,6 +63,12 @@
     background-color: $side-nav;
 }
 
+.welcome-bar {
+    grid-row: 1;
+    grid-column: 2;
+    background-color: $white-3;
+
+}
 
 #splash-main {
     grid-column: 1 / span 2;
@@ -72,7 +78,14 @@
 .main-content {
     grid-row: 1 / span 2;
     grid-column: 2;
-    background-color: $main-bgc;
+    background-color: $white-2;
+    display: flex;
+}
+
+#home-page-bg {
+    grid-row: 2;
+    grid-column: 2;
+    background-color: $white-2;
     display: flex;
 }
 

@@ -60,23 +60,25 @@ export default class LoginForm3 extends React.Component {
                         }
                     <h3><span className='log'>Log</span> In</h3>
                     <p>{this.state.accountName}</p>
-                    <form onSubmit={this.handleSubmit}>
-                        <label>Email
-                            <input 
-                                type='text' 
-                                value={this.state.email} 
-                                onChange={this.update('email')} 
-                            />
-                        </label>
-                        <br/>
-                        <label>Password
-                            <input 
-                                type='password' 
-                                value={this.state.password} 
-                                onChange={this.update('password')} 
-                            />
-                        </label>
-                        <br/>
+                    <form className='login-form-3-form' onSubmit={this.handleSubmit}>
+                            <label>
+                                <span>Email</span>
+                                <input 
+                                    type='text' 
+                                    value={this.state.email} 
+                                    onChange={this.update('email')} 
+                                />
+                            </label>
+                            {/* <br/> */}
+                            <label>
+                                <span>Password</span>
+                                <input 
+                                    type='password' 
+                                    value={this.state.password} 
+                                    onChange={this.update('password')} 
+                                />
+                            </label>
+                        {/* <br/> */}
                         <button className='login-next' type='submit'>Log In</button>
                     </form>
                     <br/>
