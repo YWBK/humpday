@@ -18,7 +18,7 @@ export default class LoginForm1 extends React.Component {
             this.props.fetchUserByEmail(this.state.email)
                 .then(
                     () => this.props.history.push({pathname: '/auth/login_humpday/enter_slug', email: this.state.email }),
-                    error => {debugger}
+                    error => {this.setState({ error: error.responseJSON })}
                 )
         } else {
             this.setState({ error: 'Unknown error, please try again' });

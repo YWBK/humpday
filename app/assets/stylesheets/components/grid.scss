@@ -35,8 +35,27 @@
 .splash-content {
     grid-row: 2;
     grid-column: 1 / span 2;
-
 }
+
+.login-form-container {
+    grid-row: 2;
+    grid-column: 1 / span 2;
+}
+
+.login-form-2-wrapper {
+    grid-row: 2;
+    grid-column: 1 / span 2;  
+}
+.login-form-3-wrapper {
+    grid-row: 2;
+    grid-column: 1 / span 2;  
+}
+
+.signup-modal {
+    grid-row: 2;
+    grid-column: 1 / span 2;  
+}
+
 
 .side-nav {
     grid-row: 1 / span 2;

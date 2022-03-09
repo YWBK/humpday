@@ -28,7 +28,10 @@ export default class LoginForm3 extends React.Component {
         const user = Object.assign({}, {email: this.state.email, password: this.state.password});
         const accountName = Object.assign({}, {account_name: this.state.accountName});
        if (this.isValidEmail(this.state.email)) {
-           this.props.login(user, accountName);  
+           this.props.login(user, accountName)
+            .then(null, error => {
+                this.setState({ error: error.errors.responseJSON[0]})
+            });  
        } else {
            this.setState({ error: 'Unknown error, please try again'});
        }
@@ -44,13 +47,17 @@ export default class LoginForm3 extends React.Component {
     }
 
     render() {
-        const { errors, login } = this.props;
+        const { login } = this.props;
         const login3Form = 
             <div>
                 <div className='nav-bar'>
                     <h2><Link className='nav-link' style={{ textDecoration: 'none' }} to='/'><span>humpday</span></Link></h2>
                 </div>
                 <div className='login-form-3-container'>
+                        {!!this.state.error ? 
+                            <p className='login-email-error'>{this.state.error}</p> :
+                            <p className='login-email-error-none'><br/></p>
+                        }
                     <h3><span className='log'>Log</span> In</h3>
                     <p>{this.state.accountName}</p>
                     <form onSubmit={this.handleSubmit}>
@@ -100,15 +107,6 @@ export default class LoginForm3 extends React.Component {
                                 Login to another account
                         </Link>
                     </div>
-                    <ul>
-                        {!!this.state.error ? 
-                            <p className='login-email-error'>{this.state.error}</p> :
-                            <p className='login-email-error-none'><br/></p>
-                        }
-                        {errors.map((error, i) => (
-                            <li key={i}>{error}</li>
-                        ))}
-                    </ul>
                 </div>
                 
             </div>

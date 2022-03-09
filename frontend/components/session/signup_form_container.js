@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import SignupForm from './signup_form';
 import { login } from '../../actions/session_actions';
-
+import { fetchUserByEmail } from '../../actions/user_actions'
 
 const mapSTP = (state, ownProps) => {
     return ({
@@ -11,6 +11,7 @@ const mapSTP = (state, ownProps) => {
 
 const mapDTP = dispatch => {
     return ({
+        fetchUserByEmail: email => dispatch(fetchUserByEmail(email)),
         login: (user, accountName) => dispatch(login(user, accountName))
     })
 }

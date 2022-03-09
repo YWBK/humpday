@@ -1,10 +1,12 @@
 // @import './splash.scss';
 @import './grid.scss';
 @import './splash.scss';
+@import './login/login.scss';
+@import './signup/signup.scss';
 @import './side-nav.scss';
-// @import './workspace/workspace-nav.scss';
-// @import './workspace/workspace-content.scss';
-// @import './board/table-content.scss';
+@import './workspace/workspace-nav.scss';
+@import './workspace/workspace-content.scss';
+@import './board/table-content.scss';
 
 .hidden {
     display: none;
