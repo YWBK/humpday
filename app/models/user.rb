@@ -35,10 +35,18 @@ class User < ApplicationRecord
     has_many :boards,
     through: :board_members
 
-    has_many :item_people,
+    has_many :assigned_items,
     foreign_key: :user_id,
     class_name: 'ItemPerson'
 
+    has_many :item_people,
+    through: :boards
+
+    has_many :statuses,
+    through: :boards
+    
+    has_many :due_dates,
+    through: :boards
 
     
     def self.find_by_credentials(account_id, email, password)

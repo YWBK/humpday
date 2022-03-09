@@ -7,4 +7,7 @@ class Status < ApplicationRecord
 
     has_one :group,
     through: :item
+
+    has_one :board,
+    through: :column
 end

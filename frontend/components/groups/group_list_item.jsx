@@ -91,15 +91,14 @@ class GroupListItem extends React.Component {
                                 break;
                             case 'person':
                                 if (!itemPeople) break;
-                                const filteredItemPpl = itemPeople.filter(itemPerson => itemPerson.column_id === col.id);
+                                const filteredItemPpl = itemPeople.filter(itemPerson => itemPerson.columnId === col.id);
                                 // debugger
                                 content = <ul className='item-people'>
                                     {filteredItemPpl.map(filteredItemPerson => (
-                                        <li key={filteredItemPerson.id}>{currentAccountUsers[filteredItemPerson.userId].fullName}</li>
+                                        <li key={filteredItemPerson.id}>
+                                            {!filteredItemPerson.userId ? null : currentAccountUsers[filteredItemPerson.userId].fullName}
+                                        </li>
                                     ))}
-                                    {/* { itemPeople ? itemPeople.map(itemPerson => (
-                                        <li key={itemPerson.id}>{currentAccountUsers[itemPerson.userId].fullName}</li>
-                                    )): null } */}
                                 </ul>
                                 break;
                             case 'status':
@@ -118,9 +117,6 @@ class GroupListItem extends React.Component {
                                     {filteredDates.map(filteredDate => (
                                         <li key={filteredDate.id}>{filteredDate.date}</li>
                                     ))}
-                                    {/* { dueDates ? dueDates.map(dueDate => (
-                                        <li key={dueDate.id}>{dueDate.date}</li>
-                                    )): null } */}
                                 </ul>
                                 break;
                             default:

@@ -12,6 +12,9 @@ Rails.application.routes.draw do
     resources :columns, only: [:create, :destroy]
     resources :groups, only: [:create, :destroy]
     resources :items, only: [:create, :destroy]
+    resources :item_people, only: [:update]
+    resources :statuses, only: [:update]
+    resources :due_dates, only: [:update]
     get 'accounts_by_name/:account_name', to: 'accounts#show_by_name', as: 'account_name'
   end
 end
