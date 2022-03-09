@@ -2,7 +2,7 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
-class ColumnListItem extends React.Component {
+class ColumnHeaderItem extends React.Component {
     constructor(props) {
         super(props);
         this.state = { active: false }
@@ -39,4 +39,4 @@ class ColumnListItem extends React.Component {
     }
 }
 
-export default ColumnListItem
+export default ColumnHeaderItem

@@ -1,5 +1,5 @@
 class Status < ApplicationRecord
-    STATUSES = ['Working on it', 'Stuck', 'Done', '']
+    STATUSES = ['Working on it', 'Stuck', 'Done', '-']
     validates :status, inclusion: { in: STATUSES }
 
     belongs_to :item
