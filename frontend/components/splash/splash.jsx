@@ -36,7 +36,7 @@ const Splash = ({ login, history }) => {
                     <h2><Link className='nav-link' style={{ textDecoration: 'none' }} to='/'><span>humpday</span>.com</Link></h2> 
                 </div>
                 <div className='right-nav'>
-                    <span id='demo-login-link' onClick={()=> login(demoUser, demoAcct)}>Demo User</span>
+                    <span className='nav-link' id='demo-login-link' onClick={()=> login(demoUser, demoAcct)}>Demo User</span>
                     <Link className='nav-link' style={{ textDecoration: 'none' }} to='/auth/login_humpday'>Log in</Link>
                     <div className='get-started-btn-wrapper'>{getStarted}</div>
                 </div>

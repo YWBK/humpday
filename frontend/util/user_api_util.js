@@ -11,3 +11,10 @@ export const fetchUser = userId => (
         url: `/api/users/${userId}`
     })
 )
+export const fetchUserByEmail = email => (
+    $.ajax({
+        method: 'GET',
+        url: `/api/users_by_email/${email}`,
+        data: {user: { email: email }}
+    })
+)

@@ -11,8 +11,15 @@ export default class LoginForm1 extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
+        // debugger
         if (this.isValidEmail(this.state.email)) {
-            this.props.history.push({pathname: '/auth/login_humpday/enter_slug', email: this.state.email })
+            // this.props.history.push({pathname: '/auth/login_humpday/enter_slug', email: this.state.email })
+
+            this.props.fetchUserByEmail(this.state.email)
+                .then(
+                    () => this.props.history.push({pathname: '/auth/login_humpday/enter_slug', email: this.state.email }),
+                    error => {debugger}
+                )
         } else {
             this.setState({ error: 'Unknown error, please try again' });
         }

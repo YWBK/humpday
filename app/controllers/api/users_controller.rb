@@ -70,6 +70,15 @@ class Api::UsersController < ApplicationController
         render :show
     end
 
+    def show_by_email
+        @user = User.find_by(email: user_params[:email])
+        if @user
+            render :show
+        else
+            render json: [`We couldn't find this email`], status: 404
+        end
+    end
+
     private
     def user_params
         params.require(:user).permit(:email, :full_name, :password)

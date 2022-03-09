@@ -1,5 +1,7 @@
 import { connect } from 'react-redux';
 import LoginForm2 from './login_form_2';
+import { fetchAccountByName } from '../../actions/account_actions'
+
 
 const mapSTP = (state, ownProps) => {
     return ({
@@ -7,5 +9,10 @@ const mapSTP = (state, ownProps) => {
     })
 }
 
+const mapDTP = (dispatch, ownProps) => {
+    return ({
+        fetchAccountByName: accountName => dispatch(fetchAccountByName(accountName)),
+    })
+}
 
-export default connect(mapSTP, null)(LoginForm2);
+export default connect(mapSTP, mapDTP)(LoginForm2);

@@ -34,9 +34,13 @@
 
 .right-nav {
     width: 350px;
+
+    .nav-link:hover {
+        color: $light-purple;
+    }
 }
 
-.splash {
+.splash-content {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -72,7 +76,13 @@
     border-radius: 40px;
     background-color: $light-purple;
     cursor: pointer;
+
+    &:hover {
+        color: $light-grey;
+        background-color: $light-purple-hover;
+    }
 }
+
 
 .get-started-btn-2 {
     font-size: 18px;
@@ -83,6 +93,11 @@
     border-radius: 40px;
     background: linear-gradient(to right, $medium-purple 30%, $lightest-purple);
     cursor: pointer;
+
+    &:hover {
+        color: $light-grey;
+        background: linear-gradient(to right, $medium-purple-hover 30%, $lightest-purple-hover);
+    }
 }
 
 .work-list {
@@ -93,108 +108,101 @@
 }
 
 .splash-checkbox-container {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     position: relative;
     width: 110px;
     height: 110px;
-    padding-left: 15px;
-    padding-top: 15px;
     border: 1px solid $lighter-purple;
     border-radius: 10px;
-    cursor: pointer;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
 }
 
+.splash-checkbox-icon {
+    margin-top: 10px;
+}
+
 .splash-checkbox-name {
     display: block;
     position: absolute;
-    top: 80px;
+    top: 60px;
+    text-align: center;
 
 }
 
 .splash-checkbox-container input {
     position: absolute;
     opacity: 0;
-    cursor: pointer;
+    // cursor: pointer;
     height: 0px;
     width: 0px;
 }
 
-.checkmark {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    height: 20px;
-    width: 20px;
-    border: 1px solid $lighter-purple;
-    border-radius: 3px;
-}
+// .checkmark {
+//     position: absolute;
+//     top: 10px;
+//     left: 10px;
+//     height: 20px;
+//     width: 20px;
+//     border: 1px solid $lighter-purple;
+//     border-radius: 3px;
+// }
 
 #splash-checkbox-1:hover {
-    border-color: $splash-1;
-    input ~ .checkmark {
-        border-color: $splash-1;
+    border-color: $magenta;
+    .splash-checkbox-icon {
+        color: $magenta;
     }
 }
 #splash-checkbox-2:hover {
-    border-color: $splash-2;
-    input ~ .checkmark {
-        border-color: $splash-2;
+    border-color: $purple;
+    .splash-checkbox-icon {
+        color: $purple;
     }
 }
 #splash-checkbox-3:hover {
-    border-color: $splash-3;
-    input ~ .checkmark {
-        border-color: $splash-3;
+    border-color: $orange;
+    .splash-checkbox-icon {
+        color: $orange;
     }
 }
 #splash-checkbox-4:hover {
-    border-color: $splash-4;
-    input ~ .checkmark {
-        border-color: $splash-4;
+    border-color: $fuschia;
+    .splash-checkbox-icon {
+        color: $fuschia;
     }
 }
 #splash-checkbox-5:hover {
-    border-color: $splash-5;
-    input ~ .checkmark {
-        border-color: $splash-5;
+    border-color: $blue;
+    .splash-checkbox-icon {
+        color: $blue;
     }
 }
 #splash-checkbox-6:hover {
-    border-color: $splash-6;
-    input ~ .checkmark {
-        border-color: $splash-6;
+    border-color: $turqoise;
+    .splash-checkbox-icon {
+        color: $turqoise;
     }
 }
 #splash-checkbox-7:hover {
-    border-color: $splash-7;
-    input ~ .checkmark {
-        border-color: $splash-7;
+    border-color: $skyblue;
+    .splash-checkbox-icon {
+        color: $skyblue;
     }
 }
 #splash-checkbox-8:hover {
-    border-color: $splash-8;
-    input ~ .checkmark {
-        border-color: $splash-8;
+    border-color: $blush;
+    .splash-checkbox-icon {
+        color: $blush;
     }
 }
 #splash-checkbox-9:hover {
-    border-color: $splash-9;
-    input ~ .checkmark {
-        border-color: $splash-9;
+    border-color: $teal;
+    .splash-checkbox-icon {
+        color: $teal;
     }
-}
-
-
-
-.splash-checkbox-container input:checked ~ .checkmark {
-    background-color: #ccc; 
-}
-
-
-.splash > p {
-    font-size: 14px;
 }

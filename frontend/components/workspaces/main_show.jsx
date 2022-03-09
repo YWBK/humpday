@@ -4,6 +4,7 @@ import SideNavContainer from '../side_nav/side_nav_container';
 import WorkspaceNav from '../workspace_nav/workspace_nav';
 import WorkspaceMembersList from './workspace_members_list';
 import GroupListItem from '../groups/group_list_item';
+import BoardTitleBar from '../boards/board_title_bar';
 
 
 export default class MainShow extends React.Component {
@@ -123,7 +124,8 @@ export default class MainShow extends React.Component {
 
                 content =
                 <div>
-                    {currentBoard.boardName}
+                    <BoardTitleBar currentAccountUsers={currentAccountUsers} currentBoard={currentBoard} />
+
                     <ul className='group-list'>
                         {groups.map(group => {
                             // debugger

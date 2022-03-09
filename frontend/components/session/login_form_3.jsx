@@ -7,9 +7,12 @@ export default class LoginForm3 extends React.Component {
         this.state = { 
             email: '', 
             password: '', 
-            accountName: props.match.params.accountName
+            accountName: props.match.params.accountName,
+            error: ''
         };
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.isValidEmail = this.isValidEmail.bind(this);
+
         // debugger
     }
 
@@ -24,11 +27,20 @@ export default class LoginForm3 extends React.Component {
         e.preventDefault();
         const user = Object.assign({}, {email: this.state.email, password: this.state.password});
         const accountName = Object.assign({}, {account_name: this.state.accountName});
-        this.props.login(user, accountName);  
+       if (this.isValidEmail(this.state.email)) {
+           this.props.login(user, accountName);  
+       } else {
+           this.setState({ error: 'Unknown error, please try again'});
+       }
     }
 
     update(field) {
-        return e => this.setState({ [field]: e.currentTarget.value });
+        return e => this.setState({ [field]: e.currentTarget.value, error: '' });
+    }
+    isValidEmail(email) {
+        return(
+            /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+        );
     }
 
     render() {
@@ -89,6 +101,10 @@ export default class LoginForm3 extends React.Component {
                         </Link>
                     </div>
                     <ul>
+                        {!!this.state.error ? 
+                            <p className='login-email-error'>{this.state.error}</p> :
+                            <p className='login-email-error-none'><br/></p>
+                        }
                         {errors.map((error, i) => (
                             <li key={i}>{error}</li>
                         ))}

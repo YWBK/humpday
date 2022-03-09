@@ -27,6 +27,17 @@
     background-color: grey;
 }
 
+.nav-bar {
+    grid-row: 1;
+    grid-column: 1 / span 2;
+}
+
+.splash-content {
+    grid-row: 2;
+    grid-column: 1 / span 2;
+
+}
+
 .side-nav {
     grid-row: 1 / span 2;
     grid-column: 1;
@@ -45,5 +56,6 @@
     background-color: $main-bgc;
     display: flex;
 }
+
 
 

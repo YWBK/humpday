@@ -28,3 +28,9 @@ export const fetchUser = userId => dispatch => {
             .then(user => dispatch(receiveUser(user)))
     )
 }
+export const fetchUserByEmail = email => dispatch => {
+    return(
+        UserApiUtil.fetchUserByEmail(email)
+            .then(user => dispatch(receiveUser(user)))
+    )
+}

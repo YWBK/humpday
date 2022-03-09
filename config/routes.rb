@@ -16,5 +16,6 @@ Rails.application.routes.draw do
     resources :statuses, only: [:update]
     resources :due_dates, only: [:update]
     get 'accounts_by_name/:account_name', to: 'accounts#show_by_name', as: 'account_name'
+    get 'users_by_email/:email', to: 'users#show_by_email', as: 'user_email'
   end
 end
