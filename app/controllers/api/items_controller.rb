@@ -2,6 +2,28 @@ class Api::ItemsController < ApplicationController
     def create
         @item = Item.create(item_params)
         if @item.save
+            @item.columns.each do |col| 
+                case col.column_type
+                when 'person'
+                    ItemPerson.create(
+                        item_id: @item.id,
+                        column_id: col.id
+                    )
+                when 'status'
+                    Status.create(
+                        item_id: @item.id,
+                        column_id: col.id,
+                        status: 'Working on it'
+                    )
+                when 'date'
+                    DueDate.create(
+                        item_id: @item.id,
+                        column_id: col.id
+                        # date: 
+                    )
+                end
+            end
+
             @board = @item.board
             render 'api/boards/show'
         else

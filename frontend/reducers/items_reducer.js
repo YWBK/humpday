@@ -8,6 +8,8 @@ const itemsReducer = (state = {}, action) => {
         case RECEIVE_BOARD:
             // debugger
             nextState = {};
+            if (!action.board.items) return nextState;
+            
             return action.board.items;
         case REMOVE_BOARD:
             nextState = {};

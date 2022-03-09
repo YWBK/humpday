@@ -2,7 +2,7 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import ColumnListItem from '../columns/column_list_item';
 import ItemListItem from '../items/item_list_item';
-import { faBreadSlice } from '@fortawesome/free-solid-svg-icons';
+import CellItem from '../cells/cell_item';
 
 class GroupListItem extends React.Component {
     constructor(props) {
@@ -90,24 +90,37 @@ class GroupListItem extends React.Component {
                                 </ul>;
                                 break;
                             case 'person':
+                                if (!itemPeople) break;
+                                const filteredItemPpl = itemPeople.filter(itemPerson => itemPerson.column_id === col.id);
+                                // debugger
                                 content = <ul className='item-people'>
-                                    { itemPeople ? itemPeople.map(itemPerson => (
+                                    {filteredItemPpl.map(filteredItemPerson => (
+                                        <li key={filteredItemPerson.id}>{currentAccountUsers[filteredItemPerson.userId].fullName}</li>
+                                    ))}
+                                    {/* { itemPeople ? itemPeople.map(itemPerson => (
                                         <li key={itemPerson.id}>{currentAccountUsers[itemPerson.userId].fullName}</li>
-                                    )): null }
+                                    )): null } */}
                                 </ul>
                                 break;
                             case 'status':
+                                if (!statuses) break;
+                                const filteredStatuses = statuses.filter(status =>  status.columnId === col.id);
                                 content = <ul className='status'>
-                                    { statuses ? statuses.map(status => (
-                                        <li key={status.id}>{status.status}</li>
-                                    )): null }
+                                    {filteredStatuses.map(filteredStatus => (
+                                        <li key={filteredStatus.id}>{filteredStatus.status}</li>
+                                    ))}
                                 </ul>
                                 break;
                             case 'date':
+                                if (!dueDates) break;
+                                const filteredDates = dueDates.filter(dueDate => dueDate.columnId === col.id)
                                 content = <ul className='due-date'>
-                                    { dueDates ? dueDates.map(dueDate => (
+                                    {filteredDates.map(filteredDate => (
+                                        <li key={filteredDate.id}>{filteredDate.date}</li>
+                                    ))}
+                                    {/* { dueDates ? dueDates.map(dueDate => (
                                         <li key={dueDate.id}>{dueDate.date}</li>
-                                    )): null }
+                                    )): null } */}
                                 </ul>
                                 break;
                             default:
