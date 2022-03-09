@@ -39,6 +39,9 @@ class User < ApplicationRecord
     foreign_key: :user_id,
     class_name: 'ItemPerson'
 
+    has_many :statuses,
+    through: :boards
+
 
     
     def self.find_by_credentials(account_id, email, password)
