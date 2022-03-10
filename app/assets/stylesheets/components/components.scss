@@ -1,10 +1,14 @@
 // @import './splash.scss';
 @import './grid.scss';
 @import './splash.scss';
+@import './login/login.scss';
+@import './signup/signup.scss';
 @import './side-nav.scss';
-// @import './workspace/workspace-nav.scss';
-// @import './workspace/workspace-content.scss';
-// @import './board/table-content.scss';
+@import './workspace/workspace-nav.scss';
+@import './home_page/home_page.scss';
+@import './workspace/workspace-content.scss';
+@import './board/table.scss';
+@import './modal/modal.scss';
 
 .hidden {
     display: none;

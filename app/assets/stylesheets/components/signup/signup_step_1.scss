@@ -42,7 +42,7 @@
     font-size: 22px;
     font-weight: 700;
 }
-.signup-1-modal-content p:first-of-type {
+.signup-1-modal-content .caption {
     grid-row: 3;
     grid-column: 2;
     margin-top: 1px;
@@ -136,4 +136,8 @@
 .signup-to-login-link {
     margin-left: 4px;
     color: $signup-blue;
+}
+
+.email-error {
+    color: $login-red
 }

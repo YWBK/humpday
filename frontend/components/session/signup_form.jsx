@@ -12,7 +12,12 @@ export default class SessionForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         if (this.isValidEmail(this.state.email)) {
-            this.props.history.push({pathname: '/users/invitation', email: this.state.email })
+            this.props.fetchUserByEmail(this.state.email)
+            .then(
+                () => {this.setState({ error: 'Email already in use' })},
+                () => this.props.history.push({pathname: '/users/invitation', email: this.state.email })
+                )
+                // this.props.history.push({pathname: '/users/invitation', email: this.state.email })
         } else {
             this.setState({ error: 'Please enter a valid email address' });
         }
@@ -34,7 +39,7 @@ export default class SessionForm extends React.Component {
                 <div className='signup-modal'>
                     <div className='signup-1-modal-content'>
                         <h3>Welcome to humpday.com</h3>
-                        <p>Let's get started with a few simple steps</p>
+                        <p className='caption'>Let's get started with a few simple steps</p>
                         <form className='signup-form-1' onSubmit={this.handleSubmit}>
                             <label>Enter email
                                 <br/>

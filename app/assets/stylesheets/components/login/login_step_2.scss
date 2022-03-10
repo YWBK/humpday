@@ -23,7 +23,6 @@
     font-size: 16px;
     height: 24px;
     width: 300px;
-    color: $login-darker-grey;
     text-align: center;
 }
 .login-form-2 {
@@ -68,7 +67,8 @@
     border-radius: 40px;
     background-color: $login-blue;
     cursor: pointer;
-}
-.login-next:hover {
-    background-color: $login-dark-blue;
+
+    &:hover {
+        background-color: $login-dark-blue;
+    }
 }

@@ -75,7 +75,7 @@ class Api::UsersController < ApplicationController
         if @user
             render :show
         else
-            render json: [`We couldn't find this email`], status: 404
+            render json: ["We couldn't find this email."], status: 404
         end
     end
 

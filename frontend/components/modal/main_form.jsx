@@ -47,17 +47,19 @@ export default class MainForm extends React.Component {
             <div className='workspace-modal'>
                 <div className='modal-title'>Create {formName}</div>
                 <div className='modal-form-wrapper'>
-                    <form onKeyPress={ (e) => { e.key === 'Enter' ? this.handleSubmit(e) : null }}>
-                        <label>
+                    <form className='modal-form' onKeyPress={ (e) => { e.key === 'Enter' ? this.handleSubmit(e) : null }}>
+                        {/* <label> */}
                             {formName} name
                             <input type="text" value={ this.state.formName } onChange={ (e) => this.update(e) } />
-                        </label>
-                        <div className='modal-cancel-btn'>
-                            <button onClick={ (e) => this.handleCancel(e) }>Cancel</button>
-                        </div>
-                        <div className='modal-submit-btn'>
-                            <button onClick={ (e) => this.handleSubmit(e)}>Create {formName}</button>
-                        </div>
+                        {/* </label> */}
+                        {/* <div className='modal-cancel-btn'> */}
+                            <div className='modal-btns'>
+                                <button className='modal-cancel-btn' onClick={ (e) => this.handleCancel(e) }>Cancel</button>
+                                <button className='modal-submit-btn'onClick={ (e) => this.handleSubmit(e)}>Create {formName}</button>
+                            </div>
+                        {/* </div> */}
+                        {/* <div className='modal-submit-btn'> */}
+                        {/* </div> */}
                     </form>
                 </div>
             </div>
