@@ -7,7 +7,9 @@ class BoardTitleBar extends React.Component {
         // debugger
         return (
             <div className='board-title-bar'>
-                {currentBoard.boardName}
+                <span className='board-title'>
+                    {currentBoard.boardName}
+                </span>
                 <button 
                     className='board-member-invite-btn' 
                     onClick={e => {

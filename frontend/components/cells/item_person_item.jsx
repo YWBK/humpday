@@ -4,10 +4,28 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 class ItemPersonItem extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {active: false}
+        this.cellMenu = React.createRef();
+        this.state = {active: false};
+        this.handleOuterClickCell = this.handleOuterClickCell.bind(this);
     }
     toggleActive() {
         this.setState({active: !this.state.active});
+    }
+    componentDidMount() {
+        document.addEventListener('mousedown', this.handleOuterClickCell);
+    }
+    componentWillUnmount() {
+        document.removeEventListener('mousedown', this.handleOuterClickCell);
+    }
+    handleOuterClickCell(e) {
+        if (
+            this.cellMenu.current &&
+            !this.cellMenu.current.contains(e.target)
+        ) {
+            this.setState({
+                active: false,
+            })
+        }
     }
     render() {
         const { itemPerson, boardMembers, updateItemPerson } = this.props; 
@@ -15,7 +33,9 @@ class ItemPersonItem extends React.Component {
         return (
             <li onClick={() => this.toggleActive()}>
                 { itemPerson.userId ? boardMembers[itemPerson.userId].fullName : '-' }
-                <ul className={this.state.active ? 'item-person-edit' : 'item-person-edit hidden'}>
+                <ul 
+                    ref={this.cellMenu }
+                    className={this.state.active ? 'cell-edit' : 'cell-edit hidden'}>
                     { Object.values(boardMembers).map((boardMember, i) => (
                         <li 
                             key={i} 
@@ -32,7 +52,7 @@ class ItemPersonItem extends React.Component {
                             const updatedItemPerson = {id: itemPerson.id, user_id: null}
                             return updateItemPerson(updatedItemPerson);
                         }}>
-                        -
+                        
                     </li>
                 </ul>
             </li>

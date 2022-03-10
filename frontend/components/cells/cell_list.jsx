@@ -6,12 +6,12 @@ import ItemPersonItem from './item_person_item';
 
 class CellList extends React.Component {
     render() {
-        const { col, currentBoard, itemPeople, statuses, dueDates, updateStatus, updateItemPerson, updateDueDate } = this.props;
+        const { col, item, currentBoard, itemPeople, statuses, dueDates, updateStatus, updateItemPerson, updateDueDate } = this.props;
         let content;
         switch(col.columnType) {
             case 'person':
                 if (!itemPeople) break;
-                const filteredItemPpl = itemPeople.filter(itemPerson => itemPerson.columnId === col.id);
+                const filteredItemPpl = itemPeople.filter(itemPerson => itemPerson.itemId === item.id);
                 const boardMembers = currentBoard.members;
                 content = <ul className='item-people'>
                     {filteredItemPpl.map(filteredItemPerson => (
@@ -22,7 +22,7 @@ class CellList extends React.Component {
             case 'status':
                 if (!statuses) break;
                 // debugger
-                const filteredStatuses = statuses.filter(status =>  status.columnId === col.id);
+                const filteredStatuses = statuses.filter(status =>  status.itemId === item.id);
                 content = <ul className='status'>
                     {filteredStatuses.map(filteredStatus => (
                         <StatusItem key={filteredStatus.id} status={filteredStatus} updateStatus={updateStatus} />
@@ -32,7 +32,7 @@ class CellList extends React.Component {
                 break;
             case 'date':
                 if (!dueDates) break;
-                const filteredDates = dueDates.filter(dueDate => dueDate.columnId === col.id)
+                const filteredDates = dueDates.filter(dueDate => dueDate.itemId === item.id)
                 content = <ul className='due-date'>
                     {filteredDates.map(filteredDate => (
                         <li key={filteredDate.id}>{filteredDate.date}</li>
@@ -42,7 +42,7 @@ class CellList extends React.Component {
             default:
                 return null;
         }
-        return (<div>{content}</div>);
+        return (<div className='item-cell'>{content}</div>);
     }
 }
 

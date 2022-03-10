@@ -1,0 +1,45 @@
+.cell-edit {
+    position: fixed;
+    // left: 350px;
+    background-color: $white-3;
+    box-shadow: 0px 0px 4px $login-dark-grey;
+    border-radius: 10px;
+    padding: 10px;
+    cursor: pointer;
+
+    li:hover {
+        // background-color: $login-grey;
+        font-weight: 700;
+        border-radius: 5px;
+    }
+}
+
+.status-edit {
+    position: fixed;
+    // left: 350px;
+    background-color: $white-3;
+    box-shadow: 0px 0px 4px $login-dark-grey;
+    border-radius: 10px;
+    padding: 10px;
+    cursor: pointer;
+
+    li:hover {
+        // background-color: $login-grey;
+        font-weight: 700;
+        border-radius: 5px;
+    }
+}
+
+
+#status-edit-0, .working {
+    background-color: $yellow;
+}
+#status-edit-1, .stuck {
+    background-color: $login-red;
+}
+#status-edit-2, .done {
+    background-color: $green;
+}
+#status-edit-3, .none {
+    background-color: $login-dark-grey;
+}

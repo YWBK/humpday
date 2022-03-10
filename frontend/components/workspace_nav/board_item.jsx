@@ -10,7 +10,7 @@ class BoardItem extends React.Component {
         this.boardRename = React.createRef();
         this.state = { boardName: '', boardNameEdit: false, boardMenu: false };
         this.toggleBoardNameEdit = this.toggleBoardNameEdit.bind(this);
-        this.handleOuterClick = this.handleOuterClick.bind(this);
+        this.handleOuterClickBoard = this.handleOuterClickBoard.bind(this);
 
     }
     componentDidUpdate(prevProps) {
@@ -23,12 +23,12 @@ class BoardItem extends React.Component {
     }
 
     componentDidMount() {
-        document.addEventListener('mousedown', this.handleOuterClick);
+        document.addEventListener('mousedown', this.handleOuterClickBoard);
     }
     componentWillUnmount() {
-        document.removeEventListener('mousedown', this.handleOuterClick);
+        document.removeEventListener('mousedown', this.handleOuterClickBoard);
     }
-    handleOuterClick(e) {
+    handleOuterClickBoard(e) {
         if (
             this.boardMenu.current &&
             !this.boardMenu.current.contains(e.target)

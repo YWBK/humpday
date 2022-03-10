@@ -1,0 +1,136 @@
+.group-list {
+    width: 90%;
+
+}
+.group-header {
+    display: flex;
+    justify-content: flex-start;
+    // justify-content: space-around;
+}
+
+.group-name {
+    flex-grow: 2;
+}
+
+.group-edit-button {
+    color: $white;
+    padding: 0px 2.5px 0px 2.5px;
+    border-radius: 50%;
+}
+
+.group-edit {
+    position: fixed;
+    left: 350px;
+    background-color: $white-3;
+    box-shadow: 0px 0px 4px $login-dark-grey;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.add-group-btn {
+    cursor: pointer;
+}
+
+.group-edit-wrapper {
+    cursor:pointer;
+    .magenta {
+        background-color: $magenta;
+        border: 1px solid $magenta;
+        transition: 0.2s;
+        &:hover {
+            color: $magenta;
+            background-color: $white;
+        }
+    }
+    .purple {
+        background-color: $purple;
+        border: 1px solid $purple;
+        transition: 0.2s;
+        &:hover {
+            color: $purple;
+            background-color: $white;
+        }
+    }
+    .orange {
+        background-color: $orange;
+        border: 1px solid $orange;
+        transition: 0.2s;
+        &:hover {
+            color: $orange;
+            background-color: $white;
+        }
+    }
+    .fuschia {
+        background-color: $fuschia;
+        border: 1px solid $fuschia;
+        transition: 0.2s;
+        &:hover {
+            color: $fuschia;
+            background-color: $white;
+        }
+    }
+    .blue {
+        background-color: $blue;
+        border: 1px solid $blue;
+        transition: 0.2s;
+        &:hover {
+            color: $blue;
+            background-color: $white;
+        }
+    }
+    .turqoise {
+        background-color: $turqoise;
+        border: 1px solid $turqoise;
+        transition: 0.2s;
+        &:hover {
+            color: $turqoise;
+            background-color: $white;
+        }
+    }
+    .skyblue {
+        background-color: $skyblue;
+        border: 1px solid $skyblue;
+        transition: 0.2s;
+        &:hover {
+            color: $skyblue;
+            background-color: $white;
+        }
+    }
+    .blush {
+        background-color: $blush;
+        border: 1px solid $blush;
+        transition: 0.2s;
+        &:hover {
+            color: $blush;
+            background-color: $white;
+        }
+    }
+    .teal {
+        background-color: $teal;
+        border: 1px solid $teal;
+        transition: 0.2s;
+        &:hover {
+            color: $teal;
+            background-color: $white;
+        }
+    }
+    .yellow {
+        background-color: $yellow;
+        border: 1px solid $yellow;
+        transition: 0.2s;
+        &:hover {
+            color: $yellow;
+            background-color: $white;
+        }
+    }
+    .green {
+        background-color: $green;
+        border: 1px solid $green;
+        transition: 0.2s;
+        &:hover {
+            color: $green;
+            background-color: $white;
+        }
+    }
+
+}

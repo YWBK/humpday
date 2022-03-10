@@ -123,7 +123,7 @@ export default class MainShow extends React.Component {
                 const columns = Object.values(currentBoard.columns);
 
                 content =
-                <div>
+                <div className='board-content'>
                     <BoardTitleBar currentAccountUsers={currentAccountUsers} currentBoard={currentBoard} />
 
                     <ul className='group-list'>
