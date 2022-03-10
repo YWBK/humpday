@@ -8,20 +8,63 @@
 
 [Account, User, Workspace, WorkspaceMember, Board, BoardMember].each { |obj| obj.destroy_all }
 
-demo_account = Account.create(account_name: 'demo')
+demo_account = Account.create(account_name: 'goat')
 demo_user = User.create(
-    email: 'user@demo.com',
-    full_name: 'demo user', 
+    email: 'rnadal@goat.com',
+    full_name: 'Rafael Nadal', 
     password: 'Demo123', 
     account_id: demo_account.id,
     owned_account_id: demo_account.id
 )
 demo_user_2 = User.create(
-    email: 'johndoe@demo.com',
-    full_name: 'John Doe', 
+    email: 'rfederer@goat.com',
+    full_name: 'Roger Federer', 
     password: 'Demo123', 
     account_id: demo_account.id
 )
+demo_user_3 = User.create(
+    email: 'ndjokovic@goat.com',
+    full_name: 'Novak Djokovic', 
+    password: 'Demo123', 
+    account_id: demo_account.id
+)
+demo_user_4 = User.create(
+    email: 'tbrady@goat.com',
+    full_name: 'Tom Brady', 
+    password: 'Demo123', 
+    account_id: demo_account.id
+)
+demo_user_5 = User.create(
+    email: 'twoods@goat.com',
+    full_name: 'Tiger Woods', 
+    password: 'Demo123', 
+    account_id: demo_account.id
+)
+demo_user_6 = User.create(
+    email: 'cronaldo@goat.com',
+    full_name: 'Cristiano Ronaldo', 
+    password: 'Demo123', 
+    account_id: demo_account.id
+)
+demo_user_7 = User.create(
+    email: 'lmessi@goat.com',
+    full_name: 'Lionel Messi', 
+    password: 'Demo123', 
+    account_id: demo_account.id
+)
+demo_user_8 = User.create(
+    email: 'mjordan@goat.com',
+    full_name: 'Michael Jordan', 
+    password: 'Demo123', 
+    account_id: demo_account.id
+)
+demo_user_9 = User.create(
+    email: 'ljames@goat.com',
+    full_name: 'LeBron James', 
+    password: 'Demo123', 
+    account_id: demo_account.id
+)
+
 demo_workspace_main = Workspace.create(
     workspace_name: 'Main Workspace',
     workspace_owner_id: demo_user.id,
@@ -34,6 +77,34 @@ WorkspaceMember.create(
 WorkspaceMember.create(
     workspace_id: demo_workspace_main.id,
     user_id: demo_user_2.id
+)
+WorkspaceMember.create(
+    workspace_id: demo_workspace_main.id,
+    user_id: demo_user_3.id
+)
+WorkspaceMember.create(
+    workspace_id: demo_workspace_main.id,
+    user_id: demo_user_4.id
+)
+WorkspaceMember.create(
+    workspace_id: demo_workspace_main.id,
+    user_id: demo_user_5.id
+)
+WorkspaceMember.create(
+    workspace_id: demo_workspace_main.id,
+    user_id: demo_user_6.id
+)
+WorkspaceMember.create(
+    workspace_id: demo_workspace_main.id,
+    user_id: demo_user_7.id
+)
+WorkspaceMember.create(
+    workspace_id: demo_workspace_main.id,
+    user_id: demo_user_8.id
+)
+WorkspaceMember.create(
+    workspace_id: demo_workspace_main.id,
+    user_id: demo_user_9.id
 )
 
 demo_workspace = Workspace.create(
@@ -60,6 +131,18 @@ BoardMember.create(
 BoardMember.create(
     board_id: demo_board.id,
     user_id: demo_user_2.id
+)
+BoardMember.create(
+    board_id: demo_board.id,
+    user_id: demo_user_3.id
+)
+BoardMember.create(
+    board_id: demo_board.id,
+    user_id: demo_user_6.id
+)
+BoardMember.create(
+    board_id: demo_board.id,
+    user_id: demo_user_7.id
 )
 
 demo_column_1 = Column.create(
@@ -115,7 +198,7 @@ demo_group_1.columns.each do |col|
         DueDate.create(
             item_id: demo_item_1.id,
             column_id: col.id,
-            date: col.created_at.to_date + 2
+            date: col.created_at + 2.days
         )
     end
 end

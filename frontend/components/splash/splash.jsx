@@ -5,8 +5,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
 const Splash = ({ login, history }) => {
-    const demoUser = {email: 'user@demo.com', password: 'Demo123'};
-    const demoAcct = {account_name: 'demo'};
+    // const demoUser = {email: 'user@demo.com', password: 'Demo123'};
+    // const demoAcct = {account_name: 'demo'};
+    const demoUser = {email: 'rnadal@goat.com', password: 'Demo123'};
+    const demoAcct = {account_name: 'goat'};
 
     const handleClick = e => {
         e.preventDefault();

@@ -1,3 +1,27 @@
+.item-cell {
+    > ul {
+        width: 100%;
+        > li {
+            width: 100%;
+            > span {
+                width: 100%;
+                text-align: center;
+                // place-self: center;
+            }
+        }
+    }
+}
+
+.item-people {
+    &:hover {
+        border: 1px dashed $login-dark-grey;
+    }
+
+    > li {
+        font-size: 14px;
+    }
+}
+
 .cell-edit {
     position: fixed;
     // left: 350px;
@@ -30,16 +54,41 @@
     }
 }
 
+.working, .stuck, .done, .none {
+    transition: 0.2s;
+    &:hover {
+        border-radius: 0 15px 0 0;
+    }
+}
 
 #status-edit-0, .working {
+    font-size: 14px;
+    color: $white;
     background-color: $yellow;
 }
 #status-edit-1, .stuck {
+    font-size: 14px;
+    color: $white;
     background-color: $login-red;
 }
 #status-edit-2, .done {
+    font-size: 14px;
+    color: $white;
     background-color: $green;
 }
 #status-edit-3, .none {
+    font-size: 14px;
+    color: $login-dark-grey;
     background-color: $login-dark-grey;
+}
+
+.date-picker {
+    z-index: -1;
+   width: 112px;
+   border: none;
+   cursor: pointer;
+   background-color: $light-grey;
+   &:hover {
+        border: 1px dashed $login-dark-grey;
+    }
 }

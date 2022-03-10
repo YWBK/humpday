@@ -30,24 +30,10 @@ class StatusItem extends React.Component {
     render() {
         const { status, updateStatus } = this.props; 
         const statusOptions = ['Working on it', 'Stuck', 'Done', '-'];
-        let statusClass;
-        switch (status.status) {
-            case 'Working on it':
-                statusClass = 'working';
-                break;
-            case 'Stuck':
-                statusClass = 'stuck';
-                break;
-            case 'Done':
-                statusClass = 'done';
-                break;
-            case '-':
-                statusClass = 'none';
-                break;
-        }
+
         return (
             <li onClick={() => this.toggleActive()}>
-                <span className={statusClass}>{status.status}</span> 
+                <span>{status.status}</span> 
                 <ul 
                     ref={this.cellMenu }
                     className={this.state.active ? 'status-edit' : 'status-edit hidden'}>

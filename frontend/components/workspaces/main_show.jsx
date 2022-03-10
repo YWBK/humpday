@@ -124,7 +124,7 @@ export default class MainShow extends React.Component {
 
                 content =
                 <div className='board-content'>
-                    <BoardTitleBar currentAccountUsers={currentAccountUsers} currentBoard={currentBoard} />
+                    <BoardTitleBar currentAccountUsers={currentAccountUsers} currentBoard={currentBoard} openModal={openModal} />
 
                     <ul className='group-list'>
                         {groups.map(group => {
@@ -158,7 +158,7 @@ export default class MainShow extends React.Component {
                         })}
                         <button className='add-group-btn' onClick={e => this.addGroup(e)}>
                             <FontAwesomeIcon icon='fa-solid fa-plus' />
-                            <span>Add Group</span>
+                            <span>Add new group</span>
                         </button>
                     </ul>
                 </div>

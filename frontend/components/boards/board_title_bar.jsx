@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class BoardTitleBar extends React.Component {
     render() {
-        const { currentBoard } = this.props
+        const { currentBoard, openModal } = this.props
         // debugger
         return (
             <div className='board-title-bar'>
@@ -14,7 +14,7 @@ class BoardTitleBar extends React.Component {
                     className='board-member-invite-btn' 
                     onClick={e => {
                         e.preventDefault()
-                        
+                        return openModal('about')
                     }}>
                     <FontAwesomeIcon icon="fa-solid fa-user-plus" />
                     <span>Invite / { Object.keys(currentBoard.members).length }</span>

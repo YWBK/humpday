@@ -5,6 +5,9 @@ class Column < ApplicationRecord
     foreign_key: :board_id,
     class_name: 'Board'
 
+    has_many :items,
+    through: :board
+
     has_many :item_people, dependent: :destroy
     has_many :statuses, dependent: :destroy
     has_many :due_dates, dependent: :destroy

@@ -19,3 +19,30 @@
     margin-bottom: 20px;
 }
 
+.add-group-btn {
+    font-size: 14px;
+    color: $login-darker-grey;
+    width: 140px;
+    height: 35px;
+    border: 1.5px solid $login-dark-grey;
+    border-radius: 5px;
+    background-color: $white;
+    cursor: pointer;
+    &:hover {
+        background-color: $login-grey;
+    }
+}
+
+.board-member-invite-btn {
+    font-size: 14px;
+    color: $login-darker-grey;
+    width: 140px;
+    height: 35px;
+    border: none;
+    border-radius: 5px;
+    background-color: $white;
+    cursor: pointer;
+    &:hover {
+        background-color: $login-grey;
+    }
+}

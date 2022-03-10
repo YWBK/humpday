@@ -52,7 +52,7 @@ class ItemPersonItem extends React.Component {
                             const updatedItemPerson = {id: itemPerson.id, user_id: null}
                             return updateItemPerson(updatedItemPerson);
                         }}>
-                        
+                        -
                     </li>
                 </ul>
             </li>

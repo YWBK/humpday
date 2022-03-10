@@ -1,20 +1,54 @@
 .item-row {
-    // flex-grow: 2;
-    // display: flex;
-    // justify-content: flex-start;
-    justify-content: space-around;
     cursor: pointer;
-    &:hover {
+    &:hover { 
         background-color: $login-grey;
     }
     display: grid;
     grid-template-columns: 20px 400px 1fr;
+    grid-template-rows: 22px;
     grid-auto-columns: 100px;
     grid-auto-flow: column;
 }
 
 .item-name {
-    flex-grow: 2;
+    // flex-grow: 2;
+    align-self: center;
+    &:hover {
+        .magenta {
+            color: $magenta;
+        }
+        .purple {
+            color: $purple;
+        }
+        .orange {
+            color: $orange;
+        }
+        .fuschia {
+            color: $fuschia;
+        }
+        .blue {
+            color: $blue;
+        }
+        .turqoise {
+            color: $turqoise;
+        }
+        .skyblue {
+            color: $skyblue;
+        }
+        .blush {
+            color: $blush;
+        }
+        .teal {
+            color: $teal;
+        }
+        .yellow {
+            color: $yellow;
+        }
+        .green {
+            color: $green;
+        }
+    
+    }
 }
 
 .item-edit-button {
@@ -34,9 +68,10 @@
 .item-cells {
     flex-grow: 3;
     // display: flex;
-    // justify-content: flex-start;
+    // justify-content: flex-start
+    align-self: center;
     display: grid;
-    grid-auto-columns: 1fr;
+    grid-auto-columns: 120px;
     grid-auto-flow: column;
     .item-cell {
         flex: 1;
@@ -45,9 +80,33 @@
     }
 }
 
+.add-item {
+    margin-top: 10px;
+    margin-bottom: 20px;
 
+    input {
+        width: 70%;
+        max-width: 900px;
+        &:hover {
+            outline: 1px solid black;
+        }
+        &:focus {
+            outline: 1px solid $signup-blue;
+        }
+    }
+    .add-item-btn {
+        cursor:pointer;
+        &:hover .item-submit {
+            color: $green;
+        }
+        &:hover .item-cancel {
+            color: $login-red;
+        }
+    }
+}
 
 .item-edit-wrapper {
+    align-self: center;
     cursor:pointer;
     .magenta {
         color: $magenta;
