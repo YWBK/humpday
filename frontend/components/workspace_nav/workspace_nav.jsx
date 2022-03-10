@@ -11,15 +11,15 @@ class WorkspaceNav extends React.Component {
         this.state = { navActive: true, listActive: false };
         this.toggleNavClass = this.toggleNavClass.bind(this);
         this.toggleListClass = this.toggleListClass.bind(this);
-        this.handleOuterClick = this.handleOuterClick.bind(this);
+        this.handleOuterClickWorkspace = this.handleOuterClickWorkspace.bind(this);
     }
     componentDidMount() {
-        document.addEventListener('mousedown', this.handleOuterClick);
+        document.addEventListener('mousedown', this.handleOuterClickWorkspace);
     }
     componentWillUnmount() {
-        document.removeEventListener('mousedown', this.handleOuterClick);
+        document.removeEventListener('mousedown', this.handleOuterClickWorkspace);
     }
-    handleOuterClick(e) {
+    handleOuterClickWorkspace(e) {
         if (
             this.workspaceList.current &&
             !this.workspaceList.current.contains(e.target)
@@ -85,7 +85,10 @@ class WorkspaceNav extends React.Component {
                                 <FontAwesomeIcon icon={`fa-solid fa-chevron-${this.state.listActive ? 'up' : 'down'}`} />    
                             </div>
                         </div>
-                        <div className={ this.state.listActive ? 'workspace-nav-dropdown' : 'workspace-nav-dropdown hidden' } ref={this.workspaceList}>
+                        <div 
+                            className={ this.state.listActive ? 'workspace-nav-dropdown' : 'workspace-nav-dropdown hidden' } 
+                            ref={this.workspaceList}
+                            onClick={() => this.toggleListClass()}>
                             <span>My workpaces</span>
                             <ul>
                                 { workspaces.map(workspace => {

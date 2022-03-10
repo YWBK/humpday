@@ -8,10 +8,77 @@
 //     z-index: 10;
 //   }
   
-//   .modal-child {
-//     position: absolute;
-//     top: 50%;
-//     left: 50%;
-//     transform: translate(-50%, -50%);
-//     background-color: grey;
-//   }
+.modal-child {
+    height: 200px;
+    width: 400px;
+
+    background-color: $white-2;
+    border-radius: 10px;
+}
+    
+.workspace-modal {        
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+    > div {
+        margin: 10px;
+    }
+}
+
+.modal-title {
+    // align-self: flex-start;
+    font-size: 24px;
+}
+
+.modal-form-wrapper {
+    width: 90%;
+}
+
+.modal-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    input {
+        width: 100%;
+    }
+}
+
+.modal-btns {
+    align-self: flex-end;
+    button {
+        margin: 5px 0 0 5px;
+    }
+}
+
+.modal-submit-btn {
+    // font-size: 18px;
+    color: $white;
+    width: 140px;
+    height: 30px;
+    border: none;
+    border-radius: 10px;
+    background-color: $login-blue;
+    cursor: pointer;
+
+    &:hover {
+        color: $light-grey;
+        background-color: $login-dark-blue;
+    }
+}
+
+.modal-cancel-btn {
+    // font-size: 18px;
+    color: black;
+    width: 100px;
+    height: 30px;
+    border: none;
+    border-radius: 10px;
+    background-color: $white-2;
+    cursor: pointer;
+
+    &:hover {
+        background-color: $login-dark-grey
+    }
+}

@@ -6,8 +6,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 class BoardItem extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { boardName: '', boardNameEdit: false };
+        this.boardMenu = React.createRef();
+        this.boardRename = React.createRef();
+        this.state = { boardName: '', boardNameEdit: false, boardMenu: false };
         this.toggleBoardNameEdit = this.toggleBoardNameEdit.bind(this);
+        this.handleOuterClick = this.handleOuterClick.bind(this);
+
     }
     componentDidUpdate(prevProps) {
         let currentBoardName;
@@ -17,8 +21,35 @@ class BoardItem extends React.Component {
             this.setState ({ boardName: currentBoardName})
         }
     }
+
+    componentDidMount() {
+        document.addEventListener('mousedown', this.handleOuterClick);
+    }
+    componentWillUnmount() {
+        document.removeEventListener('mousedown', this.handleOuterClick);
+    }
+    handleOuterClick(e) {
+        if (
+            this.boardMenu.current &&
+            !this.boardMenu.current.contains(e.target)
+        ) {
+            this.setState({
+                boardMenu: false,
+            })
+        }
+        if (
+            this.boardRename.current &&
+            !this.boardRename.current.contains(e.target)
+        ) {
+            this.handleSubmit(e);
+        }
+    }
+
     toggleBoardNameEdit() {
-        this.setState({ boardNameEdit: !this.state.boardNameEdit })
+        this.setState({ boardNameEdit: !this.state.boardNameEdit, boardMenu: false })
+    }
+    toggleBoardMenu() {
+        this.setState({ boardMenu: !this.state.boardMenu })
     }
     update(e) {
         this.setState({ boardName: e.currentTarget.value })
@@ -56,10 +87,8 @@ class BoardItem extends React.Component {
         return (
             <div className='board-item-wrapper'>
             { this.state.boardNameEdit ?
-                <form onKeyPress={ e => e.key === 'Enter' ? this.handleSubmit(e) : null }>
+                <form ref={this.boardRename} onKeyPress={ e => e.key === 'Enter' ? this.handleSubmit(e) : null }>
                     <input type='text' value={this.state.boardName} onChange={e => this.update(e)} />
-                    <FontAwesomeIcon icon="fa-regular fa-circle-check" onClick={e => this.handleSubmit(e)}/>
-                    <FontAwesomeIcon icon="fa-regular fa-circle-xmark" onClick={this.toggleBoardNameEdit} />
                 </form> :
                 <Link
                     className='board-item-link'
@@ -73,10 +102,23 @@ class BoardItem extends React.Component {
                     <li>{board.boardName}</li>
                 </Link>
             }
-                <div className='board-item-u-d-wrapper'>
-                    <FontAwesomeIcon icon="fa-solid fa-pencil" className='board-item-u-d' onClick={this.toggleBoardNameEdit}/>
-                    <FontAwesomeIcon icon="fa-solid fa-trash" className='board-item-u-d' onClick={e => this.handleDelete(e)} />
+                <div className='board-menu-btn'>
+                    <FontAwesomeIcon icon="fa-solid fa-ellipsis" onClick={() => this.toggleBoardMenu()}/>
                 </div>
+                <ul className={this.state.boardMenu ? 'board-menu' : 'board-menu hidden'} ref={this.boardMenu}>
+                    <li onClick={this.toggleBoardNameEdit}>
+                        <span>
+                            <FontAwesomeIcon icon="fa-solid fa-pencil" className='board-item-u-d' />
+                        </span>
+                        Rename Board
+                    </li>
+                    <li onClick={e => this.handleDelete(e)}>
+                        <span>
+                            <FontAwesomeIcon icon="fa-solid fa-trash" className='board-item-u-d'  />
+                        </span>
+                        Delete
+                    </li>
+                </ul>
             </div>
         )
     }

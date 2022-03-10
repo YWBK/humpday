@@ -1,7 +1,7 @@
 .workspace-nav-wrapper {
     display: flex;
-    background-color: $white-2;
-
+    // background-color: $white-2;
+    max-width: 200px;
     button {
         position: relative;
         top: 20px;
@@ -84,10 +84,70 @@
     }
 }
 
-// .board-item-wrapper {
-//     display: flex;
-//     justify-content: space-between;
-// }
+
+.board-item-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.board-menu {
+    position: fixed;
+    left: 270px;
+    background-color: $white-3;
+    border-radius: 10px;
+    box-shadow: 0 0 4px $login-dark-grey;
+    width: 160px;
+    li {
+        display:flex;
+        justify-content: flex-start;
+        padding: 5px;
+        cursor: pointer;
+
+        span {
+            width: 20%;
+        }
+        &:hover {
+            background-color: $login-grey;
+            border-radius: 5px;
+        }
+    }
+}
+
+.workspace-nav-create-board {
+    text-decoration: none;
+    cursor: pointer;
+
+    &:hover {
+        border-radius: 5px;
+        background-color: $login-grey;
+    }
+}
+
+.workspace-nav-boards {
+    border-top: 1px solid $login-dark-grey;
+}
+
+.board-menu-btn {
+    display: none;
+}
+
+.board-item-wrapper {
+    cursor: pointer;
+    min-height: 30px;
+    .board-item-link {
+        text-decoration: none;
+        color: black;
+    }
+
+    &:hover {
+        border-radius: 5px;
+        background-color: $login-grey;
+        .board-menu-btn {
+            display: inline; 
+        }
+    }
+
+}
 
 // .board-item-u-d-wrapper {
 //     display: flex;
