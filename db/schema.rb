@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(version: 2022_03_08_192730) do
   create_table "due_dates", force: :cascade do |t|
     t.integer "item_id", null: false
     t.integer "column_id", null: false
-    t.date "date"
+    t.datetime "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["column_id"], name: "index_due_dates_on_column_id"

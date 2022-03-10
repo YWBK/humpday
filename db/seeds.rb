@@ -115,7 +115,7 @@ demo_group_1.columns.each do |col|
         DueDate.create(
             item_id: demo_item_1.id,
             column_id: col.id,
-            date: col.created_at.to_date + 2
+            date: col.created_at + 2.days
         )
     end
 end

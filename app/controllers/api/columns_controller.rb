@@ -2,6 +2,27 @@ class Api::ColumnsController < ApplicationController
     def create
         @column = Column.new(column_params)
         if @column.save
+            @column.items.each do |item|
+                case @column.column_type
+                when 'person'
+                    ItemPerson.create(
+                        item_id: item.id,
+                        column_id: @column.id
+                    )
+                when 'status'
+                    Status.create(
+                        item_id: item.id,
+                        column_id: @column.id,
+                        status: '-'
+                    )
+                when 'date'
+                    DueDate.create(
+                        item_id: item.id,
+                        column_id: @column.id,
+                        date: DateTime.now
+                    )
+                end
+            end    
             @board = Board.find_by(id: column_params[:board_id])
             render 'api/boards/show'
         else

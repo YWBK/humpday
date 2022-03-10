@@ -3,7 +3,7 @@ class CreateDueDates < ActiveRecord::Migration[5.2]
     create_table :due_dates do |t|
       t.integer :item_id, null: false
       t.integer :column_id, null: false
-      t.date :date
+      t.datetime :date
 
       t.timestamps
     end

@@ -1,3 +1,18 @@
+.item-cell {
+    > ul {
+        width: 100%;
+        > li {
+            width: 100%;
+            > span {
+                width: 100%;
+                text-align: center;
+                // place-self: center;
+            }
+        }
+    }
+}
+
+
 .cell-edit {
     position: fixed;
     // left: 350px;
@@ -32,14 +47,28 @@
 
 
 #status-edit-0, .working {
+    // color: $white;
     background-color: $yellow;
 }
 #status-edit-1, .stuck {
+    // color: $white;
     background-color: $login-red;
 }
 #status-edit-2, .done {
+    // color: $white;
     background-color: $green;
 }
 #status-edit-3, .none {
+    color: $login-dark-grey;
     background-color: $login-dark-grey;
+}
+
+.date-picker {
+   width: 112px;
+   border: none;
+   cursor: pointer;
+   background-color: $light-grey;
+   &:hover {
+        border: 1px dashed $login-dark-grey;
+    }
 }

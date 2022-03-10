@@ -126,7 +126,7 @@ class GroupListItem extends React.Component {
                     </ul>
                 </div>
                 
-                <ul>
+                <ul className='item-row-wrapper'>
                     {items ? items.map (item => {
                         return (
                             <ItemListItem 
