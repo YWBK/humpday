@@ -64,8 +64,10 @@ export default class SessionForm extends React.Component {
                                 className='signup-demo-btn' 
                                 onClick={
                                     ()=> login(
-                                    {email: 'user@demo.com', password: 'Demo123'}, 
-                                    {account_name: 'demo'}
+                                    // {email: 'user@demo.com', password: 'Demo123'}, 
+                                    // {account_name: 'demo'}
+                                    {email: 'rnadal@goat.com', password: 'Demo123'}, 
+                                    {account_name: 'goat'}
                                 )} 
                             >
                                 Continue with a Demo User

@@ -13,7 +13,39 @@
 }
 
 .group-name {
-    flex-grow: 2;
+    .magenta {
+        color: $magenta;
+    }
+    .purple {
+        color: $purple;
+    }
+    .orange {
+        color: $orange;
+    }
+    .fuschia {
+        color: $fuschia;
+    }
+    .blue {
+        color: $blue;
+    }
+    .turqoise {
+        color: $turqoise;
+    }
+    .skyblue {
+        color: $skyblue;
+    }
+    .blush {
+        color: $blush;
+    }
+    .teal {
+        color: $teal;
+    }
+    .yellow {
+        color: $yellow;
+    }
+    .green {
+        color: $green;
+    }
 }
 
 .group-edit-button {

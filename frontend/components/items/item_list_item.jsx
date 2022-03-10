@@ -63,7 +63,7 @@ class ItemListItem extends React.Component {
                 </div>
                 <span className='item-name'>
                     <span className={`${color}-item item-flair`}> </span>
-                    <span>
+                    <span className={`${color}`}>
                         {item.itemName}
                     </span>
                 </span>

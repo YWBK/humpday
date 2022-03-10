@@ -24,7 +24,7 @@ export default class HomePage extends React.Component {
         let greeting
         if (this.state.hour < 12) {
             greeting = 'morning';
-        } else if (this.state.hour < 6 ) {
+        } else if (this.state.hour < 18 ) {
             greeting = 'afternoon';
         } else {
             greeting = 'evening';

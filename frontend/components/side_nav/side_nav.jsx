@@ -39,12 +39,11 @@ class SideNav extends React.Component {
                 </div>
             ) 
         } else {
-            // return (words[0][0] + words[1][0]).toUpperCase();
-            const firstLetter = words[0][0];
-            const secondLetter = words[1][0];
+            const firstInitial = words[0][0].toLowerCase();
+            const secondLetter = words[1][0].toLowerCase();
             return (
                 <div className='userInitials'>
-                    <FontAwesomeIcon icon={`fa-solid fa-${firstLetter}`} size='1x' />
+                    <FontAwesomeIcon icon={`fa-solid fa-${firstInitial}`} size='1x' />
                     <FontAwesomeIcon icon={`fa-solid fa-${secondLetter}`} size='1x' />
                 </div>
             )

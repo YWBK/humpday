@@ -66,8 +66,10 @@ export default class LoginForm1 extends React.Component {
                         <button 
                             className='login-demo-btn' 
                             onClick={()=> login(
-                                {email: 'user@demo.com', password: 'Demo123'}, 
-                                {account_name: 'demo'}
+                                // {email: 'user@demo.com', password: 'Demo123'}, 
+                                // {account_name: 'demo'}
+                                {email: 'rnadal@goat.com', password: 'Demo123'}, 
+                                {account_name: 'goat'}
                             )} 
                         >
                             Demo User
