@@ -24,6 +24,8 @@ Humpday.com is a clone of Monday.com, a work management software. Users can crea
 
 At signup, based on the `Account` name given, `User`s will either be added to an existing `Account` or a new `Account` with a template `Workspace` and `Board` will be simulatenously created with the `User` with the `User` as the owner of the `Account`, `Workspace`, and `Board`.
 
+<img src="./app/assets/images/signup.gif" width="640" height="400"/>
+
 ```ruby
 def create
     @user = User.new(user_params)
@@ -78,7 +80,7 @@ def create
     end
 end
 ```
-
+<img src="./app/assets/images/modals.gif" width="640" height="400"/>
 
 `User`s can create `Workspace`s or `Board`s through the modal and, after creation, are automatically taken to the created `Workspace` or `Board` show page.
 
