@@ -22,7 +22,7 @@ Humpday.com is a clone of Monday.com, a work management software. Users can crea
 
 ### Create Workspace / Board Modal
 
-At signup, based on the `Account` name given, `User`s will either be added to an existing `Account` or a new template `Account` will be simulatenously created with the `User`.
+At signup, based on the `Account` name given, `User`s will either be added to an existing `Account` or a new `Account` with a template `Workspace` and `Board` will be simulatenously created with the `User` with the `User` as the owner of the `Account`, `Workspace`, and `Board`.
 
 ```ruby
 def create
