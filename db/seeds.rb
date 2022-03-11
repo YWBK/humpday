@@ -202,26 +202,3 @@ demo_group_1.columns.each do |col|
         )
     end
 end
-
-# demo_item_1_people = ItemPerson.create(
-#     item_id: demo_item_1.id,
-#     column_id: demo_column_2.id,
-#     person_id: demo_user.id
-# )
-
-# demo_item_2 = Item.create(
-#     item_name: 'Item 2',
-#     group_id: demo_group_1.id
-# )
-# demo_item_3 = Item.create(
-#     item_name: 'Item 3',
-#     group_id: demo_group_1.id
-# )
-# demo_item_4 = Item.create(
-#     item_name: 'Item 4',
-#     group_id: demo_group_2.id
-# )
-# demo_item_5 = Item.create(
-#     item_name: 'Item 5',
-#     group_id: demo_group_2.id
-# )
