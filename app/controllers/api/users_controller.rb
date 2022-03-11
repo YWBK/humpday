@@ -53,8 +53,8 @@ class Api::UsersController < ApplicationController
             end
             login!(@user)
             render :show
-        else
-            @account.destroy if @workspace
+        else 
+            @account.destroy if @user.owned_account_id == @account.id
             render json: @user.errors.full_messages, status: 422
         end
     end
