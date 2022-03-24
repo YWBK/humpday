@@ -50,9 +50,9 @@
     height: 100%;
     left: 0;
     overflow: hidden;    
-    // width: 100%;
-    padding-top: 12%;
-    // padding-bottom: 50%;
+    // padding-top: 12%;
+    padding-top: max(80px, 12%);
+    // min-padding-top: 10px;
     color: $white;
     background-color: $dark-purple;
     font-family: Arial, Helvetica, sans-serif;
