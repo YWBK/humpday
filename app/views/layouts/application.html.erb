@@ -4,7 +4,14 @@
     <title>Humpday</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <meta property="og:title" content="humpday.com" />
+    <meta property='og:image' content="<%= image_url('img.png') %>"/>
+    <meta property="og:description"
+       content="A platform built to make everyday feel like humpday"
+    />
+    <meta property="og:url"
+       content="https://humpday.herokuapp.com/#/"
+    />
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
     <%= favicon_link_tag 'logo.png' %>
