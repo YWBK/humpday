@@ -7,7 +7,7 @@
 //     background: rgba(0, 0, 0, 0.7);
 //     z-index: 10;
 //   }
-  
+
 .modal-child {
     height: 200px;
     width: 400px;
@@ -43,6 +43,10 @@
     input {
         width: 100%;
     }
+}
+
+.modal-error {
+    color: $login-red;
 }
 
 .modal-btns {

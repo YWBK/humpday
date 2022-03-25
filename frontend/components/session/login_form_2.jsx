@@ -29,7 +29,9 @@ export default class LoginForm2 extends React.Component {
         const loginForm = 
             <div className='login-2-wrapper'>
                 <div className='nav-bar'>
-                    <h2><Link className='nav-link' style={{ textDecoration: 'none' }} to='/'><span>humpday</span></Link></h2>
+                    <div className='left-nav'>
+                        <h2><Link className='nav-link' style={{ textDecoration: 'none' }} to='/'><span>humpday</span></Link></h2>
+                    </div>
                 </div>
                 <div className='login-form-2-wrapper'>
                     {!!this.state.error ? 

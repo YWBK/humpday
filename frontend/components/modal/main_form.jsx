@@ -8,10 +8,12 @@ export default class MainForm extends React.Component {
             formName: `New ${props.formType}`,
             workspaceOwnerId: this.props.currentUserId,
             accountId: this.props.currentAccountId,
+            error: ''
         };
+        this.isValidName = this.isValidName.bind(this);
     }
     update(e) {
-        this.setState({ formName: e.target.value })
+        this.setState({ formName: e.target.value, error: '' })
     }
 
     handleCancel(e) {
@@ -21,6 +23,8 @@ export default class MainForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         const { currentAccountName, formType, currentWorkspaceId } = this.props
+        if (!this.isValidName(this.state.formName)) return this.setState({ error: `${formType} name cannot be blank`});
+
         const k = formType + '_name';
         const newObj = Object.assign({}, {
             [k]: this.state.formName, 
@@ -36,6 +40,9 @@ export default class MainForm extends React.Component {
             this.props.closeModal();
         };
         createBoard()
+    }
+    isValidName(name) {
+        return !!name;
     }
 
     render() {
@@ -53,6 +60,10 @@ export default class MainForm extends React.Component {
                             <input type="text" value={ this.state.formName } onChange={ (e) => this.update(e) } />
                         {/* </label> */}
                         {/* <div className='modal-cancel-btn'> */}
+                            {!!this.state.error ? 
+                            <p className='modal-error'>{this.state.error}</p> :
+                            <p><br/></p>
+                            }
                             <div className='modal-btns'>
                                 <button className='modal-cancel-btn' onClick={ (e) => this.handleCancel(e) }>Cancel</button>
                                 <button className='modal-submit-btn'onClick={ (e) => this.handleSubmit(e)}>Create {formName}</button>

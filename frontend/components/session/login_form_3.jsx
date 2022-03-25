@@ -51,7 +51,9 @@ export default class LoginForm3 extends React.Component {
         const login3Form = 
             <div>
                 <div className='nav-bar'>
-                    <h2><Link className='nav-link' style={{ textDecoration: 'none' }} to='/'><span>humpday</span></Link></h2>
+                    <div className='left-nav'>
+                        <h2><Link className='nav-link' style={{ textDecoration: 'none' }} to='/'><span>humpday</span></Link></h2>
+                    </div>
                 </div>
                 <div className='login-form-3-container'>
                         {!!this.state.error ? 
