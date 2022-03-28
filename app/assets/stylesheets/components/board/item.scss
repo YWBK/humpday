@@ -4,7 +4,7 @@
         background-color: $login-grey;
     }
     display: grid;
-    grid-template-columns: 20px 400px 1fr;
+    grid-template-columns: 20px 2fr 1fr;
     grid-template-rows: 22px;
     grid-auto-columns: 100px;
     grid-auto-flow: column;
@@ -85,8 +85,8 @@
     margin-bottom: 20px;
 
     input {
-        width: 70%;
-        max-width: 900px;
+        width: 99%;
+        // max-width: 900px;
         &:hover {
             outline: 1px solid black;
         }
