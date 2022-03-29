@@ -108,7 +108,8 @@ export default class MainShow extends React.Component {
                         <input 
                             type='text' 
                             value={this.state.workspaceName} 
-                            onChange={ e => this.update(e) } 
+                            onChange={ e => this.update(e) }
+                            onBlur={ () => this.updateWorkspaceName() } 
                             onClick={ e => e.stopPropagation() } />
                     </div>
                     <WorkspaceMembersList 
@@ -168,7 +169,8 @@ export default class MainShow extends React.Component {
             }
 
             return (
-                <div className='' onClick={ () => this.updateWorkspaceName() } >
+                // <div className='' onClick={ () => this.updateWorkspaceName() } >
+                <div className='' >
                     <SideNavContainer className='side-nav' />
                     <div className='main-content' >
                         <WorkspaceNav 
