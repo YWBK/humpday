@@ -105,7 +105,7 @@ class GroupListItem extends React.Component {
                         </ul>
                     </div>
                     <span className={`group-name`}>
-                        <span className={`${group.groupColor}`}>{ group.groupName}</span>
+                        <input type='text' className={`${group.groupColor}`} value={group.groupName}/>
                     </span>
                     <ul className='column-headers'>
                         { columns.slice(1).map((col, i) => (
@@ -150,13 +150,13 @@ class GroupListItem extends React.Component {
                     }) : null}
                     <li className='add-item'>
                         <form onKeyPress={ e => e.key === 'Enter' ? this.handleSubmit(e) : null} >
-                            <input type='text' placeholder='+ Add Item' value={this.state.itemName} onChange={e => this.update(e)} />
-                            <span className='add-item-btn' >
+                            <input type='text' placeholder='+ Add Item' value={this.state.itemName} onChange={e => this.update(e)} onBlur={e => this.handleSubmit(e)}/>
+                            {/* <span className='add-item-btn' >
                                 <FontAwesomeIcon className='item-submit' icon="fa-regular fa-circle-check" onClick={e => this.handleSubmit(e)}/>
                             </span>
                             <span className='add-item-btn' >
                                 <FontAwesomeIcon  className='item-cancel' icon="fa-regular fa-circle-xmark" onClick={() => this.setState({itemName: ''})} />
-                            </span>
+                            </span> */}
                         </form>
                     </li>
                 </ul>
