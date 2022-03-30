@@ -44,13 +44,10 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
-      # Add or replace database setup steps here
-      - name: Set up database schema
-        run: bin/rails db:schema:load
       # Add or replace test runners here
       - name: Build and run tests
         env:
-          DATABASE_URL: postgress://postgres:@localhost:5432/test
+          DATABASE_URL: postgres://postgres:@localhost:5432/test
           RAILS_ENV: test
         run:
           sudo apt-get -yqq install libpq-dev
