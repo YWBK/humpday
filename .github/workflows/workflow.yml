@@ -1,7 +1,7 @@
-env:
-  POSTGRES_USER: postgres
-  POSTGRES_PASSWORD: postgres
-  POSTGRES_DB: rails_test
+# env:
+#   POSTGRES_USER: postgres
+#   POSTGRES_PASSWORD: postgres
+#   POSTGRES_DB: rails_test
 
 name: "Ruby on Rails CI"
 on:
@@ -10,7 +10,7 @@ on:
   pull_request:
     branches: [ main ]
 jobs:
-  test:
+  build:
     runs-on: ubuntu-latest
 
     strategy:
@@ -23,8 +23,9 @@ jobs:
         ports:
           - "5432:5432"
         env:
-          POSTGRES_USER: ${{ env.POSTGRES_USER }}
-          POSTGRES_PASSWORD: ${{ env.POSTGRES_PASSWORD }}
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          # POSTGRES_DB: rails_test 
 
     steps:
       - name: Checkout code
@@ -39,20 +40,35 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       # Add or replace test runners here
-      - name: Build and run tests
-        env:
-          DATABASE_URL: postgres://postgres:@localhost:5432/rails_test
-          RAILS_ENV: test
+      - name: Install dependent libraries
+        run: sudo apt-get -yqq install libpq-dev
+
+      - name: Bundle install
         run: |
-          sudo apt-get -yqq install libpq-dev
           gem install bundler
           bundle install --jobs 4 --retry 3
+      - name: Setup Database
+        run: |
+          cp config/database.yml/github_actions config/database.yml
           bundle exec rails db:setup
-          bundle exec rails test
+
+      - name: Run tests
+        env:
+          # DATABASE_URL: postgres://postgres:@localhost:5432/rails_test
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          RAILS_ENV: test
+        run: bundle exec rails test
+        # run: |
+        #   sudo apt-get -yqq install libpq-dev
+        #   gem install bundler
+        #   bundle install --jobs 4 --retry 3
+        #   bundle exec rails db:setup
+        #   bundle exec rails test
 
   deploy:
     if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
-    needs: test
+    needs: build
     runs-on: ubuntu-latest
 
     steps:
