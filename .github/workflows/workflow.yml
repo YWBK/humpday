@@ -17,10 +17,6 @@ jobs:
         image: postgres:14-alpine
         ports:
           - "5432:5432"
-        env:
-          POSTGRES_USER: ${{ env.POSTGRES_USER}}
-          POSTGRES_PASSWORD: ${{ env.POSTGRES_PASSWORD }}
-          POSTGRES_DB: rails_test 
 
     steps:
       - name: Checkout code
@@ -43,15 +39,15 @@ jobs:
           gem install bundler
           bundle install --jobs 4 --retry 3
       - name: Setup Database
-        run:
-          bundle exec rails db:setup
-
-      - name: Run tests
         env:
           DATABASE_URL: postgres://postgres:@localhost:5432/rails_test
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
-          RAILS_ENV: rails_test
+          RAILS_ENV: test
+        run:
+          bundle exec rails db:setup
+
+      - name: Run tests
         run: bundle exec rails test
         # run: |
         #   sudo apt-get -yqq install libpq-dev
