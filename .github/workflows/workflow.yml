@@ -48,6 +48,11 @@ jobs:
           bundle exec rails db:setup
 
       - name: Run tests
+        env:
+          DATABASE_URL: postgres://postgres:@localhost:5432/rails_test
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          RAILS_ENV: test
         run: bundle exec rails test
         # run: |
         #   sudo apt-get -yqq install libpq-dev
