@@ -43,12 +43,19 @@ jobs:
           gem install bundler
           bundle install --jobs 4 --retry 3
       - name: Setup Database
+        env:
+          PGHOST: localhost
+          # DATABASE_URL: postgres://postgres:@localhost:5432/rails_test
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          RAILS_ENV: test
         run:
           bundle exec rails db:setup
 
       - name: Run tests
         env:
-          DATABASE_URL: postgres://postgres:@localhost:5432/rails_test
+          PGHOST: localhost
+          # DATABASE_URL: postgres://postgres:@localhost:5432/rails_test
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
           RAILS_ENV: test
