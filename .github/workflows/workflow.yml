@@ -51,10 +51,10 @@ jobs:
           bundle exec rails test
 
   deploy:
-    if: ${{ github.event_name == "push" github.ref == "refs/heads/main" }}
+    if: ${{ github.event_name == 'push' github.ref == 'refs/heads/main' }}
     needs: test
     runs-on: ubuntu-latest
-    
+
     steps:
       - uses: actions/checkout@v3
       - name: Deploy to Heroku
