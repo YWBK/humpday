@@ -50,7 +50,8 @@ jobs:
       - name: Setup Database
         run: |
           cp config/database.yml.github-actions config/database.yml
-          bundle exec rails db:setup
+          bundle exec rails db:create
+          bundel exec rails db:schema:load
 
       - name: Run tests
         env:
