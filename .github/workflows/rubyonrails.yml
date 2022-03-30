@@ -37,7 +37,7 @@ jobs:
       - name: Install Ruby and gems
         uses: ruby/setup-ruby@8f312efe1262fb463d906e9bf040319394c18d3e # v1.92
         with:
-          ruby-version: 2.5.x
+          ruby-version: 2.5.1
           bundler-cache: true
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
