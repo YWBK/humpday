@@ -79,7 +79,7 @@ class WorkspaceNav extends React.Component {
                 <div className='workspace-nav-wrapper' onClick={ e => e.stopPropagation() }>
                     <div className={ this.state.navActive ? 'workspace-nav' : 'workspace-nav hidden' } >
                         <div className='workspace-nav-current'  >
-                            <span>Workspace TEST CD GITHUB ACTION</span>
+                            <span>Workspace</span>
                             <div className='workspace-nav-selector' onClick={this.toggleListClass}>
                                 <span>{ currentWorkspace ? currentWorkspace.workspaceName : 'Main Workspace' }</span>
                                 <FontAwesomeIcon icon={`fa-solid fa-chevron-${this.state.listActive ? 'up' : 'down'}`} />    
