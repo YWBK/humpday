@@ -49,7 +49,7 @@ jobs:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
           RAILS_ENV: test
-        run:
+        run: |
           cp config/database.yml.github-actions config/database.yml
           bundle exec rails db:setup
 
