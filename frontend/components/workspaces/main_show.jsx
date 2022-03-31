@@ -92,6 +92,7 @@ export default class MainShow extends React.Component {
                 deleteBoard, 
                 addColumn,
                 deleteColumn,
+                updateGroup,
                 deleteGroup, 
                 addItem, 
                 deleteItem,
@@ -138,6 +139,7 @@ export default class MainShow extends React.Component {
                             return (
                                 <GroupListItem 
                                     key={group.id}
+                                    showType={showType}
                                     currentAccountUsers={currentAccountUsers}
                                     currentBoard={currentBoard}
                                     group={group}
@@ -148,6 +150,7 @@ export default class MainShow extends React.Component {
                                     dueDates={dueDates}
                                     addColumn={addColumn}
                                     deleteColumn={deleteColumn}
+                                    updateGroup={updateGroup}
                                     deleteGroup={deleteGroup}
                                     addItem={addItem}
                                     deleteItem={deleteItem}
