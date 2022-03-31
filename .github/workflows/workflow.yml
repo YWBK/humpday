@@ -81,4 +81,5 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "humpday" #Must be unique in Heroku
           heroku_email: "ywbkdev@gmail.com"
+          justlogin: true
       - run: heroku auth:whoami
