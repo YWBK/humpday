@@ -45,7 +45,7 @@ jobs:
       - name: Setup Database
         env:
           # PGHOST: localhost
-          DATABASE_URL: postgres://postgres:@localhost:5432/rails_test
+          # DATABASE_URL: postgres://postgres:@localhost:5432/rails_test
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
           RAILS_ENV: test
@@ -56,7 +56,7 @@ jobs:
       - name: Run tests
         env:
           # PGHOST: localhost
-          DATABASE_URL: postgres://postgres:@localhost:5432/rails_test
+          # DATABASE_URL: postgres://postgres:@localhost:5432/rails_test
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
           RAILS_ENV: test
