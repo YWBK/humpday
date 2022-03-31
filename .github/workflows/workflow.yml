@@ -82,7 +82,7 @@ jobs:
           heroku_app_name: "humpday" #Must be unique in Heroku
           heroku_email: "ywbkdev@gmail.com"
           healthcheck: 'https://humpday.herokuapp.com/'
-          rollbackonhealthcheckfailed: true
+          # rollbackonhealthcheckfailed: true
         env: 
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
