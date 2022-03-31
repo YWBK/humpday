@@ -83,6 +83,6 @@ jobs:
           heroku_email: "ywbkdev@gmail.com"
           healthcheck: 'https://humpday.herokuapp.com/'
           rollbackonhealthcheckfailed: true
-      - env: 
+        env: 
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
