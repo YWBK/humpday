@@ -10,6 +10,16 @@ class Api::GroupsController < ApplicationController
         end
     end
 
+    def update
+        @group = Group.find_by(id: params[:id])
+        if @group.update(group_params)
+            @board = Board.find_by(id: group_params[:board_id])
+            render 'api/boards/show'
+        else
+            render json: @group.errors.full_messages, status: 422
+        end
+    end
+
     def destroy
         @group = Group.find_by(id: params[:id])
         if @group
