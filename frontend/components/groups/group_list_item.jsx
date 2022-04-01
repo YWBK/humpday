@@ -10,6 +10,7 @@ class GroupListItem extends React.Component {
         super(props);
         this.groupMenu = React.createRef();
         this.colMenu = React.createRef();
+        this.groupNameInp = React.createRef();
         this.state = { 
             active: false, 
             addColActive: false,
@@ -76,10 +77,16 @@ class GroupListItem extends React.Component {
         updateGroup(updatedGroup);
     }
     onKeyDown(e) {
-        if (e.key === "Enter") {
-            debugger
-            e.target.blur();
-        }
+        if (e.key === "Enter") e.target.blur();
+        if (e.key === 'Escape') {
+            const oldGroupName = this.props.group.groupName;
+
+            const cancelGroupRename = async () => {
+                await this.setState({ groupName: oldGroupName });
+                e.target.blur();                
+            }
+            cancelGroupRename();
+        } 
     }
     handleSubmit(e) {
         e.preventDefault();
@@ -120,20 +127,31 @@ class GroupListItem extends React.Component {
                         <ul 
                             className={ this.state.active ? 'group-edit' : 'group-edit hidden' }
                             ref={this.groupMenu}>
-                            <li onClick={() => deleteGroup(group.id)}>
-                                <FontAwesomeIcon icon="fa-solid fa-trash" className='column-delete' />
-                                <span>Delete</span>
-                            </li>
+                                <li 
+                                    className='group-item-edit-option'
+                                    onClick={() => {
+                                        this.setState({ active: false })
+                                        this.groupNameInp.current.focus()} } >
+                                            <FontAwesomeIcon icon='fa-solid fa-pencil' />
+                                            <span>Rename Group</span>
+                                </li>    
+                                <li 
+                                    className='group-item-edit-option'
+                                    onClick={() => deleteGroup(group.id)}>
+                                        <FontAwesomeIcon icon="fa-solid fa-trash"/>
+                                        <span>Delete</span>
+                                </li>
                         </ul>
                     </div>
                     <span className={`group-name`}>
                         <input 
+                            ref={this.groupNameInp}
                             type='text' 
                             className={`${group.groupColor}`} 
                             value={this.state.groupName} 
                             onChange={ e => this.update('groupName', e)} 
                             onBlur={ () => this.updateGroupName() }
-                            onKeyDown={this.onKeyDown}
+                            onKeyDown={ e => this.onKeyDown(e) }
                             />
                     </span>
                     <ul className='column-headers'>
