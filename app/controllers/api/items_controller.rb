@@ -31,6 +31,17 @@ class Api::ItemsController < ApplicationController
         end
     end
 
+    def update
+        @item = Item.find_by(id: params[:id])
+        if @item.update(item_params)
+            @group = Group.find_by(id: item_params[:group_id])
+            @board = Board.find_by(id: @group.board_id)
+            render 'api/boards/show'
+        else
+            render json: @group.errors.full_messages, status: 422
+        end
+    end
+
     def destroy
         @item = Item.find_by(id: params[:id])
         if @item
