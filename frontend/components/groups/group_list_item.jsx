@@ -64,12 +64,20 @@ class GroupListItem extends React.Component {
     }
     updateGroupName() {
         const { currentBoard, group, updateGroup } = this.props;
+        const oldGroupName = group.groupName;
+        if (oldGroupName === this.state.groupName) return null;
+        
         const updatedGroup = {
             id: group.id,
             group_name: this.state.groupName,
             board_id: currentBoard.id
         };
         updateGroup(updatedGroup);
+    }
+    onKeyDown(e) {
+        if (e.key === "Enter") {
+            e.target.blur();
+        }
     }
     handleSubmit(e) {
         e.preventDefault();
@@ -123,6 +131,7 @@ class GroupListItem extends React.Component {
                             value={this.state.groupName} 
                             onChange={ e => this.update('groupName', e)} 
                             onBlur={ () => this.updateGroupName() }
+                            onKeyDown={this.onKeyDown}
                             />
                     </span>
                     <ul className='column-headers'>
