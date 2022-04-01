@@ -16,6 +16,16 @@ export const addGroup = group => dispatch => {
             )
     )
 }
+
+export const updateGroup = group => dispatch => {
+    return (
+        GroupApiUtil.updateGroup(group)
+            .then(
+                updated => dispatch(receiveBoard(updated))
+            )
+    )
+}
+
 export const deleteGroup = groupId => dispatch => {
     return (
         GroupApiUtil.deleteGroup(groupId)

@@ -7,6 +7,8 @@ import { fetchWorkspaces, updateWorkspace } from './util/workspace_api_util';
 import { addWorkspaceMember } from './util/workspace_member_api_util';
 import { updateBoard } from './util/board_api_util';
 import { deleteBoard } from './actions/board_actions';
+// import { updateGroup } from './util/group_api_util';
+import { updateGroup } from './actions/group_actions';
 // import { addColumn } from './util/column_api_util';
 import { addColumn, deleteColumn } from './actions/column_actions';
 import { addItem, deleteItem } from './actions/item_actions';
@@ -44,6 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addWorkspaceMember = addWorkspaceMember;
     window.updateBoard = updateBoard;
     window.deleteBoard = deleteBoard;
+    window.updateGroup = updateGroup;
     window.addColumn = addColumn;
     window.deleteColumn = deleteColumn;
     window.addItem = addItem;

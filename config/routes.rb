@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     resources :boards, only: [:create, :index, :show, :update, :destroy]
     resources :board_members, only: [:create]
     resources :columns, only: [:create, :destroy]
-    resources :groups, only: [:create, :destroy]
+    resources :groups, only: [:create, :update, :destroy]
     resources :items, only: [:create, :destroy]
     resources :item_people, only: [:update]
     resources :statuses, only: [:update]

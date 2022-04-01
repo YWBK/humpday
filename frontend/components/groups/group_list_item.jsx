@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import ColumnHeaderItem from '../columns/column_header_item';
 import ItemListItem from '../items/item_list_item';
@@ -12,6 +13,7 @@ class GroupListItem extends React.Component {
         this.state = { 
             active: false, 
             addColActive: false,
+            groupName: props.group.groupName,
             itemName: ''
         }
         this.handleOuterClickTable = this.handleOuterClickTable.bind(this);
@@ -57,8 +59,25 @@ class GroupListItem extends React.Component {
             board_id: currentBoard.id };
         addColumn(column);
     }
-    update(e) {
-        this.setState({itemName: e.currentTarget.value})
+    update(field, e) {
+        this.setState({ [field]: e.currentTarget.value })
+    }
+    updateGroupName() {
+        const { currentBoard, group, updateGroup } = this.props;
+        const oldGroupName = group.groupName;
+        if (oldGroupName === this.state.groupName) return null;
+        
+        const updatedGroup = {
+            id: group.id,
+            group_name: this.state.groupName,
+            board_id: currentBoard.id
+        };
+        updateGroup(updatedGroup);
+    }
+    onKeyDown(e) {
+        if (e.key === "Enter") {
+            e.target.blur();
+        }
     }
     handleSubmit(e) {
         e.preventDefault();
@@ -81,6 +100,7 @@ class GroupListItem extends React.Component {
             currentAccountUsers,
             currentBoard,
             deleteColumn, 
+            updateGroup,
             deleteGroup, 
             deleteItem, 
             updateStatus, 
@@ -105,7 +125,14 @@ class GroupListItem extends React.Component {
                         </ul>
                     </div>
                     <span className={`group-name`}>
-                        <input type='text' className={`${group.groupColor}`} value={group.groupName}/>
+                        <input 
+                            type='text' 
+                            className={`${group.groupColor}`} 
+                            value={this.state.groupName} 
+                            onChange={ e => this.update('groupName', e)} 
+                            onBlur={ () => this.updateGroupName() }
+                            onKeyDown={this.onKeyDown}
+                            />
                     </span>
                     <ul className='column-headers'>
                         { columns.slice(1).map((col, i) => (
@@ -150,13 +177,12 @@ class GroupListItem extends React.Component {
                     }) : null}
                     <li className='add-item'>
                         <form onKeyPress={ e => e.key === 'Enter' ? this.handleSubmit(e) : null} >
-                            <input type='text' placeholder='+ Add Item' value={this.state.itemName} onChange={e => this.update(e)} onBlur={e => this.handleSubmit(e)}/>
-                            {/* <span className='add-item-btn' >
-                                <FontAwesomeIcon className='item-submit' icon="fa-regular fa-circle-check" onClick={e => this.handleSubmit(e)}/>
-                            </span>
-                            <span className='add-item-btn' >
-                                <FontAwesomeIcon  className='item-cancel' icon="fa-regular fa-circle-xmark" onClick={() => this.setState({itemName: ''})} />
-                            </span> */}
+                            <input 
+                                type='text' 
+                                placeholder='+ Add Item' 
+                                value={this.state.itemName} 
+                                onChange={e => this.update('itemName', e)} 
+                                onBlur={e => this.handleSubmit(e)} />
                         </form>
                     </li>
                 </ul>
@@ -165,4 +191,4 @@ class GroupListItem extends React.Component {
     }
 }
 
-export default GroupListItem
+export default withRouter(GroupListItem);
