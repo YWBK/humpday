@@ -8,6 +8,9 @@ class ItemListItem extends React.Component {
         this.itemMenu = React.createRef();
         this.state = { 
             active: false, 
+            renameActive: false,
+            itemName: props.item.itemName,
+            isDisabled: true
         }
         this.handleOuterClickItem = this.handleOuterClickItem.bind(this);
     }
@@ -30,6 +33,29 @@ class ItemListItem extends React.Component {
     }
     toggleActive() {
         this.setState({active: !this.state.active});
+    }
+    update(e) {
+        this.setState({ itemName: e.currentTarget.value })
+    }
+    updateItemName() {
+        const { item, updateItem } = this.props;
+        const oldItemName = item.itemName;
+        this.setState({ isDisabled: true });
+        if (oldItemName === this.state.itemName) return null;
+        if (this.state.itemName === '') return this.setState({ itemName: oldItemName });
+
+        const updatedItem = {
+            id: item.id,
+            item_name: this.state.itemName,
+            group_id: item.groupId
+        };
+        // debugger
+        updateItem(updatedItem);
+    }
+    onKeyDown(e) {
+        if (e.key === "Enter") {
+            e.target.blur();
+        }
     }
 
     render() {
@@ -63,9 +89,24 @@ class ItemListItem extends React.Component {
                 </div>
                 <span className='item-name'>
                     <span className={`${color}-item item-flair`}> </span>
-                    <span className={`${color}`}>
-                        {item.itemName}
-                    </span>
+                    <div
+                        onMouseEnter={() => this.setState({ renameActive: true }) }
+                        onMouseLeave={() => this.setState({ renameActive: false}) } >
+                        <input 
+                            type='text'
+                            className={`${color}`}
+                            value={this.state.itemName}
+                            onChange={ e => this.update(e)} 
+                            onBlur={ () => this.updateItemName() }
+                            onKeyDown={this.onKeyDown}
+                            disabled={this.state.isDisabled} 
+                            />
+                        <span 
+                            className={ this.state.renameActive ? 'item-rename' : 'item-rename hidden' } 
+                            onClick={ () => this.setState({isDisabled: !this.state.isDisabled}) }>
+                                Edit
+                        </span>
+                    </div>
                 </span>
                 <ul className='item-cells'>
                     { columns.map((col, i) => {

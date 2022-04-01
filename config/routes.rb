@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     resources :board_members, only: [:create]
     resources :columns, only: [:create, :destroy]
     resources :groups, only: [:create, :update, :destroy]
-    resources :items, only: [:create, :destroy]
+    resources :items, only: [:create, :update, :destroy]
     resources :item_people, only: [:update]
     resources :statuses, only: [:update]
     resources :due_dates, only: [:update]

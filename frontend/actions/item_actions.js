@@ -16,6 +16,16 @@ export const addItem = item => dispatch => {
             )
     )
 }
+
+export const updateItem = item => dispatch => {
+    return (
+        ItemApiUtil.updateItem(item)
+            .then(
+                updated => dispatch(receiveBoard(updated))
+            )
+    )
+}
+
 export const deleteItem = itemId => dispatch => {
     return (
         ItemApiUtil.deleteItem(itemId)

@@ -6,6 +6,14 @@ export const addItem = item => (
     })
 )
 
+export const updateItem = item => (
+    $.ajax({
+        method: 'PATCH',
+        url: `api/items/${item.id}`,
+        data: { item }
+    })
+)
+
 export const deleteItem = itemId => (
     $.ajax({
         method: 'DELETE',

@@ -77,6 +77,7 @@ class GroupListItem extends React.Component {
     }
     onKeyDown(e) {
         if (e.key === "Enter") {
+            debugger
             e.target.blur();
         }
     }
@@ -101,8 +102,8 @@ class GroupListItem extends React.Component {
             currentAccountUsers,
             currentBoard,
             deleteColumn, 
-            updateGroup,
             deleteGroup, 
+            updateItem,
             deleteItem, 
             updateStatus, 
             updateItemPerson, 
@@ -164,6 +165,7 @@ class GroupListItem extends React.Component {
                                 columns={columns}
                                 items={items}
                                 item={item} 
+                                updateItem={updateItem}
                                 deleteItem={deleteItem} 
                                 color={group.groupColor}
                                 currentAccountUsers={currentAccountUsers} 

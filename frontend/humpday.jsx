@@ -11,7 +11,8 @@ import { deleteBoard } from './actions/board_actions';
 import { updateGroup } from './actions/group_actions';
 // import { addColumn } from './util/column_api_util';
 import { addColumn, deleteColumn } from './actions/column_actions';
-import { addItem, deleteItem } from './actions/item_actions';
+// import { updateItem } from './util/item_api_util';
+import { addItem, updateItem, deleteItem } from './actions/item_actions';
 import { signup, login, logout } from './actions/session_actions';
 import { updateStatus, updateItemPerson } from './actions/cell_actions';
 import Root from './components/root';
@@ -50,6 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addColumn = addColumn;
     window.deleteColumn = deleteColumn;
     window.addItem = addItem;
+    window.updateItem = updateItem;
     window.deleteItem = deleteItem;
     window.updateStatus = updateStatus;
     window.updateItemPerson = updateItemPerson;
