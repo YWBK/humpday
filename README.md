@@ -16,6 +16,7 @@ Humpday.com is a clone of Monday.com, a work management software. Users can crea
 - Webpack
 - Babel
 - Heroku
+- Github Actions for CI/CD
 - Icons from [Font Awesome](https://fontawesome.com/)
 
 ## Features
