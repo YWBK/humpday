@@ -66,7 +66,8 @@ class GroupListItem extends React.Component {
         const { currentBoard, group, updateGroup } = this.props;
         const oldGroupName = group.groupName;
         if (oldGroupName === this.state.groupName) return null;
-        
+        if (this.state.groupName === '') return this.setState({ groupName: oldGroupName });
+
         const updatedGroup = {
             id: group.id,
             group_name: this.state.groupName,

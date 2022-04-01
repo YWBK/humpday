@@ -17,6 +17,7 @@ const mapSTP = (state, ownProps) => {
         const currentAccount = currentUser.account;
         const currentAccountUsers = state.entities.users;
         const currentWorkspace = workspaces[state.session.currentWorkspaceId];
+        // debugger
         return ({
             showType: 'workspace',
             workspaces: workspaces,

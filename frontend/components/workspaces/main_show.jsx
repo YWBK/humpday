@@ -10,7 +10,10 @@ import BoardTitleBar from '../boards/board_title_bar';
 export default class MainShow extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { active: true, workspaceName: '' };
+        // debugger
+        this.state = { 
+            active: true, 
+            workspaceName: '##############################' };
         this.toggleClass = this.toggleClass.bind(this);
     }
 
@@ -35,7 +38,7 @@ export default class MainShow extends React.Component {
         if (this.props.showType === 'workspace') {
             let currentWorkspaceName;
             const locationChanged = this.props.location.pathname !== prevProps.location.pathname;
-            if (!this.state.workspaceName || locationChanged) {
+            if (this.state.workspaceName === '##############################' || locationChanged) {
                 currentWorkspaceName = this.props.workspaces[this.props.match.params.workspaceId].workspaceName
                 this.setState ({ workspaceName: currentWorkspaceName})
             }
@@ -51,16 +54,19 @@ export default class MainShow extends React.Component {
     }
 
     updateWorkspaceName() {
-        if (this.props.showType === 'workspace') {
-            const oldWorkspaceName = this.props.currentWorkspace.workspaceName;
-            const workspaceId = this.props.currentWorkspace.id
-            const workspace = Object.assign({}, { id: workspaceId , workspace_name: this.state.workspaceName });
-            if (oldWorkspaceName !== this.state.workspaceName) {
-                this.props.updateWorkspace(workspace);
-            } else {
-                null;
-            }
-        } else {
+        if ( this.props.showType !== 'workspace') return null;
+
+        const oldWorkspaceName = this.props.currentWorkspace.workspaceName;
+        if (oldWorkspaceName === this.state.workspaceName) return null;
+        if (this.state.workspaceName === '') return this.setState({ workspaceName: oldWorkspaceName });
+            
+        const workspaceId = this.props.currentWorkspace.id
+        const workspace = Object.assign({}, { id: workspaceId , workspace_name: this.state.workspaceName });
+        this.props.updateWorkspace(workspace);
+    }
+    onKeyDown(e) {
+        if (e.key === "Enter") {
+            e.target.blur();
         }
     }
 
@@ -110,7 +116,8 @@ export default class MainShow extends React.Component {
                             type='text' 
                             value={this.state.workspaceName} 
                             onChange={ e => this.update(e) }
-                            onBlur={ () => this.updateWorkspaceName() } 
+                            onBlur={ () => this.updateWorkspaceName() }
+                            onKeyDown={this.onKeyDown}
                             onClick={ e => e.stopPropagation() } />
                     </div>
                     <WorkspaceMembersList 
