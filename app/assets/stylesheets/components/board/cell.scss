@@ -1,11 +1,19 @@
 .item-cell {
+    height: 1.8em;
+
     > ul {
         width: 100%;
         > li {
+            height: 100%;
             width: 100%;
+            // display: flex;
+            // align-items: center;
             > span {
+                height: 100%;
                 width: 100%;
-                text-align: center;
+                margin-top: 0.5em;
+                // text-align: center;
+                // align-self: center;
                 // place-self: center;
             }
         }
@@ -84,6 +92,7 @@
 
 .date-picker {
     z-index: -1;
+    height: 1.8em;
    width: 112px;
    border: none;
    cursor: pointer;

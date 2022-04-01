@@ -13,10 +13,11 @@
 }
 
 .group-name {
-    
+    height: 2em;
     input {
         border: none;
         font-size: 18px;
+
 
         &:hover {
             border: 1px dashed black;

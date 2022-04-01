@@ -16,48 +16,66 @@
 .item-name {
     // flex-grow: 2;
     align-self: center;
-    input:disabled {
-        border: none;
-        background-color: inherit;
+    &:hover {
+        input {
+            color: $signup-darker-blue;
+        }
+    }
+    input {
+        &:disabled {
+            border: none;
+            background-color: inherit;
+        }
+        &:focus {
+            color: black;
+        };
+    }
+    display: flex;
+
+
+    .item-flair {
+        height: 1.5em;
+        width: 0.5em;
+        margin-right: 0.5em;
+    }
+    .magenta-item {
+        background-color: $magenta;
+    }
+    .purple-item {
+        background-color: $purple;
+    }
+    .orange-item {
+        background-color: $orange;
+    }
+    .fuschia-item {
+        background-color: $fuschia;
+    }
+    .blue-item {
+        background-color: $blue;
+    }
+    .turqoise-item {
+        background-color: $turqoise;
+    }
+    .skyblue-item {
+        background-color: $skyblue;
+    }
+    .blush-item {
+        background-color: $blush;
+    }
+    .teal-item {
+        background-color: $teal;
+    }
+    .yellow-item {
+        background-color: $yellow;
+    }
+    .green-item {
+        background-color: $green;
     }
 
-    &:hover {
-        .magenta {
-            color: $magenta;
-        }
-        .purple {
-            color: $purple;
-        }
-        .orange {
-            color: $orange;
-        }
-        .fuschia {
-            color: $fuschia;
-        }
-        .blue {
-            color: $blue;
-        }
-        .turqoise {
-            color: $turqoise;
-        }
-        .skyblue {
-            color: $skyblue;
-        }
-        .blush {
-            color: $blush;
-        }
-        .teal {
-            color: $teal;
-        }
-        .yellow {
-            color: $yellow;
-        }
-        .green {
-            color: $green;
-        }
     
-    }
 }
+
+
 
 .item-rename {
     color: $login-darker-grey;
@@ -82,6 +100,18 @@
     background: $white-3;
     border-radius: 10px;
     box-shadow: 0px 0px 4px $login-dark-grey
+}
+
+.group-item-edit-option {
+    padding: 0.3em 0.4em 0.3em 0.4em;
+    &:hover {
+        background-color: $login-grey;
+        border-radius: 0.3em;
+    };
+    display: flex;
+    span {
+        margin-left: 0.3em;
+    }
 }
 
 .item-cells {

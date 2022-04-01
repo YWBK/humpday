@@ -5,11 +5,14 @@ import CellList from '../cells/cell_list';
 class ItemListItem extends React.Component {
     constructor(props) {
         super(props);
+        this.itemRow = React.createRef();
         this.itemMenu = React.createRef();
+        this.itemMenuButton = React.createRef();
         this.itemNameInp = React.createRef();
         this.state = { 
             active: false, 
             renameActive: false,
+            itemActive: false,
             itemName: props.item.itemName,
             isDisabled: true
         }
@@ -30,14 +33,31 @@ class ItemListItem extends React.Component {
                 active: false,
             })
         }
-
+        if (
+            this.itemMenuButton.current &&
+            !this.itemMenuButton.current.contains(e.target) &&
+            !this.itemRow.current.contains(e.target)
+        ) {
+            this.setState({
+                itemActive: false
+            })
+        }
+        
     }
     toggleActive() {
-        this.setState({active: !this.state.active});
+        this.setState({active: !this.state.active });
     }
     update(e) {
         this.setState({ itemName: e.currentTarget.value })
     }
+    openItemRename() {
+        const openRenameInput = async () => {
+            await this.setState({ active: false, isDisabled: !this.state.isDisabled});
+            this.itemNameInp.current.focus();
+        }
+        openRenameInput();
+    }
+
     updateItemName() {
         const { item, updateItem } = this.props;
         const oldItemName = item.itemName;
@@ -50,13 +70,14 @@ class ItemListItem extends React.Component {
             item_name: this.state.itemName,
             group_id: item.groupId
         };
-        // debugger
         updateItem(updatedItem);
     }
     onKeyDown(e) {
-        if (e.key === "Enter") {
-            e.target.blur();
-        }
+        if (e.key === "Enter") e.target.blur()
+        if (e.key === 'Escape') {
+            const oldItemName = this.props.item.itemName;
+            this.setState({ itemName: oldItemName, isDisabled: true })
+        } 
     }
 
     render() {
@@ -73,49 +94,57 @@ class ItemListItem extends React.Component {
             columns, 
             deleteItem } = this.props;
         return (
-            <li className='item-row'>
-                <div className='item-edit-wrapper'>
-                    <FontAwesomeIcon 
-                        icon="fa-solid fa-caret-down" 
-                        // icon="fa-solid fa-rectangle-down" 
-                        className={`item-edit-button ${color}`} 
-                        onClick={()=>this.toggleActive()} />
+            <li 
+                ref={this.itemRow}
+                className='item-row'
+                onMouseEnter={() => this.setState({ renameActive: true, itemActive: true }) }
+                onMouseLeave={() => this.setState({ renameActive: false, itemActive: this.state.active ? true : false }) } >
+                <div className='item-edit-wrapper' >
+                    <div
+                        ref={this.itemMenuButton}
+                        className={ this.state.itemActive
+                            ? `item-edit-button ${color}`
+                            : `item-edit-button hidden`} 
+                        onClick={()=>this.toggleActive()}>
+                            <FontAwesomeIcon icon="fa-solid fa-caret-down" />
+                    </div>
                     <ul 
                         ref={this.itemMenu }
                         className={ this.state.active ? 'item-edit' : 'item-edit hidden' }>
-                        <li onClick={() => deleteItem(item.id)}>
-                            <FontAwesomeIcon icon="fa-solid fa-trash" className='column-delete' />
-                            <span>Delete</span>
+                        <li 
+                            className='group-item-edit-option'
+                            onClick={() => this.openItemRename() } >
+                                    <FontAwesomeIcon icon='fa-solid fa-pencil' />
+                                    <span>Rename Item</span>
+                        </li>
+                        <li 
+                            className='group-item-edit-option' 
+                            onClick={() => deleteItem(item.id)}>
+                                <FontAwesomeIcon icon="fa-solid fa-trash" />
+                                <span>Delete</span>
                         </li>
                     </ul>
                 </div>
                 <span className='item-name'>
-                    <span className={`${color}-item item-flair`}> </span>
-                    <div
-                        onMouseEnter={() => this.setState({ renameActive: true }) }
-                        onMouseLeave={() => this.setState({ renameActive: false}) } >
-                        <input 
-                            type='text'
-                            ref={this.itemNameInp}
-                            className={`${color}`}
-                            value={this.state.itemName}
-                            onChange={ e => this.update(e)} 
-                            onBlur={ () => this.updateItemName() }
-                            onKeyDown={this.onKeyDown}
-                            disabled={this.state.isDisabled} 
-                            />
-                        <span 
-                            className={ this.state.renameActive ? 'item-rename' : 'item-rename hidden' } 
-                            onClick={ () => {
-                                this.setState({isDisabled: !this.state.isDisabled})
-                                this.itemNameInp.current.focus()} }>
-                                Edit
-                        </span>
-                    </div>
+                    <div className={`${color}-item item-flair`}> </div>
+                    <input 
+                        ref={this.itemNameInp}
+                        type='text'
+                        className='item-name-inp'
+                        value={this.state.itemName}
+                        onChange={ e => this.update(e)} 
+                        onBlur={ () => this.updateItemName() }
+                        onKeyDown={ e => this.onKeyDown(e) }
+                        disabled={this.state.isDisabled} 
+                        />
+                    <span 
+                        className={ this.state.renameActive ? 'item-rename' : 'item-rename hidden' } 
+                        onClick={ () => this.openItemRename() } >
+                            Edit
+                    </span>
                 </span>
                 <ul className='item-cells'>
                     { columns.map((col, i) => {
-                        // debugger
                         return (<CellList 
                             key={col.id}
                             col={col}
