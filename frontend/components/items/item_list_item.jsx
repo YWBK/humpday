@@ -114,8 +114,6 @@ class ItemListItem extends React.Component {
                         <li 
                             className='group-item-edit-option'
                             onClick={() => this.openItemRename() } >
-                                {/* this.setState({ active: false, isDisabled: !this.state.isDisabled})
-                                this.itemNameInp.current.focus()} } > */}
                                     <FontAwesomeIcon icon='fa-solid fa-pencil' />
                                     <span>Rename Item</span>
                         </li>
@@ -142,14 +140,11 @@ class ItemListItem extends React.Component {
                     <span 
                         className={ this.state.renameActive ? 'item-rename' : 'item-rename hidden' } 
                         onClick={ () => this.openItemRename() } >
-                            {/* this.setState({isDisabled: !this.state.isDisabled})
-                            this.itemNameInp.current.focus()} }> */}
                             Edit
                     </span>
                 </span>
                 <ul className='item-cells'>
                     { columns.map((col, i) => {
-                        // debugger
                         return (<CellList 
                             key={col.id}
                             col={col}
