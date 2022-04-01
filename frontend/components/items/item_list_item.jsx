@@ -6,6 +6,7 @@ class ItemListItem extends React.Component {
     constructor(props) {
         super(props);
         this.itemMenu = React.createRef();
+        this.itemNameInp = React.createRef();
         this.state = { 
             active: false, 
             renameActive: false,
@@ -76,6 +77,7 @@ class ItemListItem extends React.Component {
                 <div className='item-edit-wrapper'>
                     <FontAwesomeIcon 
                         icon="fa-solid fa-caret-down" 
+                        // icon="fa-solid fa-rectangle-down" 
                         className={`item-edit-button ${color}`} 
                         onClick={()=>this.toggleActive()} />
                     <ul 
@@ -94,6 +96,7 @@ class ItemListItem extends React.Component {
                         onMouseLeave={() => this.setState({ renameActive: false}) } >
                         <input 
                             type='text'
+                            ref={this.itemNameInp}
                             className={`${color}`}
                             value={this.state.itemName}
                             onChange={ e => this.update(e)} 
@@ -103,7 +106,9 @@ class ItemListItem extends React.Component {
                             />
                         <span 
                             className={ this.state.renameActive ? 'item-rename' : 'item-rename hidden' } 
-                            onClick={ () => this.setState({isDisabled: !this.state.isDisabled}) }>
+                            onClick={ () => {
+                                this.setState({isDisabled: !this.state.isDisabled})
+                                this.itemNameInp.current.focus()} }>
                                 Edit
                         </span>
                     </div>

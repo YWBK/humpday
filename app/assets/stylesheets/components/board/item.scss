@@ -8,11 +8,19 @@
     grid-template-rows: 22px;
     grid-auto-columns: 100px;
     grid-auto-flow: column;
+
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
 }
 
 .item-name {
     // flex-grow: 2;
     align-self: center;
+    input:disabled {
+        border: none;
+        background-color: inherit;
+    }
+
     &:hover {
         .magenta {
             color: $magenta;
@@ -48,6 +56,17 @@
             color: $green;
         }
     
+    }
+}
+
+.item-rename {
+    color: $login-darker-grey;
+    font-size: 0.8rem;
+    padding: 0.3em 0.5em 0.3em 0.5em;
+    margin-left: 0.5em;
+    border-radius: 12%;
+    &:hover {
+        background-color: $white;
     }
 }
 
