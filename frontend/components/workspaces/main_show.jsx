@@ -101,6 +101,7 @@ export default class MainShow extends React.Component {
                 updateGroup,
                 deleteGroup, 
                 addItem, 
+                updateItem,
                 deleteItem,
                 updateStatus, 
                 updateItemPerson, 
@@ -160,6 +161,7 @@ export default class MainShow extends React.Component {
                                     updateGroup={updateGroup}
                                     deleteGroup={deleteGroup}
                                     addItem={addItem}
+                                    updateItem={updateItem}
                                     deleteItem={deleteItem}
                                     updateStatus={updateStatus}
                                     updateItemPerson={updateItemPerson}
