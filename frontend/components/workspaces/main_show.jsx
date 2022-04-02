@@ -13,7 +13,8 @@ export default class MainShow extends React.Component {
         // debugger
         this.state = { 
             active: true, 
-            workspaceName: '##############################' };
+            searchStr: '',
+            workspaceName: '                              ' };
         this.toggleClass = this.toggleClass.bind(this);
     }
 
@@ -38,7 +39,7 @@ export default class MainShow extends React.Component {
         if (this.props.showType === 'workspace') {
             let currentWorkspaceName;
             const locationChanged = this.props.location.pathname !== prevProps.location.pathname;
-            if (this.state.workspaceName === '##############################' || locationChanged) {
+            if (this.state.workspaceName === '                              ' || locationChanged) {
                 currentWorkspaceName = this.props.workspaces[this.props.match.params.workspaceId].workspaceName
                 this.setState ({ workspaceName: currentWorkspaceName})
             }
@@ -49,8 +50,12 @@ export default class MainShow extends React.Component {
         this.setState({ active: !this.state.active })
     }
 
-    update(e) {
-        this.setState({ workspaceName: e.currentTarget.value })
+    search(e) {
+        this.update('searchStr', e);
+    }
+    
+    update(field, e) {
+        this.setState({ [field]: e.currentTarget.value })
     }
 
     updateWorkspaceName() {
@@ -116,7 +121,7 @@ export default class MainShow extends React.Component {
                         <input 
                             type='text' 
                             value={this.state.workspaceName} 
-                            onChange={ e => this.update(e) }
+                            onChange={ e => this.update('workspaceName', e) }
                             onBlur={ () => this.updateWorkspaceName() }
                             onKeyDown={this.onKeyDown}
                             onClick={ e => e.stopPropagation() } />
@@ -129,9 +134,45 @@ export default class MainShow extends React.Component {
                     />
                 </div> 
             } else if (showType === 'board') {
-                const groups = Object.values(currentBoard.groups);
-                const columns = Object.values(currentBoard.columns);
+                // const groups = Object.values(currentBoard.groups);
+                let groups = this.state.searchStr
+                    ? Object
+                        .values(currentBoard.groups)
+                        .filter(group => group.groupName.toLowerCase()
+                            .includes(this.state.searchStr.toLowerCase()))
+                    : Object.values(currentBoard.groups);
+                // debugger
+                let searchedMembers = this.state.searchStr
+                    ? Object
+                        .values(currentBoard.members)
+                        .filter(member => member.fullName.toLowerCase()
+                            .includes(this.state.searchStr.toLowerCase()))
+                        .map(member => member.id)
+                    : [];
+                let searchedItemPeople = this.state.searchStr
+                    ? Object
+                        .values(currentBoard.itemPeople)
+                        .filter(itemPerson => searchedMembers
+                            .includes(itemPerson.userId))
+                    : [];
+                let searchedItems = this.state.searchStr 
+                    ? Object
+                        .values(currentBoard.items)
+                        .filter(item => searchedItemPeople
+                            .map(i => i.itemId).includes(item.id))
+                    : [];
+                if (searchedItemPeople.length > 0) {
+                    let itemPeopleGroupIds = searchedItemPeople
+                        .map(itemPerson => itemPerson.groupId);
+                    groups = Object
+                        .values(currentBoard.groups)
+                        .filter(group => itemPeopleGroupIds
+                            .includes(group.id))
+                }
+                // debugger
 
+                const columns = Object.values(currentBoard.columns);
+                // debugger
                 content =
                 <div className='board-content'>
                     <BoardTitleBar 
@@ -139,18 +180,61 @@ export default class MainShow extends React.Component {
                         currentBoard={currentBoard} 
                         openModal={openModal} 
                         updateBoard={updateBoard} />
-
+                    <div className='board-menu-bar'>
+                        <input
+                            type='text'
+                            placeholder='Search'
+                            value={this.state.searchStr}
+                            onChange={e => this.search(e)}
+                        />
+                    </div>
                     <ul className='group-list'>
                         {groups.map(group => {
                             // debugger
-                            const items = currentBoard.items ? Object.values(currentBoard.items).filter(item => item.groupId === group.id) : null;
-                            const itemPeople = currentBoard.itemPeople ? Object.values(currentBoard.itemPeople).filter(itemPerson => itemPerson.groupId === group.id) : null;
-                            const statuses = currentBoard.statuses ? Object.values(currentBoard.statuses).filter(status => status.groupId === group.id) : null;
-                            const dueDates = currentBoard.dueDates ? Object.values(currentBoard.dueDates).filter(dueDate => dueDate.groupId === group.id) : null;
+                            const items = currentBoard.items 
+                                ? Object.values(currentBoard.items)
+                                    .filter(item => searchedItems.length > 0
+                                        ? item.groupId === group.id
+                                            && Object.values(searchedItems)
+                                                .map(i => i.id)
+                                                .includes(item.id)
+                                        : item.groupId === group.id )
+                                : null;
+
+                            const itemPeople = currentBoard.itemPeople 
+                                ? Object.values(currentBoard.itemPeople)
+                                    .filter(itemPerson => searchedItems.length > 0
+                                        ? itemPerson.groupId === group.id
+                                            && Object.values(searchedItems)
+                                                .map(i => i.id)
+                                                .includes(itemPerson.itemId)
+                                        : itemPerson.groupId === group.id ) 
+                                : null;
+
+                            const statuses = currentBoard.statuses 
+                                ? Object.values(currentBoard.statuses)
+                                    .filter(status => searchedItems.length > 0 
+                                        ? status.groupId === group.id 
+                                            && Object.values(searchedItems)
+                                                .map(i => i.id)
+                                                .includes(status.itemId) 
+                                        : status.groupId === group.id ) 
+                                : null;
+
+                            const dueDates = currentBoard.dueDates 
+                                ? Object.values(currentBoard.dueDates)
+                                    .filter(dueDate => searchedItems.length > 0
+                                        ? dueDate.groupId === group.id
+                                            && Object.values(searchedItems)
+                                                .map(i => i.id)
+                                                .includes(dueDate.itemId)
+                                        : dueDate.groupId === group.id ) 
+                                : null;
                             // debugger
                             return (
                                 <GroupListItem 
                                     key={group.id}
+                                    searchStr={this.state.searchStr}
                                     showType={showType}
                                     currentAccountUsers={currentAccountUsers}
                                     currentBoard={currentBoard}
