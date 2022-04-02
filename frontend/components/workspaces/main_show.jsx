@@ -134,7 +134,11 @@ export default class MainShow extends React.Component {
 
                 content =
                 <div className='board-content'>
-                    <BoardTitleBar currentAccountUsers={currentAccountUsers} currentBoard={currentBoard} openModal={openModal} />
+                    <BoardTitleBar 
+                        currentAccountUsers={currentAccountUsers} 
+                        currentBoard={currentBoard} 
+                        openModal={openModal} 
+                        updateBoard={updateBoard} />
 
                     <ul className='group-list'>
                         {groups.map(group => {
