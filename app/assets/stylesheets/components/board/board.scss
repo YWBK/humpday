@@ -15,8 +15,17 @@
 }
 
 .board-title {
-    font-size: 32px;
-    margin-bottom: 20px;
+    font-size: 2rem;
+    margin-bottom: 0.5em;
+    border: none;
+    &:hover {
+        outline: 1px solid $login-dark-grey;
+        border-radius: 0.2em; 
+    }
+    &:focus {
+        outline: 1px solid $signup-darker-blue;
+        border-radius: 0.2em;
+    }
 }
 
 .add-group-btn {
