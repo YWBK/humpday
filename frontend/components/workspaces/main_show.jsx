@@ -155,15 +155,20 @@ export default class MainShow extends React.Component {
                         .filter(itemPerson => searchedMembers
                             .includes(itemPerson.userId))
                     : [];
-                let searchedStatus = this.state.searchStr
+                let searchedStatuses = this.state.searchStr
                     ? Object
                         .values(currentBoard.statuses)
                         .filter(status => status.status.toLowerCase()
                             .includes(this.state.searchStr.toLowerCase()))
                     : [];
-                    
-                let searchedCells = [...searchedItemPeople, ...searchedStatus]
-                // debugger
+                let searchedDates =  this.state.searchStr
+                    ? Object
+                        .values(currentBoard.dueDates)
+                        .filter(dueDate => dueDate.date
+                            .includes(this.state.searchStr))
+                    : [];
+                let searchedCells = [...searchedItemPeople, ...searchedStatuses, ...searchedDates]
+
                 let searchedItems = this.state.searchStr 
                     ? Object
                         .values(currentBoard.items)
