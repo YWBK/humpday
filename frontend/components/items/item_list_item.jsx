@@ -145,6 +145,7 @@ class ItemListItem extends React.Component {
                 </span>
                 <ul className='item-cells'>
                     { columns.map((col, i) => {
+                        // debugger
                         return (<CellList 
                             key={col.id}
                             col={col}

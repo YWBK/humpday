@@ -10,6 +10,7 @@ class DueDateItem extends React.Component {
         const { dueDate } = this.props;
         const newDateStr = date.toISOString();     
         const updatedDate = Object.assign({}, {id: dueDate.id, date: newDateStr});
+        // debugger
         this.props.updateDueDate(updatedDate)
             .then(this.setState({ dueDate: date }));
     }
