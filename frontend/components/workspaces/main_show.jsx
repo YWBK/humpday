@@ -172,13 +172,19 @@ export default class MainShow extends React.Component {
                             let capitalized = this.state.searchStr[0].toUpperCase() + this.state.searchStr.slice(1).toLowerCase();
                             return d.includes(capitalized)})
                     : [];
-                let searchedCells = [...searchedItemPeople, ...searchedStatuses, ...searchedDates]
+                let searchedItemNames = this.state.searchStr
+                    ? Object
+                        .values(currentBoard.items)
+                        .filter(item => item.itemName.toLowerCase()
+                            .includes(this.state.searchStr.toLowerCase()))
+                    : [];
+                let searchedCells = [...searchedItemPeople, ...searchedStatuses, ...searchedDates, ...searchedItemNames]
 
                 let searchedItems = this.state.searchStr 
                     ? Object
                         .values(currentBoard.items)
                         .filter(item => searchedCells
-                            .map(i => i.itemId).includes(item.id))
+                            .map(i => i.itemId ?? i.id).includes(item.id))
                     : [];
 
                 if (searchedItems.length > 0) {
