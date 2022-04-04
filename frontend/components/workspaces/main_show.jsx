@@ -164,8 +164,13 @@ export default class MainShow extends React.Component {
                 let searchedDates =  this.state.searchStr
                     ? Object
                         .values(currentBoard.dueDates)
-                        .filter(dueDate => dueDate.date
-                            .includes(this.state.searchStr))
+                        .filter(dueDate => {
+                            let d1 = new Date( dueDate.date);
+                            let d2 = new Date( d1.getTime() - d1.getTimezoneOffset() * 60000);
+                            let d3 = d2.toLocaleDateString();
+                            let d = d2 + d3;
+                            let capitalized = this.state.searchStr[0].toUpperCase() + this.state.searchStr.slice(1).toLowerCase();
+                            return d.includes(capitalized)})
                     : [];
                 let searchedCells = [...searchedItemPeople, ...searchedStatuses, ...searchedDates]
 
