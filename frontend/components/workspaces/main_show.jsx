@@ -196,8 +196,28 @@ export default class MainShow extends React.Component {
                         openModal={openModal} 
                         updateBoard={updateBoard} />
                     <div className='board-menu-bar'>
+                        <div className='new-item-split-btn' >
+                            <button 
+                                className='new-item-btn'
+                                style={{borderRadius: '0.2em 0 0 0.2em'}}>
+                                    New Item
+                            </button>
+                            <div className='new-item-dropdown'>
+                                <button 
+                                    className='new-item-btn' 
+                                    style={{
+                                        borderLeft: '1px solid rgba(45, 103, 202, 255)',
+                                        borderRadius: '0 0.2em 0.2em 0'}}>
+                                            <FontAwesomeIcon icon="fa-solid fa-angle-down" />
+                                </button>
+                                <ul className='new-item-dropdown-content'>
+                                    <li>New group of Items</li>
+                                </ul>
+                            </div>
+                        </div>
                         <input
                             type='text'
+                            className='searchBar'
                             placeholder='Search'
                             value={this.state.searchStr}
                             onChange={e => this.search(e)}
