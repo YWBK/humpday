@@ -1,0 +1,38 @@
+.board-menu-bar {
+    display: flex;
+    width: 90%;
+    padding: 1em 0 1em 0;
+    border-top: 1px solid $login-dark-grey;
+}
+
+.new-item-split-btn {
+    display: flex;
+    margin-right: 1em;
+}
+
+.new-item-btn {
+    background-color: $board-bar-blue;
+    color: $white;
+    padding: 0.5em;
+    font-size: 0.9rem;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: 0.2s;
+    &:hover {
+        background-color: $board-bar-blue-2;
+    }
+}
+
+.new-item-dropwdown {
+    position: absolute;
+    display: inline-block;   
+}
+
+.new-item-dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: $white;
+    min-width: 2em;
+    z-index: 1;
+}
