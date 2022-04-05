@@ -244,7 +244,10 @@ export default class MainShow extends React.Component {
                                         ? 'new-item-dropdown-content' 
                                         : 'new-item-dropdown-content hidden'}
                                     ref={this.boardMenu}>
-                                        <li>New group of Items</li>
+                                        <li>
+                                            <FontAwesomeIcon icon="fa-solid fa-rectangle-list" />
+                                            <span>New group of Items</span>
+                                        </li>
                                 </ul>
                             </div>
                         </div>
