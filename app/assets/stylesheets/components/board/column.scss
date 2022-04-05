@@ -7,6 +7,7 @@
 
     .column-header {
         // flex: 1;
+        position: relative;
         display: flex;
         justify-content: space-evenly;
         border: 1px solid $login-grey;
@@ -21,7 +22,8 @@
     cursor: pointer;
 }
 .col-menu {
-    position: fixed;
+    position: absolute;
+    top: 2em;
     padding: 10px;
     background: $white-3;
     border-radius: 10px;
