@@ -173,13 +173,13 @@ export default class MainShow extends React.Component {
                         .filter(itemPerson => searchedMembers
                             .includes(itemPerson.userId))
                     : [];
-                let searchedStatuses = this.state.searchStr
+                let searchedStatuses = this.state.searchStr && currentBoard.statuses
                     ? Object
                         .values(currentBoard.statuses)
                         .filter(status => status.status.toLowerCase()
                             .includes(this.state.searchStr.toLowerCase()))
                     : [];
-                let searchedDates =  this.state.searchStr
+                let searchedDates =  this.state.searchStr && currentBoard.dueDates
                     ? Object
                         .values(currentBoard.dueDates)
                         .filter(dueDate => {
@@ -190,7 +190,7 @@ export default class MainShow extends React.Component {
                             let capitalized = this.state.searchStr[0].toUpperCase() + this.state.searchStr.slice(1).toLowerCase();
                             return d.includes(capitalized)})
                     : [];
-                let searchedItemNames = this.state.searchStr
+                let searchedItemNames = this.state.searchStr && currentBoard.items
                     ? Object
                         .values(currentBoard.items)
                         .filter(item => item.itemName.toLowerCase()
