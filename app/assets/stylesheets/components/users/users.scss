@@ -1,0 +1,53 @@
+#users-page {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.user-info {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.user-banner {
+    background-color: $login-blue;
+    height: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.user-initials {
+    width: 8em;
+    height: 8em;
+    background-color: yellowgreen;
+    color: $white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2em;
+}
+
+.user-name {
+    font-size: 2rem;
+    color:$white;
+}
+
+.user-email {
+    // width: 80%;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    margin-top: 2em;
+
+    >span:first-of-type {
+        margin: 0 1em 0 1em;
+    }
+}
+
