@@ -198,7 +198,7 @@ export default class MainShow extends React.Component {
                     : [];
                 let searchedCells = [...searchedItemPeople, ...searchedStatuses, ...searchedDates, ...searchedItemNames]
 
-                let searchedItems = this.state.searchStr 
+                let searchedItems = this.state.searchStr && currentBoard.items
                     ? Object
                         .values(currentBoard.items)
                         .filter(item => searchedCells
