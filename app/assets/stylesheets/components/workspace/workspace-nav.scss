@@ -76,20 +76,21 @@
         margin: 0.3em;
     }
 
+    .workspace-link-wrapper {
+        width: 95%;
+        padding: 0.3em;
+        .workspace-link {
+            text-decoration: none;
+            color: black;
+        }
+        &:hover {
+            background-color: $login-grey;
+            border-radius: 0.3em;
+            max-width: 100%;
+        }
+    }
 }
 
-.workspace-link-wrapper {
-    width: 95%;
-    padding: 0.3em;
-    .workspace-link {
-        text-decoration: none;
-        color: black;
-    }
-    &:hover {
-        background-color: $login-grey;
-        border-radius: 5px;
-    }
-}
 
 .workspace-nav-c-r {
     cursor: pointer;
