@@ -31,8 +31,8 @@ class ItemPersonItem extends React.Component {
         const { itemPerson, boardMembers, updateItemPerson } = this.props; 
         // debugger
         return (
-            <li onClick={() => this.toggleActive()}>
-                { itemPerson.userId ? boardMembers[itemPerson.userId].fullName : '-' }
+            <li onClick={() => this.toggleActive()} className='cell-edit-wrapper'>
+                <span>{ itemPerson.userId ? boardMembers[itemPerson.userId].fullName : '-' }</span>
                 <ul 
                     ref={this.cellMenu }
                     className={this.state.active ? 'cell-edit' : 'cell-edit hidden'}>
