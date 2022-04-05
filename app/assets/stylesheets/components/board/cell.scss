@@ -30,62 +30,64 @@
     }
 }
 
+.cell-edit-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    >span {
+        padding: 0.2em 0 0 0.3em;
+    }
+}
+
 .cell-edit {
-    position: fixed;
-    // left: 350px;
+    width: 8em;
+    position: absolute;
+    top: 2em;
     background-color: $white-3;
-    box-shadow: 0px 0px 4px $login-dark-grey;
-    border-radius: 10px;
-    padding: 10px;
+    box-shadow: 0 0 0.5em $login-dark-grey;
+    border-radius: 0.3em;
+    padding: 0.5em;
     cursor: pointer;
+    z-index: 1;
 
     li:hover {
-        // background-color: $login-grey;
         font-weight: 700;
-        border-radius: 5px;
+        border-radius: 0.3em;
     }
 }
 
-.status-edit {
-    position: fixed;
-    // left: 350px;
-    background-color: $white-3;
-    box-shadow: 0px 0px 4px $login-dark-grey;
-    border-radius: 10px;
-    padding: 10px;
-    cursor: pointer;
 
-    li:hover {
-        // background-color: $login-grey;
-        font-weight: 700;
-        border-radius: 5px;
-    }
-}
 
 .working, .stuck, .done, .none {
     transition: 0.2s;
     &:hover {
-        border-radius: 0 15px 0 0;
+        border-radius: 0 1em 0 0;
     }
 }
 
+.item-person-edit-option, #status-edit-0, #status-edit-1, #status-edit-2, #status-edit-3 {
+    padding: 0.3em 0.2em 0.3em 0.2em;
+}
+
 #status-edit-0, .working {
-    font-size: 14px;
+    font-size: 0.9rem;
     color: $white;
     background-color: $orange-2;
+    // padding: 0.3em 0.2em 0.3em 0.2em;
 }
 #status-edit-1, .stuck {
-    font-size: 14px;
+    font-size: 0.9rem;
     color: $white;
     background-color: $login-red;
 }
 #status-edit-2, .done {
-    font-size: 14px;
+    font-size: 0.9rem;
     color: $white;
     background-color: $green;
 }
 #status-edit-3, .none {
-    font-size: 14px;
+    font-size: 0.9rem;
     color: $login-dark-grey;
     background-color: $login-dark-grey;
 }

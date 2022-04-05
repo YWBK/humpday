@@ -32,11 +32,11 @@ class StatusItem extends React.Component {
         const statusOptions = ['Working on it', 'Stuck', 'Done', '-'];
 
         return (
-            <li onClick={() => this.toggleActive()}>
+            <li onClick={() => this.toggleActive()} className='cell-edit-wrapper'>
                 <span>{status.status}</span> 
                 <ul 
                     ref={this.cellMenu }
-                    className={this.state.active ? 'status-edit' : 'status-edit hidden'}>
+                    className={this.state.active ? 'cell-edit' : 'cell-edit hidden'}>
                     { statusOptions.map((statusOption, i) => (
                         <li 
                             key={i} 
