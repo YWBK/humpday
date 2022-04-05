@@ -1,5 +1,6 @@
 .board-menu-bar {
     display: flex;
+    position: relative;
     width: 90%;
     padding: 1em 0 1em 0;
     border-top: 1px solid $login-dark-grey;
@@ -26,13 +27,25 @@
 
 .new-item-dropwdown {
     position: absolute;
-    display: inline-block;   
+    display: inline-block;
 }
 
 .new-item-dropdown-content {
-    display: none;
+    display: block;
     position: absolute;
-    background-color: $white;
-    min-width: 2em;
     z-index: 1;
+    background-color: $white-3;
+    box-shadow: 0 0 0.5em $login-dark-grey;
+    border-radius: 0.4em;
+    padding: 0.5em;
+    
+    li:hover {
+        cursor: pointer;
+        background-color: $login-dark-grey;
+    }
+
 }
+
+// .new-item-dropdown:hover .new-item-dropdown-content {
+//     display: block;
+// }

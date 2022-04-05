@@ -11,11 +11,14 @@ export default class MainShow extends React.Component {
     constructor(props) {
         super(props);
         // debugger
+        this.boardMenu = React.createRef();
         this.state = { 
             active: true, 
+            boardMenu: false,
             searchStr: '',
             workspaceName: '                              ' };
         this.toggleClass = this.toggleClass.bind(this);
+        this.handleOuterClickBoard = this.handleOuterClickBoard.bind(this);
     }
 
     componentDidMount() {
@@ -25,6 +28,7 @@ export default class MainShow extends React.Component {
                 .then(() => this.props.fetchWorkspace(this.props.match.params.workspaceId))
                 .then(() => this.props.fetchWorkspaces());
         } else if (this.props.showType === 'board') {
+            document.addEventListener('mousedown', this.handleOuterClickBoard)
             this.props.fetchUsers()
                 .then(() => this.props.fetchBoard(this.props.match.params.boardId))
                 .then((board) => {
@@ -32,6 +36,19 @@ export default class MainShow extends React.Component {
                 .then(() => { 
                     return this.props.fetchBoards()})
                 .then(() => this.props.fetchWorkspaces());
+        }
+    }
+    componentWillUnmount() {
+        if (this.props.showType === 'board') document.removeEventListener('mousedown', this.handleOuterClickBoard);
+    }
+    handleOuterClickBoard(e) {
+        if (
+            this.boardMenu.current &&
+            !this.boardMenu.current.contains(e.target)
+        ) {
+            this.setState({
+                boardMenu: false,
+            })
         }
     }
 
@@ -46,8 +63,9 @@ export default class MainShow extends React.Component {
         }
     }
 
-    toggleClass() {
-        this.setState({ active: !this.state.active })
+    toggleClass(field) {
+        // debugger
+        this.setState({ [field]: !this.state[field] })
     }
 
     search(e) {
@@ -213,7 +231,8 @@ export default class MainShow extends React.Component {
                                 style={{borderRadius: '0.2em 0 0 0.2em'}}>
                                     New Item
                             </button>
-                            <div className='new-item-dropdown'>
+                            <div className='new-item-dropdown'
+                                onClick={e => this.toggleClass('boardMenu')}>
                                 <button 
                                     className='new-item-btn' 
                                     style={{
@@ -221,8 +240,12 @@ export default class MainShow extends React.Component {
                                         borderRadius: '0 0.2em 0.2em 0'}}>
                                             <FontAwesomeIcon icon="fa-solid fa-angle-down" />
                                 </button>
-                                <ul className='new-item-dropdown-content'>
-                                    <li>New group of Items</li>
+                                <ul 
+                                    className={this.state.boardMenu 
+                                        ? 'new-item-dropdown-content' 
+                                        : 'new-item-dropdown-content hidden'}
+                                    ref={this.boardMenu}>
+                                        <li>New group of Items</li>
                                 </ul>
                             </div>
                         </div>
