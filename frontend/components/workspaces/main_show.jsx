@@ -225,6 +225,7 @@ export default class MainShow extends React.Component {
                 }
 
                 const columns = Object.values(currentBoard.columns);
+                // debugger
                 content =
                 <div className='board-content'>
                     <BoardTitleBar 

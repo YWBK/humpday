@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 class BoardTitleBar extends React.Component {
     constructor(props) {
         super(props)
+        // debugger
         this.state = {
             boardName: props.currentBoard.boardName
         }
@@ -12,10 +13,13 @@ class BoardTitleBar extends React.Component {
 
     componentDidUpdate(prevProps) {
         const locationChanged = this.props.location.pathname !== prevProps.location.pathname;
+        // debugger
         if (locationChanged) {
+            // debugger
             this.setState({boardName: this.props.location.currentBoard.boardName});
         }
     }
+
     update(e) {
         this.setState({ boardName: e.currentTarget.value })
     }
