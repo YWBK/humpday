@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class BoardTitleBar extends React.Component {
@@ -6,6 +7,13 @@ class BoardTitleBar extends React.Component {
         super(props)
         this.state = {
             boardName: props.currentBoard.boardName
+        }
+    }
+
+    componentDidUpdate(prevProps) {
+        const locationChanged = this.props.location.pathname !== prevProps.location.pathname;
+        if (locationChanged) {
+            this.setState({boardName: this.props.location.currentBoard.boardName});
         }
     }
     update(e) {
@@ -62,4 +70,4 @@ class BoardTitleBar extends React.Component {
     }
 }
 
-export default BoardTitleBar
+export default withRouter(BoardTitleBar)
