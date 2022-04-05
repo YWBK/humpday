@@ -204,16 +204,17 @@ export default class MainShow extends React.Component {
                         .filter(item => searchedCells
                             .map(i => i.itemId ?? i.id).includes(item.id))
                     : [];
-
                 if (searchedItems.length > 0) {
                     let itemGroupIds = searchedCells
                         .map(cell => cell.groupId);
-                    groups = Object
+
+                    let currGroupIds = groups.map(g => g.id)
+                    // debugger
+                    groups = groups.concat(Object
                         .values(currentBoard.groups)
                         .filter(group => itemGroupIds
-                            .includes(group.id))
+                            .includes(group.id) && !currGroupIds.includes(group.id)))
                 }
-                // debugger
 
                 const columns = Object.values(currentBoard.columns);
                 // debugger
