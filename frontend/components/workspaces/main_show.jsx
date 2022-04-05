@@ -101,6 +101,15 @@ export default class MainShow extends React.Component {
             board_id: currentBoard.id};
         addGroup(group);
     }
+    addItem(e) {
+        e.preventDefault();
+        const { currentBoard, addItem } = this.props;
+        const item = {
+            item_name: 'New Item',
+            group_id: Object.keys(currentBoard.groups)[0]
+        }
+        addItem(item)
+    }
 
     render() {
         const { 
@@ -227,6 +236,7 @@ export default class MainShow extends React.Component {
                         <div className='new-item-split-btn' >
                             <button 
                                 className='new-item-btn'
+                                onClick={e => this.addItem(e) }
                                 style={{borderRadius: '0.2em 0 0 0.2em'}}>
                                     New Item
                             </button>
@@ -244,7 +254,7 @@ export default class MainShow extends React.Component {
                                         ? 'new-item-dropdown-content' 
                                         : 'new-item-dropdown-content hidden'}
                                     ref={this.boardMenu}>
-                                        <li>
+                                        <li onClick={e => this.addGroup(e) }>
                                             <FontAwesomeIcon icon="fa-solid fa-rectangle-list" />
                                             <span>New group of Items</span>
                                         </li>
