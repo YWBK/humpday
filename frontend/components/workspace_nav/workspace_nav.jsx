@@ -115,8 +115,8 @@ class WorkspaceNav extends React.Component {
                             <div className='workspace-nav-create-board' onClick={()=> this.props.openModal('board')}>
                                 + Add board
                             </div>
-                            <div className='workspace-nav-boards' >
-                                <ul>
+                            {/* <div className='workspace-nav-boards' > */}
+                                <ul className='workspace-nav-boards'>
                                 { filteredBoards.map(board => {
                                     return (
                                         < BoardItem 
@@ -131,7 +131,7 @@ class WorkspaceNav extends React.Component {
                                     )
                                 })} 
                                 </ul>
-                            </div>
+                            {/* </div> */}
                         </div>
 
                     </div>
