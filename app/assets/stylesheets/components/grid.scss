@@ -4,9 +4,9 @@
     display: grid;
     grid-template-rows: 70px 10fr;
     grid-template-columns: 70px 10fr;
-    grid-template-areas:
-        "nav-corner splash-nav
-        side-nav main-content";
+    // grid-template-areas:
+    //     "nav-corner splash-nav
+    //     side-nav main-content" ;
 }
 
 .modal-background {
@@ -88,6 +88,5 @@
     background-color: $white-2;
     display: flex;
 }
-
 
 
