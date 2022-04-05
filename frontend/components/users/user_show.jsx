@@ -41,7 +41,7 @@ export default class UserShow extends React.Component {
         return(
             <div>
                 <SideNavContainer className='side-nav' />
-                <div className='main-content' id='users-page'>
+                <div className='main-content' id='users-show'>
                     { this.props.user ?
                         <div className='user-info'>
                             <div className='user-banner'>

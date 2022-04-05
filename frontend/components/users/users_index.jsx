@@ -15,8 +15,13 @@ export default class UsersIndex extends React.Component {
             return(
                 <div className='users-index'>
                     <SideNavContainer className='side-nav' />
-                    <div className='main-content'>
-                        <ul>
+                    <div className='main-content' id='users-index'>
+                        <div className='usersListTitle'>All users</div>
+                        <div className='usersListHeaders'>
+                            <span className='usersNameHeader'>Name</span>
+                            <span className='usersEmailHeader'>Email</span>
+                        </div>
+                        <ul className='usersList'>
                             { Object.values(users).map(user => (
                                 <WorkspaceMembersItem 
                                     key={user.id} 
