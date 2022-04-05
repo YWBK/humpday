@@ -167,7 +167,7 @@ export default class MainShow extends React.Component {
                             .includes(this.state.searchStr.toLowerCase()))
                         .map(member => member.id)
                     : [];
-                let searchedItemPeople = this.state.searchStr
+                let searchedItemPeople = this.state.searchStr && currentBoard.itemPeople
                     ? Object
                         .values(currentBoard.itemPeople)
                         .filter(itemPerson => searchedMembers
@@ -209,7 +209,6 @@ export default class MainShow extends React.Component {
                         .map(cell => cell.groupId);
 
                     let currGroupIds = groups.map(g => g.id)
-                    // debugger
                     groups = groups.concat(Object
                         .values(currentBoard.groups)
                         .filter(group => itemGroupIds
@@ -217,7 +216,6 @@ export default class MainShow extends React.Component {
                 }
 
                 const columns = Object.values(currentBoard.columns);
-                // debugger
                 content =
                 <div className='board-content'>
                     <BoardTitleBar 

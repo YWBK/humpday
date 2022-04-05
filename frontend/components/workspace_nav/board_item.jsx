@@ -90,6 +90,7 @@ class BoardItem extends React.Component {
                 <form ref={this.boardRename} onKeyPress={ e => e.key === 'Enter' ? this.handleSubmit(e) : null }>
                     <input type='text' value={this.state.boardName} onChange={e => this.update(e)} />
                 </form> :
+                <div className='board-item-link-wrapper'>
                 <Link
                     className='board-item-link'
                     to={{
@@ -101,6 +102,7 @@ class BoardItem extends React.Component {
                     onClick={ () => fetchBoard(board.id)} >
                     <li>{board.boardName}</li>
                 </Link>
+                </div>
             }
                 <div className='board-menu-btn'>
                     <FontAwesomeIcon icon="fa-solid fa-ellipsis" onClick={() => this.toggleBoardMenu()}/>
