@@ -11,7 +11,6 @@ class BoardItem extends React.Component {
         this.state = { boardName: '', boardNameEdit: false, boardMenu: false };
         this.toggleBoardNameEdit = this.toggleBoardNameEdit.bind(this);
         this.handleOuterClickBoard = this.handleOuterClickBoard.bind(this);
-
     }
     componentDidUpdate(prevProps) {
         let currentBoardName;

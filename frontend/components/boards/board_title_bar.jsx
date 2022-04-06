@@ -16,7 +16,7 @@ class BoardTitleBar extends React.Component {
         // debugger
         if (locationChanged) {
             // debugger
-            this.setState({boardName: this.props.location.currentBoard.boardName});
+            this.setState({boardName: this.props.location?.currentBoard.boardName});
         }
     }
 
