@@ -20,10 +20,10 @@ const mapSTP = (state, ownProps) => {
         const currentUser = state.entities.users[state.session.currentUserId];
         const currentAccount = currentUser.account;
         const currentAccountUsers = state.entities.users;
-        const currentBoard = ownProps.location.currentBoard ? ownProps.location.currentBoard : boards[state.session.currentBoardId];
-        // const currentBoard = state.session.currentBoardId ?
-        //     boards[state.session.currentBoardId] :
-        //     ownProps.location.currentBoard
+        // const currentBoard = ownProps.location.currentBoard ? ownProps.location.currentBoard : boards[state.session.currentBoardId];
+        const currentBoard = state.session.currentBoardId ?
+            boards[state.session.currentBoardId] :
+            ownProps.location.currentBoard
         const currentWorkspace = workspaces[currentBoard.workspace.id];
 
         return ({

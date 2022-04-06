@@ -36,7 +36,7 @@ export default class MainForm extends React.Component {
             const response = await this.props.processForm(newObj);
             const id = response[formType].id
             this.props.formType === 'board' ? await this.props.fetchWorkspaces() : null;
-            this.props.history.push({pathname: `/${currentAccountName}/${formType}s/${id}` })
+            this.props.history.push({pathname: `/${currentAccountName}/${formType}s/${id}`, currentBoard: response[formType] })
             this.props.closeModal();
         };
         createBoard()

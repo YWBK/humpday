@@ -74,7 +74,6 @@ class WorkspaceNav extends React.Component {
             return null
         } else if (boards) {
             const filteredBoards = boards.filter(board => currentWorkspace.boards.find(({ id }) => board.id === id));
-            // debugger
             return (
                 <div className='workspace-nav-wrapper' onClick={ e => e.stopPropagation() }>
                     <div className={ this.state.navActive ? 'workspace-nav' : 'workspace-nav hidden' } >
