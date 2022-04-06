@@ -12,7 +12,7 @@ const sessionReducer = (state = {currentUserId: null}, action) => {
             return nextState;
         case RECEIVE_WORKSPACE:
             nextState.currentWorkspaceId = action.workspace.id;
-            if (location.href.includes('workspaces')) delete nextState.currentBoardId;
+            if (!location.href.includes('boards')) delete nextState.currentBoardId;
             return nextState;
         case REMOVE_WORKSPACE:
             nextState.currentWorkspaceId = action.mainId;
