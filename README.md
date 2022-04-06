@@ -3,7 +3,7 @@
 Humpday.com is a clone of Monday.com, a work management software. Users can create or join an organization account. Once signed up users can:
 - create, view, rename, or delete workspaces
 - create, view, rename, or delete boards within workspaces
-- create, view, or delete groups and items within boards
+- create, view, rename, or delete groups and items within boards
 - manage items by setting assigned users, statuses, and due dates
 
 ## Let's make every day feel like [humpday](https://humpday.herokuapp.com/#/)!
