@@ -105,13 +105,13 @@ class SideNav extends React.Component {
                         </div>
         
                         <div className='side-nav-btn-wrapper'>
-                            <a href="https://www.linkedin.com/in/bill-kim-88987a42/" target="_blank" className='side-nav-btn'>
+                            <a href="https://www.linkedin.com/in/ywbk/" target="_blank" className='side-nav-btn'>
                                 <FontAwesomeIcon icon="fa-brands fa-linkedin-in" size='2x' />
                             </a>
                         </div>
         
                         <div className='side-nav-btn-wrapper'>
-                            <a href="https://angel.co/u/yong-woo-kim-1" target="_blank" className='side-nav-btn'>
+                            <a href="https://angel.co/u/ywbk" target="_blank" className='side-nav-btn'>
                                 <FontAwesomeIcon icon="fa-brands fa-angellist" size='2x' />
                             </a>
                         </div>
